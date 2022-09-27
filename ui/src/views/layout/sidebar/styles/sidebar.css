@@ -1,0 +1,9 @@
+.sidebar-toggler {
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1200px) {
+  .sidebar-toggler {
+    padding-right: 0;
+  }
+}

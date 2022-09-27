@@ -1,0 +1,10 @@
+// copy the name and paste it into extensions(ctrl+shift+x)
+// then click on the extension name and click on the "Install" button
+// the last one is optional
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets"
+  ]
+}
