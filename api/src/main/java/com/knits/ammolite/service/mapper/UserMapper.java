@@ -2,47 +2,17 @@ package com.knits.ammolite.service.mapper;
 
 import com.knits.ammolite.model.User;
 import com.knits.ammolite.service.dto.UserDto;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class UserMapper {
+@Mapper(componentModel = "spring")
+public interface UserMapper {
+    User toEntity(UserDto userDto);
+    UserDto toDto(User user);
 
-
-    public User toEntity(UserDto dto) {
-        if (dto == null) {
-            return null;
-        }
-
-        User entity = new User();
-        entity.setId(dto.getId());
-        entity.setLogin(dto.getLogin());
-        entity.setFirstName(dto.getFirstName());
-        entity.setLastName(dto.getLastName());
-        entity.setEmail(dto.getEmail());
-        entity.setPassword(dto.getPassword());
-        entity.setActive(dto.getActive());
-        return entity;
-    }
-
-    public UserDto toDto(User entity) {
-
-        if (entity == null) {
-            return null;
-        }
-        UserDto dto = new UserDto();
-        dto.setId(entity.getId());
-        dto.setLogin(entity.getLogin());
-        dto.setFirstName(entity.getFirstName());
-        dto.setLastName(entity.getLastName());
-        dto.setEmail(entity.getEmail());
-        dto.setActive(entity.getActive());
-        return dto;
-    }
-
-    public void partialUpdate(User entity, UserDto dto) {
+    public default void partialUpdate(User entity, UserDto dto) {
         if (dto == null) {
             return;
         }
@@ -66,7 +36,7 @@ public class UserMapper {
         }
     }
 
-    public void update(User entity, UserDto dto) {
+    public default void update(User entity, UserDto dto) {
         if (dto == null) {
             return;
         }
@@ -78,7 +48,7 @@ public class UserMapper {
         entity.setActive(dto.getActive());
     }
 
-    public List<UserDto> toDto(List<User> entityList) {
+    public default List<UserDto> toDto(List<User> entityList) {
         if (entityList == null) {
             return null;
         }
@@ -90,7 +60,7 @@ public class UserMapper {
         return list;
     }
 
-    public List<User> toEntity(List<UserDto> dtoList) {
+    public default List<User> toEntity(List<UserDto> dtoList) {
         if (dtoList == null) {
             return null;
         }
@@ -101,5 +71,4 @@ public class UserMapper {
         }
         return list;
     }
-
 }
