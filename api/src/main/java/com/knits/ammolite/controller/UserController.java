@@ -41,14 +41,14 @@ public class UserController {
 
 
     @PostMapping(value = "/users", produces = {"application/json"}, consumes = { "application/json"})
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDTO) {
+    public ResponseEntity<UserDto> createUser(@RequestBody List<UserDto> userDTO) {
         log.debug("REST request to createUser User ");
         if (userDTO == null) {
             throw new UserException("User data are missing");
         }
         return ResponseEntity
                 .ok()
-                .body(userService.save(userDTO));
+                .body(userService.save((UserDto) userDTO));
     }
 
     @PutMapping(value = "/users", produces = {"application/json"}, consumes = { "application/json"})
@@ -88,5 +88,4 @@ public class UserController {
     public ResponseEntity<List<UserDto>> getAllUsers(Pageable pageable) {
         throw new UnsupportedOperationException("getAllUsers(Pageable pageable) not implemented");
     }
-
 }
