@@ -38,7 +38,7 @@ public class UserService {
      */
     public UserDto save(UserDto userDTO) {
         log.debug("Request to save User : {}", userDTO);
-       // userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        // userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         User user = userMapper.toEntity(userDTO);
 
         user = userRepository.save(user);
@@ -113,10 +113,4 @@ public class UserService {
     public Page<UserDto> findAll(Pageable pageable) {
         throw new UnsupportedOperationException("not yet implementes");
     }
-
-
-
-
-
-
 }
