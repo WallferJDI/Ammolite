@@ -62,6 +62,11 @@ public class Employee {
 
     @Column(name = "solid_line_manager")
     private String solidLineManager = String.valueOf(SolidLineManager.class);
+    
+     public enum Gender {
+        Male,
+        Female;
+    }
 
     public class Division {
         private Long id;
@@ -92,12 +97,7 @@ public class Employee {
         private Long id;
         private String jobTitlename;
     }
-
-    public enum Gender {
-        Male,
-        Female;
-    }
-
+    
     public class Department {
         private Long id;
         private String departmentName;
