@@ -8,8 +8,9 @@ import java.io.Serializable;
 /**
  * A user.
  */
-@Entity
+
 @Table(name = "user")
+@Entity
 @Data
 public class User implements Serializable {
 

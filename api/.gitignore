@@ -47,6 +47,7 @@ local.properties
 *.ipr
 *.ids
 *.orig
+*.yml
 classes/
 out/
 

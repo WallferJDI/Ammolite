@@ -34,17 +34,21 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/product?useSSL=false
-    username: root
-    password: stefan0
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: qwer778899
     hikari:
       poolName: Hikari
       auto-commit: false
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: true
+  liquibase:
+    change-log: classpath:db.changelog/db.changelog-master.yml
 
 server:
   port: 8080
+
