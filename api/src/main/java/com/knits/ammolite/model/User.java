@@ -1,5 +1,6 @@
 package com.knits.ammolite.model;
 
+import com.knits.ammolite.annotations.ValidEmail;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -33,6 +34,7 @@ public class User implements Serializable {
     private String lastName;
 
     @Column(length = 254, unique = true)
+    @ValidEmail
     private String email;
 
     @Column(nullable = false)

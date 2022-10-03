@@ -1,5 +1,6 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.organization;
 
+import com.knits.ammolite.annotations.ValidEmail;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class ContactPerson {
     private String lastName;
 
     @Column(nullable = false)
+    @ValidEmail
     private String email;
 
     @Column

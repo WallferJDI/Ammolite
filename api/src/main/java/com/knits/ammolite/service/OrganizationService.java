@@ -1,7 +1,7 @@
 package com.knits.ammolite.service;
 
 
-import com.knits.ammolite.model.Organization;
+import com.knits.ammolite.model.organization.Organization;
 import com.knits.ammolite.repository.OrganizationRepository;
 import com.knits.ammolite.service.dto.OrganizationDto;
 import com.knits.ammolite.service.mapper.OrganizationMapper;

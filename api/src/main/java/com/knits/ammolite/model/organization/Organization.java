@@ -1,7 +1,8 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.organization;
 
 
 import lombok.Data;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -30,11 +31,13 @@ public class Organization implements Serializable {
     @Column(nullable = false)
     private String registrationCode;
 
-    @Column(nullable = false)
-    private String taxRegistrationCountry;
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Country taxRegistrationCountry;
 
-    @Column(nullable = false)
-    private String legalAddressCountry;
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Country legalAddressCountry;
 
     @Column(nullable = false)
     private String legalAddressCity;
@@ -45,7 +48,7 @@ public class Organization implements Serializable {
     @Column(nullable = false)
     private String legalAddressZipcode;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "id")
     private ContactPerson contactPerson;
 }

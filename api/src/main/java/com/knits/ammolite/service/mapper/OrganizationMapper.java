@@ -1,6 +1,6 @@
 package com.knits.ammolite.service.mapper;
 
-import com.knits.ammolite.model.Organization;
+import com.knits.ammolite.model.organization.Organization;
 import com.knits.ammolite.service.dto.OrganizationDto;
 import org.springframework.stereotype.Component;
 
