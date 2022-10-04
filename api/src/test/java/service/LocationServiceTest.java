@@ -6,6 +6,7 @@ import com.knits.ammolite.model.Ownership;
 import com.knits.ammolite.model.RealEstate;
 import com.knits.ammolite.repository.LocationRepository;
 import com.knits.ammolite.service.LocationService;
+import com.knits.ammolite.service.dto.CountryDto;
 import com.knits.ammolite.service.dto.LocationDto;
 import com.knits.ammolite.service.mapper.LocationMapper;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -58,7 +58,6 @@ class LocationServiceTest {
        service.createLocation(locationDto);
         verify(repository).save(location);
         verify(mapper).toEntity(locationDto);
-
     }
     @Test
     void checkIfLocationAlreadyExist(){
@@ -95,5 +94,30 @@ class LocationServiceTest {
         LocationDto locationDto = mapper.toDto(location);
         when(repository.findById(location.getId())).thenReturn(Optional.of(location));
         assertThrows(RuntimeException.class, () -> service.createLocation(locationDto));
+    }
+
+    @Test
+    void updateMandatoryFieldsAtLocation(){
+        Location location = Location.builder()
+                .id(1l)
+                .title("Tallinn")
+                .address("address")
+                .country(new Country(1l,"Country",new ArrayList<>()))
+                .zipCode("12345")
+                .realEstate(RealEstate.valueOf("OFFICE"))
+                .ownership(Ownership.valueOf("OUR_PREMISES"))
+                .mapCoordinates(false)
+                .longitude("112233")
+                .latitude("112233")
+                .build();
+        when(repository.findById(any())).thenReturn(Optional.of(location));
+        when(mapper.toDto((Location) any())).thenReturn(mock(LocationDto.class));
+        LocationDto locationDto = mock(LocationDto.class);
+        when(locationDto.getTitle()).thenReturn("Riga");
+        when(locationDto.getAddress()).thenReturn("New Address");
+        when(locationDto.getCountry()).thenReturn(new CountryDto(1l,"Latvia"));
+        when(locationDto.getZipCode()).thenReturn("67891");
+        service.editLocation(locationDto);
+        verify(repository).findById(any());
     }
 }

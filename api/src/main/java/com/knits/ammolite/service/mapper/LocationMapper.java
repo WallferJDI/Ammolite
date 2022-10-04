@@ -11,9 +11,9 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface LocationMapper {
 
-   @Mapping(source = "location.country",target = "country")
-   @Mapping(source = "location.ownership",target = "ownership")
-   @Mapping(source = "location.realEstate",target = "realEstate")
+    @Mapping(source = "location.country",target = "country")
+    @Mapping(source = "location.ownership",target = "ownership")
+    @Mapping(source = "location.realEstate",target = "realEstate")
     LocationDto toDto(Location location);
 
     @InheritInverseConfiguration

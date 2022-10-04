@@ -9,18 +9,41 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class LocationService {
     @Autowired
     private LocationRepository repository;
-
+    @Autowired
     private LocationMapper mapper;
 
-    public void createLocation(LocationDto locationDto) {
+    public LocationDto createLocation(LocationDto locationDto) {
+        log.debug("Request to create Location : {}", locationDto);
         checkIfNullOrEmpty(locationDto);
-        repository.save(mapper.toEntity(locationDto));
+        Location location = mapper.toEntity(locationDto);
+        repository.save(location);
+        return mapper.toDto(location);
+    }
+    @Transactional
+    public LocationDto editLocation(LocationDto locationDto){
+        log.debug("Request to edit Location : {}", locationDto);
+        checkIfNullOrEmpty(locationDto);
+        final Long idLocation = locationDto.getId();
+        final Location locationFromDb = repository.findById(idLocation).get();
+        if ( locationFromDb== null) {
+            String message = "Location with id = " + idLocation + " does not exist.";
+            log.warn(message);
+            throw new RuntimeException(message);
+        }
+        locationFromDb.builder()
+                .title(locationDto.getTitle())
+                .country(mapper.toEntity(locationDto.getCountry()))
+                .address(locationDto.getAddress())
+                .zipCode(locationDto.getZipCode());
+        return mapper.toDto(locationFromDb);
     }
 
     public void checkIfNullOrEmpty(LocationDto locationDto){
