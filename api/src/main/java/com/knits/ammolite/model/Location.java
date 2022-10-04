@@ -5,9 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 import static javax.persistence.CascadeType.ALL;
@@ -18,6 +22,9 @@ import static javax.persistence.FetchType.EAGER;
 @NoArgsConstructor
 @Builder
 @Data
+@Table(name = "location")
+@SQLDelete(sql = "UPDATE location SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class Location implements Serializable {
 
     private final static long serialVersionUID = 1L;
@@ -52,6 +59,8 @@ public class Location implements Serializable {
     @Column(name = "real_estate")
     @Enumerated(EnumType.STRING)
     private RealEstate realEstate;
+
+    private boolean deleted = false;
 
 
 

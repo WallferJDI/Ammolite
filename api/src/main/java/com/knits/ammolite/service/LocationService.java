@@ -46,6 +46,11 @@ public class LocationService {
         return mapper.toDto(locationFromDb);
     }
 
+    public void deleteLocation(Long id){
+        log.debug("Set status deleted = true to Location Id: {}", id);
+        repository.deleteById(id);
+    }
+
     public void checkIfNullOrEmpty(LocationDto locationDto){
         String title = locationDto.getTitle();
         String country = String.valueOf(locationDto.getCountry());

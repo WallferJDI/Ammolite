@@ -21,6 +21,7 @@ import org.mockito.quality.Strictness;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -120,4 +121,18 @@ class LocationServiceTest {
         service.editLocation(locationDto);
         verify(repository).findById(any());
     }
+
+    @Test
+    void softDeleteLocationFromDb(){
+        Location location = new Location();
+        location.setId(1l);
+        location.setDeleted(false);
+        when(repository.findById(location.getId())).thenReturn(Optional.of(location));
+        service.deleteLocation(location.getId());
+        verify(repository).deleteById(location.getId());
+    }
+
+
+
+
 }

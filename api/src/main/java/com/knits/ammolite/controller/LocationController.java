@@ -33,4 +33,14 @@ public class LocationController {
             throw new UserException("Location data are missing");
         }
         return ResponseEntity.ok().body(locationService.editLocation(locationDto));
-    }}
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
+        log.debug("REST request to delete Location with Id : {}", id);
+        locationService.deleteLocation(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+}
