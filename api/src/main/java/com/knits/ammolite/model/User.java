@@ -34,7 +34,6 @@ public class User implements Serializable {
     private String lastName;
 
     @Column(length = 254, unique = true)
-    @ValidEmail
     private String email;
 
     @Column(nullable = false)

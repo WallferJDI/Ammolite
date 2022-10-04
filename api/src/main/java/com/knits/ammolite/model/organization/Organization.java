@@ -2,8 +2,6 @@ package com.knits.ammolite.model.organization;
 
 
 import lombok.Data;
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

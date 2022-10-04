@@ -9,16 +9,28 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.knits.ammolite.payload.*;
 
 @Service
 @Transactional
 @Slf4j
 public class OrganizationService {
 
+
+    private final OrganizationMapper organizationMapper;
+    private final OrganizationRepository organizationRepository;
+
+
     @Autowired
-    private OrganizationMapper organizationMapper;
-    @Autowired
-    private OrganizationRepository organizationRepository;
+    public OrganizationService(OrganizationMapper organizationMapper, OrganizationRepository organizationRepository, CountryService countryService) {
+        this.organizationMapper = organizationMapper;
+        this.organizationRepository = organizationRepository;
+    }
+
+    public OrganizationDto createOrganization(CreateOrganizationRequest request){
+       OrganizationDto organizationDto = organizationMapper.requestToDto(request);
+        return save(organizationDto);
+    }
 
     public OrganizationDto save(OrganizationDto organizationDto){
         log.debug("Request to save Organization : {}", organizationDto);

@@ -1,13 +1,14 @@
 package com.knits.ammolite.model.organization;
 
-import com.knits.ammolite.annotations.ValidEmail;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "contactPerson")
 @Data
+@NoArgsConstructor
 public class ContactPerson {
 
     @Id
@@ -22,7 +23,6 @@ public class ContactPerson {
     private String lastName;
 
     @Column(nullable = false)
-    @ValidEmail
     private String email;
 
     @Column

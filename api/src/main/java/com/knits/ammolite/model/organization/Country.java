@@ -1,11 +1,13 @@
 package com.knits.ammolite.model.organization;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Country {
 
     @Id
@@ -14,4 +16,8 @@ public class Country {
 
     @Column(nullable = false)
     private String name;
+
+    public Country(String name) {
+        this.name = name;
+    }
 }

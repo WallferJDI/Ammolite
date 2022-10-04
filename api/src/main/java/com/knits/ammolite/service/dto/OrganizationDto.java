@@ -18,4 +18,5 @@ public class OrganizationDto {
     private String legalAddressZipcode;
     private ContactPerson contactPerson;
 
+
 }
