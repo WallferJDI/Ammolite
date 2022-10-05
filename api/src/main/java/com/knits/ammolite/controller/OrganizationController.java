@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.knits.ammolite.payload.CreateOrganizationRequest;
 
 @RestController
 @RequestMapping("/api/organization")
@@ -21,13 +20,13 @@ public class OrganizationController {
 
 
     @PostMapping(value = "/create", produces = {"application/json"}, consumes = { "application/json"})
-    public ResponseEntity<OrganizationDto> createOrganization(@RequestBody CreateOrganizationRequest createOrganizationRequest){
+    public ResponseEntity<OrganizationDto> createOrganization(@RequestBody OrganizationDto organizationDto){
         log.debug("REST request to create Organization");
-        if(createOrganizationRequest==null){
+        if(organizationDto==null){
             throw new NullPointerException("Organization data is missing");
         }
         return ResponseEntity.ok()
-                .body(organizationService.createOrganization(createOrganizationRequest));
+                .body(organizationService.save(organizationDto));
     }
 
 

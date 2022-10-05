@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.knits.ammolite.payload.*;
+
 
 @Service
 @Transactional
@@ -27,10 +27,7 @@ public class OrganizationService {
         this.organizationRepository = organizationRepository;
     }
 
-    public OrganizationDto createOrganization(CreateOrganizationRequest request){
-       OrganizationDto organizationDto = organizationMapper.requestToDto(request);
-        return save(organizationDto);
-    }
+
 
     public OrganizationDto save(OrganizationDto organizationDto){
         log.debug("Request to save Organization : {}", organizationDto);

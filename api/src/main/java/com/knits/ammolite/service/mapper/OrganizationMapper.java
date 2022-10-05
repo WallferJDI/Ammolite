@@ -1,22 +1,13 @@
 package com.knits.ammolite.service.mapper;
 
-import com.knits.ammolite.model.organization.ContactPerson;
 import com.knits.ammolite.model.organization.Organization;
-import com.knits.ammolite.payload.CreateOrganizationRequest;
-import com.knits.ammolite.service.CountryService;
 import com.knits.ammolite.service.dto.OrganizationDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class OrganizationMapper {
-    private final CountryService countryService;
 
-    @Autowired
-    public OrganizationMapper(CountryService countryService) {
-        this.countryService = countryService;
-    }
 
     public Organization toEntity(OrganizationDto dto){
         if (dto == null) {
@@ -37,34 +28,7 @@ public class OrganizationMapper {
         return  entity;
     }
 
-    public OrganizationDto requestToDto(CreateOrganizationRequest request){
-        OrganizationDto organizationDto = new OrganizationDto();
-        organizationDto.setOrganizationName(request.getOrganizationName());
-        organizationDto.setOrganizationAlias(request.getOrganizationAlias());
-        organizationDto.setVAT(request.getVAT());
-        organizationDto.setRegistrationCode(request.getRegistrationCode());
-        organizationDto.setLegalAddressCity(request.getLegalAddressCity());
-        organizationDto.setLegalAddressStreet(request.getLegalAddressStreet());
-        organizationDto.setLegalAddressZipcode(request.getLegalAddressZipcode());
 
-        ContactPerson contactPerson = new ContactPerson();
-        contactPerson.setFirstName(request.getFirstNameContactPerson());
-        contactPerson.setLastName(request.getLastNameContactPerson());
-        contactPerson.setPhoneNumber(request.getPhoneNumberContactPerson());
-        contactPerson.setEmail(request.getEmailContactPerson());
-        contactPerson.setJobTitle(request.getJobTitleContactPerson());
-        contactPerson.setNote(request.getNoteContactPerson());
-
-        organizationDto.setContactPerson(contactPerson);
-
-        organizationDto.setTaxRegistrationCountry(
-                countryService.getCountryByName(request.getTaxRegistrationCountry())
-        );
-        organizationDto.setLegalAddressCountry(
-                countryService.getCountryByName(request.getLegalAddressCountry())
-        );
-        return  organizationDto;
-    }
 
     public OrganizationDto toDto(Organization entity){
         if (entity == null) {
