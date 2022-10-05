@@ -1,6 +1,7 @@
 package com.knits.ammolite.service;
 
 
+import com.knits.ammolite.exceptions.OrganizationException;
 import com.knits.ammolite.model.organization.Organization;
 import com.knits.ammolite.repository.OrganizationRepository;
 import com.knits.ammolite.service.dto.OrganizationDto;
@@ -38,8 +39,8 @@ public class OrganizationService {
 
     public OrganizationDto update(OrganizationDto organizationDto){
         log.debug("Request to update Organization : {}", organizationDto);
-        Organization organization = organizationRepository.findById(organizationDto.getId()).orElseThrow
-                (()-> new IllegalArgumentException("Organization "+ organizationDto.getId() +" not exist"));
+        Organization organization = organizationRepository.findById(organizationDto.getId())
+                .orElseThrow(()-> new OrganizationException("Organization "+ organizationDto.getId() +" not exist"));
         organizationMapper.update(organization,organizationDto);
         organizationRepository.save(organization);
         return organizationMapper.toDto(organization);
