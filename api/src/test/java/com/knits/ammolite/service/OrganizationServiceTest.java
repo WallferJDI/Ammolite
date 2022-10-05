@@ -28,7 +28,7 @@ class OrganizationServiceTest {
     void setUp(){
         countryService = new CountryService(countryRepository);
         organizationMapper = new OrganizationMapper();
-        underTest = new OrganizationService(organizationMapper, organizationRepository, countryService);
+        underTest = new OrganizationService(organizationMapper, organizationRepository);
 
     }
 
