@@ -6,10 +6,7 @@ import com.knits.ammolite.service.dto.BusinessUnitDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/business-unit")
@@ -26,5 +23,14 @@ public class BusinessUnitController {
             throw new UserException("BusinessUnit data are missing");
         }
         return ResponseEntity.ok().body(businessUnitService.createBusinessUnit(businessUnitDto));
+    }
+
+    @PutMapping(value = "/update", produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<BusinessUnitDto> updateBusinessUnit (@RequestBody BusinessUnitDto businessUnitDto) {
+        log.debug("REST request to updateBusinessUnit BusinessUnit ");
+        if (businessUnitDto == null) {
+            throw new UserException("BusinessUnit data are missing");
+        }
+        return ResponseEntity.ok().body(businessUnitService.updateBusinessUnit(businessUnitDto));
     }
 }

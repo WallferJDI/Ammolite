@@ -1,5 +1,6 @@
 package com.knits.ammolite.service;
 
+import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.BusinessUnit;
 import com.knits.ammolite.repository.BusinessUnitRepository;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
@@ -22,6 +23,16 @@ public class BusinessUnitService {
         log.debug("Request to save User : {}", businessUnitDto);
 
         final BusinessUnit businessUnit = mapper.toEntity(businessUnitDto);
+        repository.save(businessUnit);
+        return mapper.toDto(businessUnit);
+    }
+
+    public BusinessUnitDto updateBusinessUnit(BusinessUnitDto businessUnitDto) {
+        log.debug("Request to update BusinessUnit : {}", businessUnitDto);
+
+        BusinessUnit businessUnit = repository.findById(businessUnitDto.getId()).orElseThrow(()
+                -> new UserException("BusinessUnit#" + businessUnitDto.getId() + " not found"));
+        mapper.update(businessUnitDto, businessUnit);
         repository.save(businessUnit);
         return mapper.toDto(businessUnit);
     }
