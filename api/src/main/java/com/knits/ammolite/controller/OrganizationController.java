@@ -30,7 +30,6 @@ public class OrganizationController {
     @PutMapping(value = "/organizations", produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<OrganizationDto> partialUpdateOrganization(@RequestBody OrganizationDto organizationDto){
         log.debug("REST request to update Organization");
-
         return ResponseEntity.ok()
                 .body(organizationService.partialUpdate(organizationDto));
     }
