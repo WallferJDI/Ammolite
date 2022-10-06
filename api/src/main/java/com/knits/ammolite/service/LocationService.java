@@ -1,24 +1,38 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.UserException;
+import com.knits.ammolite.model.Country;
 import com.knits.ammolite.model.Location;
 import com.knits.ammolite.repository.LocationRepository;
 import com.knits.ammolite.service.dto.LocationDto;
+import com.knits.ammolite.service.mapper.CountryMapper;
 import com.knits.ammolite.service.mapper.LocationMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Filter;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class LocationService {
+
+    @PersistenceContext
+    EntityManager entityManager;
     @Autowired
     private LocationRepository repository;
     @Autowired
     private LocationMapper mapper;
+
+    @Autowired
+    private CountryMapper countryMapper;
 
     public LocationDto createLocation(LocationDto locationDto) {
         log.debug("Request to create Location : {}", locationDto);
@@ -40,7 +54,7 @@ public class LocationService {
         }
         locationFromDb.builder()
                 .title(locationDto.getTitle())
-                .country(mapper.toEntity(locationDto.getCountry()))
+                .country(countryMapper.toEntity(locationDto.getCountry()))
                 .address(locationDto.getAddress())
                 .zipCode(locationDto.getZipCode());
         return mapper.toDto(locationFromDb);
@@ -51,6 +65,14 @@ public class LocationService {
         repository.deleteById(id);
     }
 
+    public List<LocationDto> findAllFilter(boolean isDeleted) {
+        Session session = entityManager.unwrap(Session.class);
+        Filter filter = session.enableFilter("deletedLocationFilter");
+        filter.setParameter("isDeleted", isDeleted);
+        List<LocationDto> locations = mapper.toDtos(repository.findAll());
+        session.disableFilter("deletedLocationFilter");
+        return locations;
+    }
 
     public void checkIfNullOrEmpty(LocationDto locationDto){
         String title = locationDto.getTitle();

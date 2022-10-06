@@ -14,17 +14,12 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring",uses = {CountryMapper.class})
 public interface LocationMapper {
 
-
    @Mapping(source = "location.ownership",target = "ownership")
    @Mapping(source = "location.realEstate",target = "realEstate")
     LocationDto toDto(Location location);
 
     @InheritInverseConfiguration
     Location toEntity (LocationDto locationDto);
-
-    CountryDto toDto(Country country);
-
-    Country toEntity (CountryDto countryDto);
 
     default List<LocationDto> toDtos(List<Location> entities){
         if (entities == null){

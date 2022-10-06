@@ -36,7 +36,7 @@ public class Location implements Serializable {
     private String title;
 
     @ManyToOne(cascade = ALL, fetch = EAGER)
-    @JoinColumn(name = "country", nullable = false)
+    @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
     @NonNull
@@ -49,7 +49,7 @@ public class Location implements Serializable {
     private Ownership ownership;
 
     @Column(name = "map_coordinates")
-    private boolean mapCoordinates = false;
+    private boolean mapCoordinates;
 
     private String latitude;
     private String longitude;
@@ -58,7 +58,7 @@ public class Location implements Serializable {
     @Enumerated(EnumType.STRING)
     private RealEstate realEstate;
 
-    private boolean deleted = false;
+    private boolean deleted=false;
 
 
 

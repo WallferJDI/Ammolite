@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping("/location")
@@ -28,11 +30,18 @@ public class LocationController {
 
     @PutMapping(value = "/edit", produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<LocationDto> editLocation(@RequestBody LocationDto locationDto){
-        log.debug("REST request to editLocation Location ");
+        log.debug("REST request to editLocation Location");
         if (locationDto == null) {
             throw new UserException("Location data are missing");
         }
         return ResponseEntity.ok().body(locationService.editLocation(locationDto));
+    }
+
+    @GetMapping(value = "/list")
+    public ResponseEntity<List<LocationDto>> findAll(
+            @RequestParam(value = "isDeleted", required = false, defaultValue = "false") boolean isDeleted) {
+        log.debug("REST request to get all Locations that : {}",isDeleted);
+        return ResponseEntity.ok().body(locationService.findAllFilter(isDeleted));
     }
 
     @DeleteMapping("/delete/{id}")
