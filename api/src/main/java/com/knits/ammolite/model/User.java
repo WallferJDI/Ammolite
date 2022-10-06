@@ -1,17 +1,23 @@
 package com.knits.ammolite.model;
 
-import com.knits.ammolite.annotations.ValidEmail;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * A user.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +44,9 @@ public class User implements Serializable {
 
     @Column(nullable = false)
     private Boolean active = false;
+
+    @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
+    private List<BusinessUnit> businessUnits;
 
 
 }
