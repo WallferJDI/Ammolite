@@ -33,4 +33,11 @@ public class BusinessUnitController {
         }
         return ResponseEntity.ok().body(businessUnitService.updateBusinessUnit(businessUnitDto));
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteBusinessUnit(@PathVariable Long id){
+        log.debug("REST request to delete BusinessUnit : {}", id);
+        businessUnitService.deleteBusinessUnit(id);
+        return ResponseEntity.noContent().build();
+    }
 }
