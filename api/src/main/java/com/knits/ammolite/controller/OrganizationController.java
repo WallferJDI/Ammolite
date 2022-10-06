@@ -41,5 +41,12 @@ public class OrganizationController {
                 .body(organizationService.search(searchDto).toList());
     }
 
+    @DeleteMapping("/organizations/{id}")
+    public ResponseEntity<Void> deleteOrganization(@PathVariable Long id){
+        log.debug("REST request to delete Organization : {}", id);
+        organizationService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

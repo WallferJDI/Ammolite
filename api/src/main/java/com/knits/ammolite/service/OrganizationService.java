@@ -63,4 +63,9 @@ public class OrganizationService {
         organizationPage.forEach((entity) -> organizationDtos.add(organizationMapper.toDto(entity)));
         return new PageImpl<>(organizationDtos, organizationSearchDto.getPageable(), organizationPage.getTotalElements());
     }
+
+    public void delete(Long id) {
+        log.debug("Delete Organization by id : {}", id);
+        organizationRepository.deleteById(id);
+    }
 }
