@@ -37,14 +37,14 @@ public class LocationController {
         return ResponseEntity.ok().body(locationService.editLocation(locationDto));
     }
 
-    @GetMapping(value = "/list")
+    @GetMapping(value = "/list",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<List<LocationDto>> findAll(
             @RequestParam(value = "isDeleted", required = false, defaultValue = "false") boolean isDeleted) {
         log.debug("REST request to get all Locations that : {}",isDeleted);
         return ResponseEntity.ok().body(locationService.findAllFilter(isDeleted));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
         log.debug("REST request to delete Location with Id : {}", id);
         locationService.deleteLocation(id);

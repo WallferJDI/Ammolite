@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Filter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Country {
     private String title;
 
     @OneToMany(mappedBy = "country", fetch = LAZY)
+    @Filter(name = "deletedLocationFilter", condition = "deleted = :isDeleted")
     private List<Location> locationList;
 
 }

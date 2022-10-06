@@ -7,6 +7,7 @@ import com.knits.ammolite.service.dto.LocationDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +21,8 @@ public interface LocationMapper {
 
     @InheritInverseConfiguration
     Location toEntity (LocationDto locationDto);
+
+    void update(LocationDto locationDto, @MappingTarget Location location);
 
     default List<LocationDto> toDtos(List<Location> entities){
         if (entities == null){

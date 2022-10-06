@@ -22,6 +22,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class LocationService {
 
     @PersistenceContext
@@ -41,22 +42,17 @@ public class LocationService {
         repository.save(location);
         return mapper.toDto(location);
     }
-    @Transactional
+
     public LocationDto editLocation(LocationDto locationDto){
         log.debug("Request to edit Location : {}", locationDto);
-        checkIfNullOrEmpty(locationDto);
-        final Long idLocation = locationDto.getId();
-        final Location locationFromDb = repository.findById(idLocation).get();
-        if ( locationFromDb== null) {
-            String message = "Location with id = " + idLocation + " does not exist.";
+        final Location locationFromDb = repository.findById(locationDto.getId()).get();
+        if ( locationFromDb.getId()==null) {
+            String message = "Location with id = " + locationDto.getId() + " does not exist.";
             log.warn(message);
             throw new RuntimeException(message);
         }
-        locationFromDb.builder()
-                .title(locationDto.getTitle())
-                .country(countryMapper.toEntity(locationDto.getCountry()))
-                .address(locationDto.getAddress())
-                .zipCode(locationDto.getZipCode());
+        mapper.update(locationDto,locationFromDb);
+        repository.save(locationFromDb);
         return mapper.toDto(locationFromDb);
     }
 

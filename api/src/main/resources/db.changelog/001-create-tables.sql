@@ -22,9 +22,9 @@ create table if not exists location
         on UPDATE cascade,
     address varchar(200) not null,
     zip_code varchar(10) not null,
-    ownership ownership default 'OUR_PREMISES',
+    ownership varchar default 'OUR_PREMISES',
     map_coordinates boolean default false,
-    latitude varchar(100) not null,
-    longitude varchar(100) not null,
-    real_estate real_estate,
+    latitude varchar(100),
+    longitude varchar(100),
+    real_estate varchar,
     deleted boolean default false);

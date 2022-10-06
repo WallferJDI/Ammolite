@@ -46,7 +46,8 @@ public class Location implements Serializable {
     private String zipCode;
 
     @Enumerated(EnumType.STRING)
-    private Ownership ownership;
+    @ColumnDefault("OUR_PREMISES")
+    private Ownership ownership = Ownership.valueOf("OUR_PREMISES");
 
     @Column(name = "map_coordinates")
     private boolean mapCoordinates;
