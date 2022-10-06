@@ -2,9 +2,7 @@ package com.knits.ammolite.service.mapper;
 
 import com.knits.ammolite.model.BusinessUnit;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface BusinessUnitMapper {
@@ -15,5 +13,10 @@ public interface BusinessUnitMapper {
     @InheritInverseConfiguration
     BusinessUnit toEntity(BusinessUnitDto businessUnitDto);
 
-    void update(BusinessUnitDto businessUnitDto, @MappingTarget BusinessUnit businessUnit);
+    @Named("update")
+    void update(@MappingTarget BusinessUnit businessUnit, BusinessUnitDto businessUnitDto);
+
+    @Named("partialUpdate")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void partialUpdate(@MappingTarget BusinessUnit businessUnit, BusinessUnitDto businessUnitDto);
 }

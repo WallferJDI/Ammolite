@@ -33,12 +33,23 @@ public class BusinessUnitService {
 
         BusinessUnit businessUnit = repository.findById(businessUnitDto.getId()).orElseThrow(()
                 -> new UserException("BusinessUnit#" + businessUnitDto.getId() + " not found"));
-        mapper.update(businessUnitDto, businessUnit);
+        mapper.update(businessUnit, businessUnitDto);
         repository.save(businessUnit);
         return mapper.toDto(businessUnit);
     }
 
-    public void deleteBusinessUnit(Long id){
+    public BusinessUnitDto partialUpdate(BusinessUnitDto businessUnitDto) {
+        log.debug("Request to update BusinessUnit : {}", businessUnitDto);
+
+        BusinessUnit businessUnit = repository.findById(businessUnitDto.getId()).orElseThrow(()
+                -> new UserException("BusinessUnit#" + businessUnitDto.getId() + " not found"));
+
+        mapper.partialUpdate(businessUnit, businessUnitDto);
+        repository.save(businessUnit);
+        return mapper.toDto(businessUnit);
+    }
+
+    public void deleteBusinessUnit(Long id) {
         log.debug("Delete BusinessUnit by id : {}", id);
         BusinessUnit businessUnit = repository.findById(id).orElseThrow(()
                 -> new UserException("BusinessUnit#" + id + " not found"));
