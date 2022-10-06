@@ -18,10 +18,10 @@ public class Organization implements Serializable {
     private Long id;
 
     @Column(unique = true,nullable = false)
-    private String organizationName;
+    private String name;
 
     @Column
-    private String organizationAlias;
+    private String alias;
 
     @Column(nullable = false)
     private String VAT;

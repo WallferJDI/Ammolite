@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class OrganizationDto {
     private Long id;
-    private String organizationName;
-    private String organizationAlias;
+    private String name;
+    private String alias;
     private String VAT;
     private String registrationCode;
     private Country taxRegistrationCountry;

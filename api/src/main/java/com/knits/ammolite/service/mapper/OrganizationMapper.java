@@ -15,8 +15,8 @@ public class OrganizationMapper {
         }
         Organization entity = new Organization();
         entity.setId(dto.getId());
-        entity.setOrganizationName(dto.getOrganizationName());
-        entity.setOrganizationAlias(dto.getOrganizationAlias());
+        entity.setName(dto.getName());
+        entity.setAlias(dto.getAlias());
         entity.setVAT(dto.getVAT());
         entity.setRegistrationCode(dto.getRegistrationCode());
         entity.setTaxRegistrationCountry(dto.getTaxRegistrationCountry());
@@ -36,8 +36,8 @@ public class OrganizationMapper {
         }
         OrganizationDto dto = new OrganizationDto();
         dto.setId(entity.getId());
-        dto.setOrganizationName(entity.getOrganizationName());
-        dto.setOrganizationAlias(entity.getOrganizationAlias());
+        dto.setName(entity.getName());
+        dto.setAlias(entity.getAlias());
         dto.setVAT(entity.getVAT());
         dto.setRegistrationCode(entity.getRegistrationCode());
         dto.setTaxRegistrationCountry(entity.getTaxRegistrationCountry());
@@ -54,8 +54,8 @@ public class OrganizationMapper {
             return;
         }
         entity.setId(dto.getId());
-        entity.setOrganizationName(dto.getOrganizationName());
-        entity.setOrganizationAlias(dto.getOrganizationAlias());
+        entity.setName(dto.getName());
+        entity.setAlias(dto.getAlias());
         entity.setVAT(dto.getVAT());
         entity.setRegistrationCode(dto.getRegistrationCode());
         entity.setTaxRegistrationCountry(dto.getTaxRegistrationCountry());
