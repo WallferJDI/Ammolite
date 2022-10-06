@@ -56,11 +56,11 @@ public class OrganizationMapper {
         if( dto.getId()!= null){
             entity.setId(dto.getId());
         }
-        if( dto.getOrganizationName()!= null){
-            entity.setOrganizationName(dto.getOrganizationName());
+        if( dto.getName()!= null){
+            entity.setName(dto.getName());
         }
-        if( dto.getOrganizationAlias()!= null){
-            entity.setOrganizationAlias(dto.getOrganizationAlias());
+        if( dto.getAlias()!= null){
+            entity.setAlias(dto.getAlias());
         }
         if( dto.getVAT()!= null){
             entity.setVAT(dto.getVAT());
