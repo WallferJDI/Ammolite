@@ -58,7 +58,7 @@ public class LocationController {
         return ResponseEntity.ok().body(locationService.findAll(isDeleted));
     }
 
-    @DeleteMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})
+    @PutMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
         log.debug("REST request to delete Location with Id : {}", id);
         locationService.delete(id);

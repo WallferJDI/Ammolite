@@ -67,7 +67,9 @@ public class LocationService {
 
     public void delete(Long id){
         log.debug("Set status deleted = true to Location Id: {}", id);
-        repository.deleteById(id);
+        Location location = repository.findById(id).orElseThrow(() -> new UserException("Location#" + id + " not found"));
+        location.setDeleted(true);
+        repository.save(location);
     }
 
     public List<LocationDto> findAll(boolean isDeleted) {

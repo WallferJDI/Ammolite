@@ -20,9 +20,9 @@ import static javax.persistence.FetchType.EAGER;
 @Builder
 @Data
 @Table(name = "location")
-@SQLDelete(sql = "UPDATE location SET deleted = true WHERE id=?")
+/*@SQLDelete(sql = "UPDATE location SET deleted = true WHERE id=?")
 @FilterDef(name = "deletedLocationFilter", parameters = @ParamDef(name = "isDeleted", type = "boolean"))
-@Filter(name = "deletedLocationFilter", condition = "deleted = :isDeleted")
+@Filter(name = "deletedLocationFilter", condition = "deleted = :isDeleted")*/
 public class Location implements Serializable {
 
     private final static long serialVersionUID = 1L;
