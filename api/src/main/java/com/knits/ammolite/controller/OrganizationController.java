@@ -1,5 +1,6 @@
 package com.knits.ammolite.controller;
 
+
 import com.knits.ammolite.service.OrganizationService;
 import com.knits.ammolite.service.dto.OrganizationDto;
 import com.knits.ammolite.service.dto.search.OrganizationSearchDto;
@@ -27,14 +28,15 @@ public class OrganizationController {
     }
 
     @PutMapping(value = "/organizations", produces = {"application/json"}, consumes = { "application/json"})
-    public ResponseEntity<OrganizationDto> updateOrganization(@RequestBody OrganizationDto organizationDto){
+    public ResponseEntity<OrganizationDto> partialUpdateOrganization(@RequestBody OrganizationDto organizationDto){
         log.debug("REST request to update Organization");
+
         return ResponseEntity.ok()
-                .body(organizationService.update(organizationDto));
+                .body(organizationService.partialUpdate(organizationDto));
     }
 
     @GetMapping(value = "/organizations")
-    public ResponseEntity<List<OrganizationDto>> search(OrganizationSearchDto searchDto ){
+    public ResponseEntity<List<OrganizationDto>> searchOrganization(OrganizationSearchDto searchDto ){
         log.debug("request to search organization");
         return ResponseEntity.ok()
                 .body(organizationService.search(searchDto).toList());

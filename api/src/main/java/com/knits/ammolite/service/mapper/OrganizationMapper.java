@@ -49,6 +49,45 @@ public class OrganizationMapper {
         return dto;
     }
 
+    public void partialUpdate(Organization entity, OrganizationDto dto){
+        if (dto == null) {
+            return;
+        }
+        if( dto.getId()!= null){
+            entity.setId(dto.getId());
+        }
+        if( dto.getOrganizationName()!= null){
+            entity.setOrganizationName(dto.getOrganizationName());
+        }
+        if( dto.getOrganizationAlias()!= null){
+            entity.setOrganizationAlias(dto.getOrganizationAlias());
+        }
+        if( dto.getVAT()!= null){
+            entity.setVAT(dto.getVAT());
+        }
+        if(dto.getRegistrationCode() != null){
+            entity.setRegistrationCode(dto.getRegistrationCode());
+        }
+        if( dto.getTaxRegistrationCountry()!= null){
+            entity.setTaxRegistrationCountry(dto.getTaxRegistrationCountry());
+        }
+        if( dto.getLegalAddressCountry()!= null){
+            entity.setLegalAddressCountry(dto.getLegalAddressCountry());
+        }
+        if( dto.getLegalAddressCity()!= null){
+            entity.setLegalAddressCity(dto.getLegalAddressCity());
+        }
+        if(dto.getLegalAddressStreet() != null){
+            entity.setLegalAddressStreet(dto.getLegalAddressStreet());
+        }
+        if( dto.getLegalAddressZipcode()!= null){
+            entity.setLegalAddressZipcode(dto.getLegalAddressZipcode());
+        }
+        if( dto.getContactPerson()!= null){
+            entity.setContactPerson(dto.getContactPerson());
+        }
+    }
+
     public void update(Organization entity,OrganizationDto dto){
         if(dto == null){
             return;

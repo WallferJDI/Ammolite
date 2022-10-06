@@ -2,6 +2,7 @@ package com.knits.ammolite.service;
 
 
 import com.knits.ammolite.exceptions.UserException;
+import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.organization.Organization;
 import com.knits.ammolite.repository.OrganizationRepository;
 import com.knits.ammolite.service.dto.OrganizationDto;
@@ -29,28 +30,37 @@ public class OrganizationService {
     private final OrganizationRepository organizationRepository;
 
 
-    public OrganizationDto save(OrganizationDto organizationDto){
+    public OrganizationDto save(OrganizationDto organizationDto) {
         log.debug("Request to save Organization : {}", organizationDto);
         Organization organization = organizationMapper.toEntity(organizationDto);
         organization = organizationRepository.save(organization);
         return organizationMapper.toDto(organization);
     }
 
-    public OrganizationDto update(OrganizationDto organizationDto){
+    public OrganizationDto update(OrganizationDto organizationDto) {
         log.debug("Request to update Organization : {}", organizationDto);
         Organization organization = organizationRepository.findById(organizationDto.getId())
-                .orElseThrow(()-> new UserException("Organization "+ organizationDto.getId() +" not exist"));
-        organizationMapper.update(organization,organizationDto);
+                .orElseThrow(() -> new UserException("Organization " + organizationDto.getId() + " not exist"));
+        organizationMapper.update(organization, organizationDto);
         organizationRepository.save(organization);
         return organizationMapper.toDto(organization);
     }
 
-    public Page<OrganizationDto> search(OrganizationSearchDto organizationSearchDto){
-        Page<Organization> organizationPage = organizationRepository.findAll(organizationSearchDto.getSpecification(),organizationSearchDto.getPageable());
-        List<OrganizationDto> organizationDtos = new ArrayList<>();
-        organizationPage.forEach((entity) -> organizationDtos.add(organizationMapper.toDto(entity)));
-        return new PageImpl<>(organizationDtos,organizationSearchDto.getPageable(),organizationPage.getTotalElements());
+    public OrganizationDto partialUpdate(OrganizationDto organizationDto) {
+        log.debug("Request to partially update Organization : {}", organizationDto);
+        Organization organization = organizationRepository.findById(organizationDto.getId())
+                .orElseThrow(() -> new UserException("Organization " + organizationDto.getId() + " not exist"));
+        organizationMapper.partialUpdate(organization, organizationDto);
+        organizationRepository.save(organization);
+        return organizationMapper.toDto(organization);
+
+
     }
 
-
+    public Page<OrganizationDto> search(OrganizationSearchDto organizationSearchDto) {
+        Page<Organization> organizationPage = organizationRepository.findAll(organizationSearchDto.getSpecification(), organizationSearchDto.getPageable());
+        List<OrganizationDto> organizationDtos = new ArrayList<>();
+        organizationPage.forEach((entity) -> organizationDtos.add(organizationMapper.toDto(entity)));
+        return new PageImpl<>(organizationDtos, organizationSearchDto.getPageable(), organizationPage.getTotalElements());
+    }
 }
