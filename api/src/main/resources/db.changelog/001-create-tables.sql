@@ -1,8 +1,8 @@
 -- liquibase formatted sql
 -- changeset kull:liqubase run create tables
-create type ownership as enum ('OUR_PREMISES','PARTNER_COMPANIES');
+create type ownership_type as enum ('OUR_PREMISES','PARTNER_COMPANIES');
 
-create type real_estate as enum ('WAREHOUSE','OFFICE', 'MANUFACTURING_PLANT', 'POINT_OF_SALE');
+create type real_estate_type as enum ('WAREHOUSE','OFFICE', 'MANUFACTURING_PLANT', 'POINT_OF_SALE');
 
 create table if not exists country
 (

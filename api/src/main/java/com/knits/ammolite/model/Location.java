@@ -3,10 +3,8 @@ package com.knits.ammolite.model;
 
 import lombok.*;
 import org.hibernate.annotations.*;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -20,9 +18,6 @@ import static javax.persistence.FetchType.EAGER;
 @Builder
 @Data
 @Table(name = "location")
-/*@SQLDelete(sql = "UPDATE location SET deleted = true WHERE id=?")
-@FilterDef(name = "deletedLocationFilter", parameters = @ParamDef(name = "isDeleted", type = "boolean"))
-@Filter(name = "deletedLocationFilter", condition = "deleted = :isDeleted")*/
 public class Location implements Serializable {
 
     private final static long serialVersionUID = 1L;
@@ -47,7 +42,7 @@ public class Location implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @ColumnDefault("OUR_PREMISES")
-    private Ownership ownership = Ownership.valueOf("OUR_PREMISES");
+    private OwnershipType ownership = OwnershipType.valueOf("OUR_PREMISES");
 
     @Column(name = "map_coordinates")
     private boolean mapCoordinates;
@@ -57,7 +52,7 @@ public class Location implements Serializable {
 
     @Column(name = "real_estate")
     @Enumerated(EnumType.STRING)
-    private RealEstate realEstate;
+    private RealEstateType realEstate;
 
     private boolean deleted=false;
 

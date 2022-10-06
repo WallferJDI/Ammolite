@@ -1,7 +1,7 @@
 package com.knits.ammolite.model;
 
 
-public enum RealEstate {
+public enum RealEstateType {
 
     WAREHOUSE,
     OFFICE,
