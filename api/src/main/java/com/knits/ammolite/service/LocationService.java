@@ -1,8 +1,8 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.UserException;
-import com.knits.ammolite.model.Country;
 import com.knits.ammolite.model.Location;
+import com.knits.ammolite.model.User;
 import com.knits.ammolite.repository.LocationRepository;
 import com.knits.ammolite.service.dto.LocationDto;
 import com.knits.ammolite.service.mapper.CountryMapper;
@@ -35,15 +35,14 @@ public class LocationService {
     @Autowired
     private CountryMapper countryMapper;
 
-    public LocationDto createLocation(LocationDto locationDto) {
+    public LocationDto create(LocationDto locationDto) {
         log.debug("Request to create Location : {}", locationDto);
-        checkIfNullOrEmpty(locationDto);
         Location location = mapper.toEntity(locationDto);
         repository.save(location);
         return mapper.toDto(location);
     }
 
-    public LocationDto editLocation(LocationDto locationDto){
+    public LocationDto update(LocationDto locationDto){
         log.debug("Request to edit Location : {}", locationDto);
         final Location locationFromDb = repository.findById(locationDto.getId()).get();
         if ( locationFromDb.getId()==null) {
@@ -56,12 +55,22 @@ public class LocationService {
         return mapper.toDto(locationFromDb);
     }
 
-    public void deleteLocation(Long id){
+    public LocationDto partialUpdate (LocationDto locationDto){
+        log.debug("Request to partialUpdate Location : {}", locationDto);
+        Location location = repository.findById(locationDto.getId()).orElseThrow(() -> new UserException("Location#" + locationDto.getId() + " not found"));
+        mapper.partialUpdate(locationDto, location);
+        repository.save(location);
+        return mapper.toDto(location);
+    }
+
+
+
+    public void delete(Long id){
         log.debug("Set status deleted = true to Location Id: {}", id);
         repository.deleteById(id);
     }
 
-    public List<LocationDto> findAllFilter(boolean isDeleted) {
+    public List<LocationDto> findAll(boolean isDeleted) {
         Session session = entityManager.unwrap(Session.class);
         Filter filter = session.enableFilter("deletedLocationFilter");
         filter.setParameter("isDeleted", isDeleted);
@@ -70,28 +79,6 @@ public class LocationService {
         return locations;
     }
 
-    public void checkIfNullOrEmpty(LocationDto locationDto){
-        String title = locationDto.getTitle();
-        String country = String.valueOf(locationDto.getCountry());
-        String address = locationDto.getAddress();
-        String zipCode = locationDto.getZipCode();
-        if(title==null||title.isEmpty()){
-            String titleMessage = "Title can`t be null or empty";
-            log.warn(titleMessage);
-            throw new UserException(titleMessage);
-        } if (country==null||country.isEmpty()){
-            String countryMessage = "Country can`t be null or empty";
-            log.warn(countryMessage);
-            throw new UserException(countryMessage);}
-        if (address==null||address.isEmpty()){
-            String addressMessage = "Address can`t be null or empty";
-            log.warn(addressMessage);
-            throw new UserException(addressMessage);}
-        if (zipCode==null||zipCode.isEmpty()){
-            String zipCodeMessage = "ZipCode can`t be null or empty";
-            log.warn(zipCodeMessage);
-            throw new UserException(zipCodeMessage);}
-    }
 
 
 }

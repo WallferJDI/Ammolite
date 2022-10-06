@@ -4,10 +4,7 @@ import com.knits.ammolite.model.Country;
 import com.knits.ammolite.model.Location;
 import com.knits.ammolite.service.dto.CountryDto;
 import com.knits.ammolite.service.dto.LocationDto;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +20,8 @@ public interface LocationMapper {
     Location toEntity (LocationDto locationDto);
 
     void update(LocationDto locationDto, @MappingTarget Location location);
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void partialUpdate(LocationDto locationDto, @MappingTarget Location location);
 
     default List<LocationDto> toDtos(List<Location> entities){
         if (entities == null){
