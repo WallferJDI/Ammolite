@@ -51,6 +51,7 @@ public class LocationService {
         repository.deleteById(id);
     }
 
+
     public void checkIfNullOrEmpty(LocationDto locationDto){
         String title = locationDto.getTitle();
         String country = String.valueOf(locationDto.getCountry());

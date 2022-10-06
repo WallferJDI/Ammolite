@@ -8,12 +8,15 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Mapper(componentModel = "spring",uses = {CountryMapper.class})
 public interface LocationMapper {
 
-    @Mapping(source = "location.country",target = "country")
-    @Mapping(source = "location.ownership",target = "ownership")
-    @Mapping(source = "location.realEstate",target = "realEstate")
+
+   @Mapping(source = "location.ownership",target = "ownership")
+   @Mapping(source = "location.realEstate",target = "realEstate")
     LocationDto toDto(Location location);
 
     @InheritInverseConfiguration
@@ -22,6 +25,21 @@ public interface LocationMapper {
     CountryDto toDto(Country country);
 
     Country toEntity (CountryDto countryDto);
+
+    default List<LocationDto> toDtos(List<Location> entities){
+        if (entities == null){
+            return null;
+        }
+        return entities.stream()
+                .map(entity->toDto(entity)).collect(Collectors.toList());
+    }
+
+    default List<Location> toEntities(List<LocationDto> dtos){
+        if(dtos == null){
+            return null;
+        }
+        return dtos.stream()
+                .map(dto->toEntity(dto)).collect(Collectors.toList());}
 
 
 

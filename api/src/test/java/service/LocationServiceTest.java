@@ -59,6 +59,7 @@ class LocationServiceTest {
        service.createLocation(locationDto);
         verify(repository).save(location);
         verify(mapper).toEntity(locationDto);
+
     }
     @Test
     void checkIfLocationAlreadyExist(){

@@ -21,12 +21,12 @@ logging:
     ROOT: INFO
     org.hibernate.SQL: DEBUG
     com.knits: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 spring:
   devtools:
     restart:
       enabled: true
-      additional-exclude: static/**,.h2.server.properties
     livereload:
       enabled: false # we use Webpack dev server + BrowserSync for livereload
   jackson:

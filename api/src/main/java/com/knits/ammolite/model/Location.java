@@ -1,10 +1,7 @@
 package com.knits.ammolite.model;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 import org.hibernate.annotations.*;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -24,7 +21,8 @@ import static javax.persistence.FetchType.EAGER;
 @Data
 @Table(name = "location")
 @SQLDelete(sql = "UPDATE location SET deleted = true WHERE id=?")
-@Where(clause = "deleted=false")
+@FilterDef(name = "deletedLocationFilter", parameters = @ParamDef(name = "isDeleted", type = "boolean"))
+@Filter(name = "deletedLocationFilter", condition = "deleted = :isDeleted")
 public class Location implements Serializable {
 
     private final static long serialVersionUID = 1L;
@@ -34,14 +32,14 @@ public class Location implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @NotNull
+    @NonNull
     private String title;
 
     @ManyToOne(cascade = ALL, fetch = EAGER)
     @JoinColumn(name = "country", nullable = false)
     private Country country;
 
-    @NotNull
+    @NonNull
     private String address;
 
     @Column(name = "zip_code", nullable = false)
