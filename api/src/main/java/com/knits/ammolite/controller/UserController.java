@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class UserController {
 
-    @Autowired
+        @Autowired
     private UserService userService;
 
     @GetMapping(value = "/users/{id}", produces = {"application/json"})
@@ -48,7 +48,7 @@ public class UserController {
         }
         return ResponseEntity
                 .ok()
-                .body(userService.save((UserDto) userDTO));
+                .body(userService.save(userDTO));
     }
 
     @PutMapping(value = "/users", produces = {"application/json"}, consumes = { "application/json"})
@@ -87,5 +87,5 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<List<UserDto>> getAllUsers(Pageable pageable) {
         throw new UnsupportedOperationException("getAllUsers(Pageable pageable) not implemented");
-    }
+    } 
 }
