@@ -31,6 +31,6 @@ public class LocationDto {
 
     private String realEstate;
 
-    private boolean deleted;
+    private boolean isDeleted;
 
 }

@@ -4,6 +4,7 @@ import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.Location;
 import com.knits.ammolite.model.User;
 import com.knits.ammolite.repository.LocationRepository;
+import com.knits.ammolite.search.LocationSearchDto;
 import com.knits.ammolite.service.dto.LocationDto;
 import com.knits.ammolite.service.mapper.CountryMapper;
 import com.knits.ammolite.service.mapper.LocationMapper;
@@ -12,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Filter;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,8 +35,6 @@ public class LocationService {
     @Autowired
     private LocationMapper mapper;
 
-    @Autowired
-    private CountryMapper countryMapper;
 
     public LocationDto create(LocationDto locationDto) {
         log.debug("Request to create Location : {}", locationDto);
@@ -63,8 +64,6 @@ public class LocationService {
         return mapper.toDto(location);
     }
 
-
-
     public void delete(Long id){
         log.debug("Set status deleted = true to Location Id: {}", id);
         Location location = repository.findById(id).orElseThrow(() -> new UserException("Location#" + id + " not found"));
@@ -76,9 +75,15 @@ public class LocationService {
         Session session = entityManager.unwrap(Session.class);
         Filter filter = session.enableFilter("deletedLocationFilter");
         filter.setParameter("isDeleted", isDeleted);
-        List<LocationDto> locations = mapper.toDtos(repository.findAll());
+        List<LocationDto> locationsDtos = mapper.toDtos(repository.findAll());
         session.disableFilter("deletedLocationFilter");
-        return locations;
+        return locationsDtos;
+    }
+
+    public Page<LocationDto> search(LocationSearchDto locationSearch) {
+        Page<Location> locationPage = repository.findAll(locationSearch.getSpecification(), locationSearch.getPageable());
+        List<LocationDto> locationDtos = mapper.toDtos(locationPage.getContent());
+        return new PageImpl<>(locationDtos, locationSearch.getPageable(), locationPage.getTotalElements());
     }
 
 

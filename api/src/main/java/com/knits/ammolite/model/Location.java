@@ -54,7 +54,8 @@ public class Location implements Serializable {
     @Enumerated(EnumType.STRING)
     private RealEstateType realEstate;
 
-    private boolean deleted=false;
+    @Column(name = "deleted")
+    private boolean isDeleted=false;
 
 
 

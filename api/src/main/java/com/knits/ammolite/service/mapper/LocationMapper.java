@@ -23,20 +23,11 @@ public interface LocationMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void partialUpdate(LocationDto locationDto, @MappingTarget Location location);
 
-    default List<LocationDto> toDtos(List<Location> entities){
-        if (entities == null){
-            return null;
-        }
-        return entities.stream()
-                .map(entity->toDto(entity)).collect(Collectors.toList());
-    }
-
-    default List<Location> toEntities(List<LocationDto> dtos){
-        if(dtos == null){
-            return null;
-        }
-        return dtos.stream()
-                .map(dto->toEntity(dto)).collect(Collectors.toList());}
+    @Mapping(source = "location.ownership",target = "ownership")
+    @Mapping(source = "location.realEstate",target = "realEstate")
+    List<LocationDto> toDtos(List<Location> locations);
+    @InheritInverseConfiguration
+    List<Location> toEntities (List<LocationDto> locationDtos);
 
 
 

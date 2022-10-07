@@ -1,11 +1,13 @@
 package com.knits.ammolite.controller;
 
 import com.knits.ammolite.exceptions.UserException;
+import com.knits.ammolite.search.LocationSearchDto;
 import com.knits.ammolite.service.LocationService;
 import com.knits.ammolite.service.dto.LocationDto;
 import com.knits.ammolite.service.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,6 +65,12 @@ public class LocationController {
         log.debug("REST request to delete Location with Id : {}", id);
         locationService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/search",produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<List<LocationDto>> searchLocation(@RequestBody LocationSearchDto locationSearch){
+        log.debug("REST request to search Location by: {}",locationSearch);
+        return ResponseEntity.ok().body(locationService.search(locationSearch).toList());
     }
 
     public void checkIfNullOrEmpty(LocationDto locationDto){
