@@ -24,8 +24,8 @@ public class Employee {
     @Column(name = "email", length = 254, unique = true)
     private String email = firstName + "." + lastName + "@kuehne-nagel.com";
 
-    @Column(name = "dob")
-    private Date dob;
+    @Column(name = "date_of_birth")
+    private Date dateOfBarth;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -40,73 +40,28 @@ public class Employee {
     private String companyMobileNumber;
 
     @Column(name = "role")
-    private String role = String.valueOf(Role.class);
+    private Role role;
 
     @Column(name = "business_unit")
-    private String businessUnit = String.valueOf(BusinessUnit.class);
+    private BusinessUnit businessUnit;
 
     @Column(name = "organization")
-    private String organization = String.valueOf(Organization.class);
+    private Organizaion organizaion;
 
     @Column(name = "office")
-    private String office = String.valueOf(Office.class);
+    private Office office;
 
     @Column(name = "job_title")
-    private String jobTitle = String.valueOf(JobTitle.class);
+    private JobTitle jobTitle;
 
     @Column(name = "department")
-    private String department = String.valueOf(Department.class);
+    private Department department;
 
     @Column(name = "division")
-    private String division = String.valueOf(Division.class);
+    private Division division;
 
     @Column(name = "solid_line_manager")
-    private String solidLineManager = String.valueOf(SolidLineManager.class);
-    
-     public enum Gender {
-        Male,
-        Female;
-    }
-
-    public class Division {
-        private Long id;
-        private String divisionName;
-    }
-
-    public class SolidLineManager {
-        private Long id;
-        private String solidLineName;
-    }
-
-    public class Role {
-        private Long id;
-        private String roleName;
-    }
-
-    public class Organization {
-        private Long id;
-        private String organizationName;
-    }
-
-     public class Office {
-        private Long id;
-        private String officeName;
-    }
-
-    public class JobTitle {
-        private Long id;
-        private String jobTitlename;
-    }
-    
-    public class Department {
-        private Long id;
-        private String departmentName;
-    }
-
-    public class BusinessUnit {
-        private Long id;
-        private String businessUnitName;
-    }
+    private SolidLineManager solidLineManager;
 }
 
 
