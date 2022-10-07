@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class UserController {
 
-        @Autowired
+    @Autowired
     private UserService userService;
 
     @GetMapping(value = "/users/{id}", produces = {"application/json"})
@@ -41,7 +41,7 @@ public class UserController {
 
 
     @PostMapping(value = "/users", produces = {"application/json"}, consumes = { "application/json"})
-    public ResponseEntity<UserDto> createUser(@RequestBody List<UserDto> userDTO) {
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDTO) {
         log.debug("REST request to createUser User ");
         if (userDTO == null) {
             throw new UserException("User data are missing");
@@ -87,5 +87,5 @@ public class UserController {
     @GetMapping("/users")
     public ResponseEntity<List<UserDto>> getAllUsers(Pageable pageable) {
         throw new UnsupportedOperationException("getAllUsers(Pageable pageable) not implemented");
-    } 
+    }
 }
