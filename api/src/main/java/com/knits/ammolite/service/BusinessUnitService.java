@@ -62,7 +62,14 @@ public class BusinessUnitService {
         repository.save(businessUnit);
     }
 
-    public Page<BusinessUnitDto> searchBusinessUnit(BusinessUnitSearchDto businessUnitSearchDto) {
+    public Page<BusinessUnitDto> getActive(BusinessUnitSearchDto businessUnitSearchDto) {
+
+        Page<BusinessUnit> businessUnitPage = repository.findAllBusinessUnit(businessUnitSearchDto.getSpecification(), businessUnitSearchDto.getPageable());
+        List<BusinessUnitDto> businessUnitDtos = mapper.toDtos(businessUnitPage.getContent());
+        return new PageImpl<>(businessUnitDtos, businessUnitSearchDto.getPageable(), businessUnitPage.getTotalElements());
+    }
+
+    public Page<BusinessUnitDto> getAll(BusinessUnitSearchDto businessUnitSearchDto) {
 
         Page<BusinessUnit> businessUnitPage = repository.findAll(businessUnitSearchDto.getSpecification(), businessUnitSearchDto.getPageable());
         List<BusinessUnitDto> businessUnitDtos = mapper.toDtos(businessUnitPage.getContent());

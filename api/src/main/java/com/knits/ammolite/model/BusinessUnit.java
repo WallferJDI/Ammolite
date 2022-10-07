@@ -23,9 +23,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Builder
 @Table(name = "business_units")
-@SQLDelete(sql = "UPDATE business_units SET status = 'INACTIVE' WHERE id=?")
-@FilterDef(name = "deletedFilter", parameters = @ParamDef(name = "isDeleted", type = "boolean"))
-@Filter(name = "deletedFilter", condition = "deleted = :isDeleted")
 public class BusinessUnit implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,7 +50,7 @@ public class BusinessUnit implements Serializable {
     private Status status = Status.valueOf("ACTIVE");
 
     @ManyToOne(cascade = ALL, fetch = EAGER)
-    @JoinColumn(name = "created_by")
+    @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 
 }

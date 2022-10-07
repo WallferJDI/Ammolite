@@ -1,6 +1,5 @@
 package com.knits.ammolite.controller;
 
-import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.service.BusinessUnitService;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
@@ -22,18 +21,12 @@ public class BusinessUnitController {
     @PostMapping(value = "/create", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<BusinessUnitDto> createBusinessUnit(@RequestBody BusinessUnitDto businessUnitDto) {
         log.debug("REST request to create BusinessUnit ");
-        if (businessUnitDto == null) {
-            throw new UserException("BusinessUnit data are missing");
-        }
         return ResponseEntity.ok().body(businessUnitService.createBusinessUnit(businessUnitDto));
     }
 
     @PutMapping(value = "/update", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<BusinessUnitDto> updateBusinessUnit(@RequestBody BusinessUnitDto businessUnitDto) {
         log.debug("REST request to updateBusinessUnit BusinessUnit ");
-        if (businessUnitDto == null) {
-            throw new UserException("BusinessUnit data are missing");
-        }
         return ResponseEntity.ok().body(businessUnitService.updateBusinessUnit(businessUnitDto));
     }
 
@@ -51,8 +44,14 @@ public class BusinessUnitController {
     }
 
     @GetMapping(value = "/search", produces = {"application/json"}, consumes = {"application/json"})
-    public ResponseEntity<List<BusinessUnitDto>> searchBusinessUnit(@RequestBody BusinessUnitSearchDto businessUnitSearchDto) {
+    public ResponseEntity<List<BusinessUnitDto>> getActive(@RequestBody BusinessUnitSearchDto businessUnitSearchDto) {
         log.debug("REST request to search BusinessUnit");
-        return ResponseEntity.ok().body(businessUnitService.searchBusinessUnit(businessUnitSearchDto).toList());
+        return ResponseEntity.ok().body(businessUnitService.getActive(businessUnitSearchDto).toList());
+    }
+
+    @GetMapping(value = "/search-all", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<List<BusinessUnitDto>> getAll(@RequestBody BusinessUnitSearchDto businessUnitSearchDto) {
+        log.debug("REST request to search BusinessUnit");
+        return ResponseEntity.ok().body(businessUnitService.getAll(businessUnitSearchDto).toList());
     }
 }
