@@ -3,10 +3,13 @@ package com.knits.ammolite.controller;
 import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.service.BusinessUnitService;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
+import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/business-unit")
@@ -45,5 +48,11 @@ public class BusinessUnitController {
         log.debug("REST request to delete BusinessUnit : {}", id);
         businessUnitService.deleteBusinessUnit(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/search", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<List<BusinessUnitDto>> searchBusinessUnit(@RequestBody BusinessUnitSearchDto businessUnitSearchDto) {
+        log.debug("REST request to search BusinessUnit");
+        return ResponseEntity.ok().body(businessUnitService.searchBusinessUnit(businessUnitSearchDto).toList());
     }
 }
