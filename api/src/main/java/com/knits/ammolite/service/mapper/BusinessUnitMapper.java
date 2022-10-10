@@ -7,6 +7,6 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.WARN,
-        uses = {UserMapper.class})
+        imports = {UserMap.class})
 public interface BusinessUnitMapper extends EntityMapper<BusinessUnit, BusinessUnitDto>{
 }

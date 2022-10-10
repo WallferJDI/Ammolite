@@ -26,6 +26,11 @@ public class JobTitleController {
         log.debug("REST request to delete JobTitle : {}", id);
         jobTitleService.deleteJobTitle(id);
         return ResponseEntity.noContent().build();
+    }
 
+    @PutMapping(value = "/partial-update", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<JobTitleDto> partialUpdate(@RequestBody JobTitleDto jobTitleDto) {
+        log.debug("REST request to update BusinessUnit ");
+        return ResponseEntity.ok().body(jobTitleService.partialUpdate(jobTitleDto));
     }
 }

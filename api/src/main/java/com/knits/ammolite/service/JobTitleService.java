@@ -38,4 +38,16 @@ public class JobTitleService {
         jobTitle.setStatus(Status.INACTIVE);
         repository.save(jobTitle);
     }
+
+    public JobTitleDto partialUpdate(JobTitleDto jobTitleDto){
+
+        log.debug("Request to update BusinessUnit : {}", jobTitleDto);
+
+        JobTitle jobTitle = repository.findById(jobTitleDto.getId()).orElseThrow(()
+                -> new UserException("JobTitle#" + jobTitleDto.getId() + " not found"));
+
+        mapper.partialUpdate(jobTitle, jobTitleDto);
+        repository.save(jobTitle);
+        return mapper.toDto(jobTitle);
+    }
 }
