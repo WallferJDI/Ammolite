@@ -1,5 +1,7 @@
 package com.knits.ammolite.service.dto.employee;
-import lombok.Data;
+
+import com.knits.ammolite.model.employee.*;
+import lombok.*;
 
 import java.util.Date;
 
@@ -11,16 +13,16 @@ public class EmployeeDto {
     private String lastName;
     private String email = firstName + "." + lastName + "@kuehne-nagel.com";
     private Date dateOfBirth;
-    private GenderDto genderDto;
+    private Gender gender;
     private Date startDate;
     private String companyPhone;
     private String companyMobileNumber;
-    private RoleDto roleDto;
-    private BusinessUnitDto businessUnitDto;
-    private OrganizationDto organizationDto;
-    private OfficeDto officeDto;
-    private JobTitleDto jobTitleDto;
-    private DepartmentDto departmentDto;
-    private DivisionDto divisionDto;
-    private SolidLineManagerDto solidLineManagerDto;
+    private Role roleDto;
+    private BusinessUnit businessUnitDto;
+    private Organization organizationDto;
+    private Office officeDto;
+    private JobTitle jobTitleDto;
+    private Department departmentDto;
+    private Division divisionDto;
+    private SolidLineManager solidLineManagerDto;
 }
