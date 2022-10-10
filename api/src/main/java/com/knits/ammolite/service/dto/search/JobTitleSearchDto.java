@@ -1,6 +1,6 @@
 package com.knits.ammolite.service.dto.search;
 
-import com.knits.ammolite.model.BusinessUnit;
+import com.knits.ammolite.model.JobTitle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,14 +20,14 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BusinessUnitSearchDto extends AbstractSearchableDto<BusinessUnit> {
+public class JobTitleSearchDto extends AbstractSearchableDto<JobTitle>{
 
     private String title;
     private String startDateFrom;
     private Long createdBy;
 
     @Override
-    public Specification<BusinessUnit> getSpecification() {
+    public Specification<JobTitle> getSpecification() {
 
         return (root, query, criteriaBuilder) -> {
 

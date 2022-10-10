@@ -5,10 +5,15 @@ import com.knits.ammolite.model.JobTitle;
 import com.knits.ammolite.model.Status;
 import com.knits.ammolite.repository.JobTitleRepository;
 import com.knits.ammolite.service.dto.JobTitleDto;
+import com.knits.ammolite.service.dto.search.JobTitleSearchDto;
 import com.knits.ammolite.service.mapper.JobTitleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -39,7 +44,7 @@ public class JobTitleService {
         repository.save(jobTitle);
     }
 
-    public JobTitleDto partialUpdate(JobTitleDto jobTitleDto){
+    public JobTitleDto partialUpdate(JobTitleDto jobTitleDto) {
 
         log.debug("Request to update BusinessUnit : {}", jobTitleDto);
 
@@ -49,5 +54,19 @@ public class JobTitleService {
         mapper.partialUpdate(jobTitle, jobTitleDto);
         repository.save(jobTitle);
         return mapper.toDto(jobTitle);
+    }
+
+    public Page<JobTitleDto> getActive(JobTitleSearchDto jobTitleSearchDto) {
+
+        Page<JobTitle> businessUnitPage = repository.findAllJobTitles(jobTitleSearchDto.getSpecification(), jobTitleSearchDto.getPageable());
+        List<JobTitleDto> businessUnitDtos = mapper.toDtos(businessUnitPage.getContent());
+        return new PageImpl<>(businessUnitDtos, jobTitleSearchDto.getPageable(), businessUnitPage.getTotalElements());
+    }
+
+    public Page<JobTitleDto> getAll(JobTitleSearchDto jobTitleSearchDto) {
+
+        Page<JobTitle> businessUnitPage = repository.findAll(jobTitleSearchDto.getSpecification(), jobTitleSearchDto.getPageable());
+        List<JobTitleDto> businessUnitDtos = mapper.toDtos(businessUnitPage.getContent());
+        return new PageImpl<>(businessUnitDtos, jobTitleSearchDto.getPageable(), businessUnitPage.getTotalElements());
     }
 }

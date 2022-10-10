@@ -2,10 +2,13 @@ package com.knits.ammolite.controller;
 
 import com.knits.ammolite.service.JobTitleService;
 import com.knits.ammolite.service.dto.JobTitleDto;
+import com.knits.ammolite.service.dto.search.JobTitleSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/job-title")
@@ -22,7 +25,7 @@ public class JobTitleController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteJobTitle(@PathVariable Long id){
+    public ResponseEntity<Void> deleteJobTitle(@PathVariable Long id) {
         log.debug("REST request to delete JobTitle : {}", id);
         jobTitleService.deleteJobTitle(id);
         return ResponseEntity.noContent().build();
@@ -33,4 +36,17 @@ public class JobTitleController {
         log.debug("REST request to update BusinessUnit ");
         return ResponseEntity.ok().body(jobTitleService.partialUpdate(jobTitleDto));
     }
+
+    @GetMapping(value = "/search", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<List<JobTitleDto>> getActive(@RequestBody JobTitleSearchDto jobTitleSearchDto) {
+        log.debug("REST request to search BusinessUnit");
+        return ResponseEntity.ok().body(jobTitleService.getActive(jobTitleSearchDto).toList());
+    }
+
+    @GetMapping(value = "/search", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<List<JobTitleDto>> getAll(@RequestBody JobTitleSearchDto jobTitleSearchDto) {
+        log.debug("REST request to search BusinessUnit");
+        return ResponseEntity.ok().body(jobTitleService.getAll(jobTitleSearchDto).toList());
+    }
+
 }

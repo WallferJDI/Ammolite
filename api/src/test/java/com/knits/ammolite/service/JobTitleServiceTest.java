@@ -1,14 +1,14 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.mocks.dto.BusinessUnitDtoMock;
-import com.knits.ammolite.mocks.model.BusinessUnitMock;
-import com.knits.ammolite.model.BusinessUnit;
+import com.knits.ammolite.mocks.dto.JobTitleDtoMock;
+import com.knits.ammolite.mocks.model.JobTitleMock;
+import com.knits.ammolite.model.JobTitle;
 import com.knits.ammolite.model.Status;
-import com.knits.ammolite.repository.BusinessUnitRepository;
-import com.knits.ammolite.service.dto.BusinessUnitDto;
-import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
-import com.knits.ammolite.service.mapper.BusinessUnitMapper;
-import com.knits.ammolite.service.mapper.BusinessUnitMapperImpl;
+import com.knits.ammolite.repository.JobTitleRepository;
+import com.knits.ammolite.service.dto.JobTitleDto;
+import com.knits.ammolite.service.dto.search.JobTitleSearchDto;
+import com.knits.ammolite.service.mapper.JobTitleMapper;
+import com.knits.ammolite.service.mapper.JobTitleMapperImpl;
 import com.knits.ammolite.service.mapper.UserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,9 +17,7 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.springframework.data.domain.Page;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -27,44 +25,44 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class BusinessUnitServiceTest {
+class JobTitleServiceTest {
 
     @Mock
-    BusinessUnitRepository repository;
+    JobTitleRepository repository;
 
     @Spy
-    private final BusinessUnitSearchDto searchDto = new BusinessUnitSearchDto();
+    private final JobTitleSearchDto searchDto = new JobTitleSearchDto();
 
     @InjectMocks
-    BusinessUnitService service;
+    JobTitleService service;
 
     @Spy
-    private final BusinessUnitMapper mapper = new BusinessUnitMapperImpl();
+    private final JobTitleMapper mapper = new JobTitleMapperImpl();
 
     @Spy
     private final UserMapper userMapper = new UserMapper();
 
     @Captor
-    private ArgumentCaptor<BusinessUnit> captor;
+    private ArgumentCaptor<JobTitle> captor;
 
     @Test
-    @DisplayName("Save BusinessUnit Success")
+    @DisplayName("Save JobTitle Success")
     void saveSuccess() {
 
         //1) create some mock data (make them reusable in other tests)
 
-        BusinessUnitDto toSaveDto = BusinessUnitDtoMock.shallowBusinessUnitDto(null);
+        JobTitleDto toSaveDto = JobTitleDtoMock.shallowJobTitleDto(null);
 
         //2) prepare mocks for everything they should return
-        when(repository.save(Mockito.any(BusinessUnit.class))) //any object of type User will match here
+        when(repository.save(Mockito.any(JobTitle.class))) //any object of type User will match here
                 .thenAnswer(i -> i.getArguments()[0]); //echo 1st parameter received
 
         //3) class under test
-        BusinessUnitDto savedDto = service.createBusinessUnit(toSaveDto);
+        JobTitleDto savedDto = service.createJobTitle(toSaveDto);
 
         //4) use captor in spy/mocks for everything they get as input
         verify(repository).save(captor.capture());
-        BusinessUnit toSaveEntity = captor.getValue();
+        JobTitle toSaveEntity = captor.getValue();
 
         //5) check if all dependencies were called (eventually with check on input data)
         verify(mapper, times(1)).toEntity(toSaveDto);
@@ -82,17 +80,17 @@ class BusinessUnitServiceTest {
         Long entityIdToUpdate = 1L;
         String updateTitleTo = "updatedTitleOfBusinessUnit";
 
-        BusinessUnit foundEntity = BusinessUnitMock.shallowBusinessUnit(entityIdToUpdate);
-        BusinessUnitDto toUpdateDto = mapper.toDto(foundEntity); //this is recorded therefore time expected is 2
+        JobTitle foundEntity = JobTitleMock.shallowJobTitle(entityIdToUpdate);
+        JobTitleDto toUpdateDto = mapper.toDto(foundEntity); //this is recorded therefore time expected is 2
         toUpdateDto.setTitle(updateTitleTo);
 
 
         when(repository.findById(entityIdToUpdate)).thenReturn(Optional.of(foundEntity));
 
-        BusinessUnitDto updatedDto = service.partialUpdate(toUpdateDto);
+        JobTitleDto updatedDto = service.partialUpdate(toUpdateDto);
 
         verify(repository).save(captor.capture());
-        BusinessUnit toUpdateEntity = captor.getValue();
+        JobTitle toUpdateEntity = captor.getValue();
 
         verify(mapper, times(1)).partialUpdate(toUpdateEntity, toUpdateDto);
         verify(repository, times(1)).save(foundEntity);
@@ -107,32 +105,18 @@ class BusinessUnitServiceTest {
         Long entityIdToDelete = 1L;
         String setStatusTo = "INACTIVE";
 
-        BusinessUnit foundEntity = BusinessUnitMock.shallowBusinessUnit(entityIdToDelete);
+        JobTitle foundEntity = JobTitleMock.shallowJobTitle(entityIdToDelete);
         foundEntity.setStatus(Status.valueOf(setStatusTo));
 
         when(repository.findById(entityIdToDelete)).thenReturn(Optional.of(foundEntity));
 
-        service.deleteBusinessUnit(entityIdToDelete);
+        service.deleteJobTitle(entityIdToDelete);
 
         verify(repository).save(captor.capture());
-        BusinessUnit toDeleteEntity = captor.getValue();
+        JobTitle toDeleteEntity = captor.getValue();
 
         verify(repository, times(1)).save(foundEntity);
 
         assertThat(toDeleteEntity).isEqualTo(foundEntity);
-    }
-
-    @Test
-    @DisplayName("findAll success")
-    void findAllSuccess() {
-        int expectedSize = 10;
-        List<BusinessUnit> resultSet = BusinessUnitMock.shallowListOfUsers(expectedSize);
-
-        when(repository.findAll()).thenReturn(resultSet);
-
-        Page<BusinessUnit> businessUnitPage = repository.findAll(searchDto.getSpecification(), searchDto.getPageable());
-        List<BusinessUnitDto> getSetDto = mapper.toDtos(businessUnitPage.getContent());
-        verify(mapper, times(expectedSize)).toDto(any(BusinessUnit.class));
-        assertThat(getSetDto.size()).isEqualTo(expectedSize);
     }
 }
