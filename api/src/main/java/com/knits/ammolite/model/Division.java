@@ -1,4 +1,4 @@
-package com.knits.ammolite.model.employee;
+package com.knits.ammolite.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
