@@ -7,6 +7,7 @@ import com.knits.ammolite.repository.BusinessUnitRepository;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
 import com.knits.ammolite.service.mapper.BusinessUnitMapper;
+import com.knits.ammolite.service.mapper.UserMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,7 @@ public class BusinessUnitService {
     private BusinessUnitMapper mapper;
 
     public BusinessUnitDto createBusinessUnit(BusinessUnitDto businessUnitDto) {
-        log.debug("Request to save User : {}", businessUnitDto);
+        log.debug("Request to save BusinessUnit : {}", businessUnitDto);
 
         final BusinessUnit businessUnit = mapper.toEntity(businessUnitDto);
         repository.save(businessUnit);

@@ -21,8 +21,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "business_units")
-public class BusinessUnit implements Serializable {
+@Table(name = "job_titles")
+public class JobTitle implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,6 @@ public class BusinessUnit implements Serializable {
     @GeneratedValue(strategy = SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
-
     @Column(name = "title", length = 50, nullable = false)
     private String title;
 
