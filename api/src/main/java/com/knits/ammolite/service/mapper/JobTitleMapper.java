@@ -1,7 +1,7 @@
 package com.knits.ammolite.service.mapper;
 
 import com.knits.ammolite.model.JobTitle;
-import com.knits.ammolite.service.dto.search.JobTitleDto;
+import com.knits.ammolite.service.dto.JobTitleDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

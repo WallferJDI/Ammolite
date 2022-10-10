@@ -1,14 +1,11 @@
 package com.knits.ammolite.controller;
 
 import com.knits.ammolite.service.JobTitleService;
-import com.knits.ammolite.service.dto.search.JobTitleDto;
+import com.knits.ammolite.service.dto.JobTitleDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/job-title")
@@ -22,5 +19,13 @@ public class JobTitleController {
     public ResponseEntity<JobTitleDto> createJobTitle(@RequestBody JobTitleDto jobTitleDto) {
         log.debug("REST request to create JobTitle ");
         return ResponseEntity.ok().body(jobTitleService.createJobTitle(jobTitleDto));
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Void> deleteJobTitle(@PathVariable Long id){
+        log.debug("REST request to delete JobTitle : {}", id);
+        jobTitleService.deleteJobTitle(id);
+        return ResponseEntity.noContent().build();
+
     }
 }

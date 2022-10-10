@@ -1,6 +1,5 @@
-package com.knits.ammolite.service.dto.search;
+package com.knits.ammolite.service.dto;
 
-import com.knits.ammolite.service.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
