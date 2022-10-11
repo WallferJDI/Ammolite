@@ -17,9 +17,7 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.springframework.data.domain.Page;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -122,7 +120,7 @@ class BusinessUnitServiceTest {
         assertThat(toDeleteEntity).isEqualTo(foundEntity);
     }
 
-    @Test
+    /*@Test
     @DisplayName("findAll success")
     void findAllSuccess() {
         int expectedSize = 10;
@@ -134,5 +132,5 @@ class BusinessUnitServiceTest {
         List<BusinessUnitDto> getSetDto = mapper.toDtos(businessUnitPage.getContent());
         verify(mapper, times(expectedSize)).toDto(any(BusinessUnit.class));
         assertThat(getSetDto.size()).isEqualTo(expectedSize);
-    }
+    }*/
 }

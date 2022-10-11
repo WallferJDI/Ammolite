@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Slf4j
@@ -44,6 +45,7 @@ public class JobTitleService {
         repository.save(jobTitle);
     }
 
+    @Transactional
     public JobTitleDto partialUpdate(JobTitleDto jobTitleDto) {
 
         log.debug("Request to update BusinessUnit : {}", jobTitleDto);

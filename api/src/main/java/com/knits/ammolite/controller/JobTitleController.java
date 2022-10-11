@@ -43,7 +43,7 @@ public class JobTitleController {
         return ResponseEntity.ok().body(jobTitleService.getActive(jobTitleSearchDto).toList());
     }
 
-    @GetMapping(value = "/search", produces = {"application/json"}, consumes = {"application/json"})
+    @GetMapping(value = "/search-all", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<List<JobTitleDto>> getAll(@RequestBody JobTitleSearchDto jobTitleSearchDto) {
         log.debug("REST request to search BusinessUnit");
         return ResponseEntity.ok().body(jobTitleService.getAll(jobTitleSearchDto).toList());
