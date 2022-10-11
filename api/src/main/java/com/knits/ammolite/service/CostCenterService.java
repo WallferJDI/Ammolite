@@ -25,4 +25,9 @@ public class CostCenterService {
         repository.save(costCenter);
         return mapper.toDto(costCenter);
     }
+
+    public void deleteCostCenter(Long id) {
+        log.debug("Delete CostCenter by id : {}", id);
+        repository.deleteById(id);
+    }
 }

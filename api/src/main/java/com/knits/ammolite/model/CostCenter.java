@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +25,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Builder
 @Table(name = "cost_center")
+@SQLDelete(sql = "UPDATE cost_center SET status = 'INACTIVE' WHERE id=?")
+@Where(clause = "status='ACTIVE'")
 public class CostCenter implements Serializable {
 
     private static final long serialVersionUID = 1L;
