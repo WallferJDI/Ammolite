@@ -27,4 +27,10 @@ public class CostCenterController {
         costCenterService.deleteCostCenter(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/update", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<CostCenterDto> partialUpdate(@RequestBody CostCenterDto costCenterDto) {
+        log.debug("REST request to update CostCenter ");
+        return ResponseEntity.ok().body(costCenterService.partialUpdate(costCenterDto));
+    }
 }

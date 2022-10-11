@@ -1,5 +1,6 @@
 package com.knits.ammolite.service;
 
+import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.CostCenter;
 import com.knits.ammolite.repository.CostCenterRepository;
 import com.knits.ammolite.service.dto.CostCenterDto;
@@ -7,6 +8,8 @@ import com.knits.ammolite.service.mapper.CostCenterMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 @Service
 @Slf4j
@@ -29,5 +32,17 @@ public class CostCenterService {
     public void deleteCostCenter(Long id) {
         log.debug("Delete CostCenter by id : {}", id);
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public CostCenterDto partialUpdate(CostCenterDto costCenterDto) {
+        log.debug("Request to update CostCenter : {}", costCenterDto);
+
+        CostCenter costCenter = repository.findById(costCenterDto.getId()).orElseThrow(()
+                -> new UserException("CostCenter#" + costCenterDto.getId() + " not found"));
+
+        mapper.partialUpdate(costCenter, costCenterDto);
+        repository.save(costCenter);
+        return mapper.toDto(costCenter);
     }
 }

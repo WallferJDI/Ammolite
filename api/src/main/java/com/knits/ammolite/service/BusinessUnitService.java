@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Slf4j
@@ -33,6 +34,7 @@ public class BusinessUnitService {
         return mapper.toDto(businessUnit);
     }
 
+    @Transactional
     public BusinessUnitDto updateBusinessUnit(BusinessUnitDto businessUnitDto) {
         log.debug("Request to update BusinessUnit : {}", businessUnitDto);
 
@@ -43,6 +45,7 @@ public class BusinessUnitService {
         return mapper.toDto(businessUnit);
     }
 
+    @Transactional
     public BusinessUnitDto partialUpdate(BusinessUnitDto businessUnitDto) {
         log.debug("Request to update BusinessUnit : {}", businessUnitDto);
 
