@@ -2,12 +2,17 @@ package com.knits.ammolite.model.organization;
 
 
 import lombok.Data;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Data
 @Table(name = "organization")
+@SQLDelete(sql = "UPDATE organization SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class Organization implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,4 +54,7 @@ public class Organization implements Serializable {
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "id")
     private ContactPerson contactPerson;
+
+    @Column
+    private boolean deleted = Boolean.FALSE;
 }
