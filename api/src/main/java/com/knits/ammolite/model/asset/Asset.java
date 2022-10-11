@@ -1,6 +1,6 @@
 package com.knits.ammolite.model.asset;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +13,11 @@ import java.util.Set;
 @Entity
 @Table(name = "asset")
 @Data
+@Builder
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Asset  implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,7 +27,7 @@ public class Asset  implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Manufacturer manufacturer;
 
     @Column(columnDefinition = "text", nullable = false)
@@ -34,7 +39,7 @@ public class Asset  implements Serializable {
     @Column(nullable = false)
     private String code;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Category category;
 
     @Column
@@ -45,4 +50,5 @@ public class Asset  implements Serializable {
     @ElementCollection(targetClass = String.class)
     @Column
     private Map<String,String> technicalSpecifications = new HashMap<>() ;
+
 }

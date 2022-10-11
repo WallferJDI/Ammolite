@@ -1,13 +1,13 @@
 package com.knits.ammolite.model.asset;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @NoArgsConstructor
+
 public class Manufacturer {
 
     @Id
@@ -15,6 +15,6 @@ public class Manufacturer {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false  )
     private String name;
 }

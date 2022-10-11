@@ -32,13 +32,13 @@ public class OrganizationSearchDto extends AbstractSearchableDto<Organization>{
             filters.add(noFiltersApplied);
             if(organizationName != null && !organizationName.isEmpty()){
                 Predicate organizationNamePredicate = criteriaBuilder
-                        .like(root.get("organizationName"),"%"+organizationName+"%");
+                        .like(root.get("name"),"%"+organizationName+"%");
                 filters.add(organizationNamePredicate);
             }
 
             if(organizationAlias != null && !organizationAlias.isEmpty()){
                 Predicate organizationNamePredicate = criteriaBuilder
-                        .like(root.get("organizationAlias"),"%"+organizationAlias+"%");
+                        .like(root.get("alias"),"%"+organizationAlias+"%");
                 filters.add(organizationNamePredicate);
             }
             return criteriaBuilder.and(filters.toArray(new Predicate[filters.size()]));

@@ -1,7 +1,8 @@
 package com.knits.ammolite.model.asset;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -20,10 +21,12 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    @ManyToOne
     private Category parentCategory;
 
-    @OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER,mappedBy = "parentCategory",orphanRemoval = true)
+    @Fetch(FetchMode.JOIN)
+    @OneToMany(cascade = CascadeType.REFRESH,mappedBy = "parentCategory",orphanRemoval = true)
     private Set<Category> subcategory = new HashSet<>();
 
 }

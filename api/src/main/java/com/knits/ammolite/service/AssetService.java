@@ -17,12 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class AssetService {
 
     private final AssetRepository assetRepository;
-
     private final AssetMapper assetMapper;
 
+    private final ManufacturerService manufacturerService;
+    private final CategoryService categoryService;
 
     public AssetDto createAsset(AssetDto assetDto){
         log.debug("Request to save Asset : {}", assetMapper);
+        assetDto.setCategory(categoryService.save(assetDto.getName()));
+        assetDto.setManufacturer(manufacturerService.save(assetDto.getManufacturer().getName()));
         Asset asset = assetMapper.toEntity(assetDto);
         assetRepository.save(asset);
         return assetMapper.toDto(asset);

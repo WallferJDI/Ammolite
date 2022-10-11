@@ -4,8 +4,8 @@ package com.knits.ammolite.controller;
 import com.knits.ammolite.service.OrganizationService;
 import com.knits.ammolite.service.dto.OrganizationDto;
 import com.knits.ammolite.service.dto.search.OrganizationSearchDto;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @Slf4j
+@RequiredArgsConstructor
 public class OrganizationController {
 
-    @Autowired
-    private OrganizationService organizationService;
+    private final OrganizationService organizationService;
 
 
     @PostMapping(value = "/organizations", produces = {"application/json"}, consumes = { "application/json"})
