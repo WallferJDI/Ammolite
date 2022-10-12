@@ -2,7 +2,6 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.BusinessUnit;
-import com.knits.ammolite.model.Status;
 import com.knits.ammolite.repository.BusinessUnitRepository;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
@@ -59,10 +58,7 @@ public class BusinessUnitService {
 
     public void deleteBusinessUnit(Long id) {
         log.debug("Delete BusinessUnit by id : {}", id);
-        BusinessUnit businessUnit = repository.findById(id).orElseThrow(()
-                -> new UserException("BusinessUnit#" + id + " not found"));
-        businessUnit.setStatus(Status.INACTIVE);
-        repository.save(businessUnit);
+        repository.deleteById(id);
     }
 
     public Page<BusinessUnitDto> getActive(BusinessUnitSearchDto businessUnitSearchDto) {

@@ -1,14 +1,13 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.mocks.dto.BusinessUnitDtoMock;
-import com.knits.ammolite.mocks.model.BusinessUnitMock;
-import com.knits.ammolite.model.BusinessUnit;
-import com.knits.ammolite.model.Status;
-import com.knits.ammolite.repository.BusinessUnitRepository;
-import com.knits.ammolite.service.dto.BusinessUnitDto;
-import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
-import com.knits.ammolite.service.mapper.BusinessUnitMapper;
-import com.knits.ammolite.service.mapper.BusinessUnitMapperImpl;
+import com.knits.ammolite.mocks.dto.CostCenterDtoMock;
+import com.knits.ammolite.mocks.model.CostCenterMock;
+import com.knits.ammolite.model.CostCenter;
+import com.knits.ammolite.repository.CostCenterRepository;
+import com.knits.ammolite.service.dto.CostCenterDto;
+import com.knits.ammolite.service.dto.search.CostCenterSearchDto;
+import com.knits.ammolite.service.mapper.CostCenterMapper;
+import com.knits.ammolite.service.mapper.CostCenterMapperImpl;
 import com.knits.ammolite.service.mapper.UserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,25 +24,25 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class BusinessUnitServiceTest {
+class CostCenterServiceTest {
 
     @Mock
-    BusinessUnitRepository repository;
+    CostCenterRepository repository;
 
     @Spy
-    private final BusinessUnitSearchDto searchDto = new BusinessUnitSearchDto();
+    private final CostCenterSearchDto searchDto = new CostCenterSearchDto();
 
     @InjectMocks
-    BusinessUnitService service;
+    CostCenterService service;
 
     @Spy
-    private final BusinessUnitMapper mapper = new BusinessUnitMapperImpl();
+    private final CostCenterMapper mapper = new CostCenterMapperImpl();
 
     @Spy
     private final UserMapper userMapper = new UserMapper();
 
     @Captor
-    private ArgumentCaptor<BusinessUnit> captor;
+    private ArgumentCaptor<CostCenter> captor;
 
     @Test
     @DisplayName("Save BusinessUnit Success")
@@ -51,18 +50,18 @@ class BusinessUnitServiceTest {
 
         //1) create some mock data (make them reusable in other tests)
 
-        BusinessUnitDto toSaveDto = BusinessUnitDtoMock.shallowBusinessUnitDto(null);
+        CostCenterDto toSaveDto = CostCenterDtoMock.shallowCostCenterDto(null);
 
         //2) prepare mocks for everything they should return
-        when(repository.save(Mockito.any(BusinessUnit.class))) //any object of type User will match here
+        when(repository.save(Mockito.any(CostCenter.class))) //any object of type User will match here
                 .thenAnswer(i -> i.getArguments()[0]); //echo 1st parameter received
 
         //3) class under test
-        BusinessUnitDto savedDto = service.createBusinessUnit(toSaveDto);
+        CostCenterDto savedDto = service.createCostCenter(toSaveDto);
 
         //4) use captor in spy/mocks for everything they get as input
         verify(repository).save(captor.capture());
-        BusinessUnit toSaveEntity = captor.getValue();
+        CostCenter toSaveEntity = captor.getValue();
 
         //5) check if all dependencies were called (eventually with check on input data)
         verify(mapper, times(1)).toEntity(toSaveDto);
@@ -80,17 +79,17 @@ class BusinessUnitServiceTest {
         Long entityIdToUpdate = 1L;
         String updateTitleTo = "updatedTitleOfBusinessUnit";
 
-        BusinessUnit foundEntity = BusinessUnitMock.shallowBusinessUnit(entityIdToUpdate);
-        BusinessUnitDto toUpdateDto = mapper.toDto(foundEntity); //this is recorded therefore time expected is 2
+        CostCenter foundEntity = CostCenterMock.shallowCostCenter(entityIdToUpdate);
+        CostCenterDto toUpdateDto = mapper.toDto(foundEntity); //this is recorded therefore time expected is 2
         toUpdateDto.setTitle(updateTitleTo);
 
 
         when(repository.findById(entityIdToUpdate)).thenReturn(Optional.of(foundEntity));
 
-        BusinessUnitDto updatedDto = service.partialUpdate(toUpdateDto);
+        CostCenterDto updatedDto = service.partialUpdate(toUpdateDto);
 
         verify(repository).save(captor.capture());
-        BusinessUnit toUpdateEntity = captor.getValue();
+        CostCenter toUpdateEntity = captor.getValue();
 
         verify(mapper, times(1)).partialUpdate(toUpdateEntity, toUpdateDto);
         verify(repository, times(1)).save(foundEntity);
@@ -103,6 +102,7 @@ class BusinessUnitServiceTest {
     @DisplayName("delete success")
     void deleteSuccess() {
         Long entityIdToDelete = 1L;
-        service.deleteBusinessUnit(entityIdToDelete);
+        service.deleteCostCenter(entityIdToDelete);
     }
+
 }

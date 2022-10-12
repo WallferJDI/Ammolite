@@ -25,7 +25,7 @@ public class CostCenterService {
     @Autowired
     CostCenterMapper mapper;
 
-    public CostCenterDto createBusinessUnit(CostCenterDto costCenterDto) {
+    public CostCenterDto createCostCenter(CostCenterDto costCenterDto) {
         log.debug("Request to save CostCenter : {}", costCenterDto);
 
         final CostCenter costCenter = mapper.toEntity(costCenterDto);

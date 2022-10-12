@@ -38,11 +38,7 @@ public class JobTitleService {
     public void deleteJobTitle(Long id) {
 
         log.debug("Delete JobTitle by id : {}", id);
-
-        JobTitle jobTitle = repository.findById(id).orElseThrow(()
-                -> new UserException("JobTitle#" + id + " not found"));
-        jobTitle.setStatus(Status.INACTIVE);
-        repository.save(jobTitle);
+        repository.deleteById(id);
     }
 
     @Transactional

@@ -52,7 +52,7 @@ public class CostCenter implements Serializable {
     @ColumnDefault("ACTIVE")
     private Status status = Status.valueOf("ACTIVE");
 
-    @ManyToOne(cascade = REFRESH, fetch = EAGER)
+    @ManyToOne(cascade = REFRESH)
     @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 }

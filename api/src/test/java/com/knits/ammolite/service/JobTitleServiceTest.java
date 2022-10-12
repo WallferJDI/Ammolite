@@ -3,7 +3,6 @@ package com.knits.ammolite.service;
 import com.knits.ammolite.mocks.dto.JobTitleDtoMock;
 import com.knits.ammolite.mocks.model.JobTitleMock;
 import com.knits.ammolite.model.JobTitle;
-import com.knits.ammolite.model.Status;
 import com.knits.ammolite.repository.JobTitleRepository;
 import com.knits.ammolite.service.dto.JobTitleDto;
 import com.knits.ammolite.service.dto.search.JobTitleSearchDto;
@@ -103,20 +102,6 @@ class JobTitleServiceTest {
     @DisplayName("delete success")
     void deleteSuccess() {
         Long entityIdToDelete = 1L;
-        String setStatusTo = "INACTIVE";
-
-        JobTitle foundEntity = JobTitleMock.shallowJobTitle(entityIdToDelete);
-        foundEntity.setStatus(Status.valueOf(setStatusTo));
-
-        when(repository.findById(entityIdToDelete)).thenReturn(Optional.of(foundEntity));
-
         service.deleteJobTitle(entityIdToDelete);
-
-        verify(repository).save(captor.capture());
-        JobTitle toDeleteEntity = captor.getValue();
-
-        verify(repository, times(1)).save(foundEntity);
-
-        assertThat(toDeleteEntity).isEqualTo(foundEntity);
     }
 }

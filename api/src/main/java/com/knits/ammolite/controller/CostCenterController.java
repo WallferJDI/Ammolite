@@ -21,7 +21,7 @@ public class CostCenterController {
     @PostMapping(value = "/create", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<CostCenterDto> createBusinessUnit(@RequestBody CostCenterDto costCenterDto) {
         log.debug("REST request to create CostCenter ");
-        return ResponseEntity.ok().body(costCenterService.createBusinessUnit(costCenterDto));
+        return ResponseEntity.ok().body(costCenterService.createCostCenter(costCenterDto));
     }
 
     @DeleteMapping("/delete/{id}")
