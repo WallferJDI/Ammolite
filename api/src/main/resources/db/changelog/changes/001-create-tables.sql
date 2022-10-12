@@ -54,4 +54,19 @@ created_by int,
     constraint fk_users
         foreign key (created_by)
             references users (id)
-)
+);
+
+create table if not exists divisions
+(
+id serial primary key,
+title varchar(50) not null,
+description varchar,
+start_date timestamp default now(),
+end_date timestamp default null,
+status varchar default 'ACTIVE',
+created_by int,
+    constraint fk_users
+        foreign key (created_by)
+            references users (id)
+);
+
