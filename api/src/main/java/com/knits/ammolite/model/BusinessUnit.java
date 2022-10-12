@@ -23,7 +23,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Builder
 @Table(name = "business_units")
-@SQLDelete(sql = "UPDATE cost_center SET status = 'INACTIVE' WHERE id=?")
+@SQLDelete(sql = "UPDATE business_units SET status = 'INACTIVE' WHERE id=?")
 @FilterDef(name = "deletedFilter", parameters = @ParamDef(name = "INACTIVE", type = "string"))
 @Filter(name = "deletedFilter", condition = "status = :'INACTIVE'")
 public class BusinessUnit implements Serializable {

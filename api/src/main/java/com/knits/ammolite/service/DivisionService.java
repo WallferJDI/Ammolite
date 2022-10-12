@@ -25,4 +25,9 @@ public class DivisionService {
         repository.save(businessUnit);
         return mapper.toDto(businessUnit);
     }
+
+    public void deleteDivision(Long id) {
+        log.debug("Delete Division by id : {}", id);
+        repository.deleteById(id);
+    }
 }
