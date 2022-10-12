@@ -17,6 +17,6 @@ public class OrganizationDto {
     private String legalAddressStreet;
     private String legalAddressZipcode;
     private ContactPerson contactPerson;
-
+    private boolean deleted;
 
 }
