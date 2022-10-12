@@ -42,7 +42,7 @@ public class BusinessUnitSearchDto extends AbstractSearchableDto<BusinessUnit> {
             }
 
             if (createdBy != null) {
-                Predicate createdBuAsPredicate = criteriaBuilder.equal(root.get("user").get("id"), createdBy);
+                Predicate createdBuAsPredicate = criteriaBuilder.equal(root.get("createdBy").get("id"), createdBy);
                 filters.add(createdBuAsPredicate);
             }
 

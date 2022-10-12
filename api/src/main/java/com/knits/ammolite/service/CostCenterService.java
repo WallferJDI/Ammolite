@@ -4,12 +4,16 @@ import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.CostCenter;
 import com.knits.ammolite.repository.CostCenterRepository;
 import com.knits.ammolite.service.dto.CostCenterDto;
+import com.knits.ammolite.service.dto.search.CostCenterSearchDto;
 import com.knits.ammolite.service.mapper.CostCenterMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -44,5 +48,19 @@ public class CostCenterService {
         mapper.partialUpdate(costCenter, costCenterDto);
         repository.save(costCenter);
         return mapper.toDto(costCenter);
+    }
+
+    public Page<CostCenterDto> getAll(CostCenterSearchDto costCenterSearchDto) {
+
+        Page<CostCenter> costCenterPage = repository.findAll(costCenterSearchDto.getSpecification(), costCenterSearchDto.getPageable());
+        List<CostCenterDto> costCenterDtos = mapper.toDtos(costCenterPage.getContent());
+        return new PageImpl<>(costCenterDtos, costCenterSearchDto.getPageable(), costCenterPage.getTotalElements());
+    }
+
+    public Page<CostCenterDto> getActive(CostCenterSearchDto costCenterSearchDto) {
+
+        Page<CostCenter> costCenterPage = repository.findAllCostCenters(costCenterSearchDto.getSpecification(), costCenterSearchDto.getPageable());
+        List<CostCenterDto> costCenterDtos = mapper.toDtos(costCenterPage.getContent());
+        return new PageImpl<>(costCenterDtos, costCenterSearchDto.getPageable(), costCenterPage.getTotalElements());
     }
 }
