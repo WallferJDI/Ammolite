@@ -1,6 +1,7 @@
 package com.knits.ammolite.controller;
 
 import com.knits.ammolite.service.DivisionService;
+import com.knits.ammolite.service.dto.CostCenterDto;
 import com.knits.ammolite.service.dto.DivisionDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,11 @@ public class DivisionController {
         log.debug("REST request to delete Division : {}", id);
         divisionService.deleteDivision(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/update", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<DivisionDto> partialUpdate(@RequestBody DivisionDto divisionDto) {
+        log.debug("REST request to update Division ");
+        return ResponseEntity.ok().body(divisionService.partialUpdate(divisionDto));
     }
 }
