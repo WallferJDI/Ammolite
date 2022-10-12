@@ -39,13 +39,13 @@ public class CostCenterController {
 
     @GetMapping(value = "/search-all", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<List<CostCenterDto>> getAll(@RequestBody CostCenterSearchDto costCenterSearchDto) {
-        log.debug("REST request to search BusinessUnit");
+        log.debug("REST request to search CostCenter");
         return ResponseEntity.ok().body(costCenterService.getAll(costCenterSearchDto).toList());
     }
 
     @GetMapping(value = "/search", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<List<CostCenterDto>> getActive(@RequestBody CostCenterSearchDto costCenterSearchDto) {
-        log.debug("REST request to search BusinessUnit");
+        log.debug("REST request to search CostCenter");
         return ResponseEntity.ok().body(costCenterService.getActive(costCenterSearchDto).toList());
     }
 }
