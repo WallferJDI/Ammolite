@@ -1,21 +1,17 @@
 package com.knits.ammolite.model;
 
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
 @Entity
-@Table(name = "groups")
+@Table(name = "team")
 @Data
-public class Group {
-
+public class Team {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
@@ -41,6 +37,7 @@ public class Group {
     @ManyToOne(cascade = CascadeType.REFRESH)
     @Fetch(FetchMode.JOIN)
     private User creator;
+
 
 
 
