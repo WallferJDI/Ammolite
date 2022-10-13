@@ -2,9 +2,11 @@ package com.knits.ammolite.service.dto;
 
 import com.knits.ammolite.model.Status;
 import com.knits.ammolite.model.User;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 public class GroupDto {
     private Long id;
     private String name;
