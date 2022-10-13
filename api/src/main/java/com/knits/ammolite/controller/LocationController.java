@@ -4,10 +4,8 @@ import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.search.LocationSearchDto;
 import com.knits.ammolite.service.LocationService;
 import com.knits.ammolite.service.dto.LocationDto;
-import com.knits.ammolite.service.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/location")
+@RequestMapping("api/location")
 public class LocationController {
     @Autowired
     private LocationService locationService;

@@ -9,7 +9,7 @@ import org.mapstruct.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring",uses = {CountryMapper.class})
+@Mapper(componentModel = "spring",imports = {CountryMapper.class})
 public interface LocationMapper {
 
    @Mapping(source = "location.ownership",target = "ownership")
