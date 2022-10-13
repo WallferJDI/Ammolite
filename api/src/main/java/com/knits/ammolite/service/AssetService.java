@@ -3,8 +3,8 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.model.asset.Asset;
 import com.knits.ammolite.repository.AssetRepository;
-import com.knits.ammolite.service.dto.AssetDto;
-import com.knits.ammolite.service.mapper.AssetMapper;
+import com.knits.ammolite.service.dto.asset.AssetDto;
+import com.knits.ammolite.service.mapper.asset.AssetMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class AssetService {
     private final ManufacturerService manufacturerService;
     private final CategoryService categoryService;
 
-    public AssetDto createAsset(AssetDto assetDto){
+    public AssetDto save(AssetDto assetDto){
         log.debug("Request to save Asset : {}", assetMapper);
         assetDto.setCategory(categoryService.save(assetDto.getName()));
         assetDto.setManufacturer(manufacturerService.save(assetDto.getManufacturer().getName()));

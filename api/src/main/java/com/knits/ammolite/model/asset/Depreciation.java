@@ -16,11 +16,8 @@ public class Depreciation {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
-
-
     @Column
     private  boolean depreciationAsset = true;
-
     @Column(nullable = false)
     private LocalDateTime startDate;
     @Column

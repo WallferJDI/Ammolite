@@ -1,5 +1,7 @@
-package com.knits.ammolite.service.dto;
+package com.knits.ammolite.service.dto.asset;
 
+import com.knits.ammolite.service.dto.CategoryDto;
+import com.knits.ammolite.service.dto.ManufacturerDto;
 import lombok.Data;
 
 import java.net.URL;

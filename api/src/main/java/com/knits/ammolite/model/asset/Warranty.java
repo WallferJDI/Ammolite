@@ -1,9 +1,9 @@
 package com.knits.ammolite.model.asset;
 
 import lombok.Data;
+import org.hibernate.annotations.SQLInsert;
 
 import javax.persistence.*;
-import java.io.File;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,7 +24,7 @@ public class Warranty {
     @OneToOne
     private Provider provider;
     @Column
-    private File file;
+    private Byte[] file;
     @ManyToOne
     private Warranty template;
     @Column

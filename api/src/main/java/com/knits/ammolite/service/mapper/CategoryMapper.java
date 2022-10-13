@@ -7,10 +7,6 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
-public interface CategoryMapper {
+public interface CategoryMapper extends AbstractMapper<CategoryDto,Category> {
 
-    CategoryDto toDto(Category category);
-
-    @InheritInverseConfiguration
-    Category toEntity(CategoryDto categoryDto);
 }

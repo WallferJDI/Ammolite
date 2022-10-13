@@ -1,7 +1,7 @@
 package com.knits.ammolite.controller;
 
 import com.knits.ammolite.service.AssetService;
-import com.knits.ammolite.service.dto.AssetDto;
+import com.knits.ammolite.service.dto.asset.AssetDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class AssetController {
     public ResponseEntity<AssetDto> createAsset(@RequestBody AssetDto assetDto){
         log.debug("REST request to create Asset");
         return ResponseEntity.ok()
-                .body(assetService.createAsset(assetDto));
+                .body(assetService.save(assetDto));
 
     }
 }
