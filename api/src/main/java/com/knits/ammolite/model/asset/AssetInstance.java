@@ -24,13 +24,13 @@ public class AssetInstance {
 
     @ManyToOne
     private Asset asset;
-    @Column
+    @Column(nullable = false)
     private String serialNumber;
-    @Column
+    @Column(nullable = false)
     private String tag;
-    @Column
+    @Column(nullable = false)
     private String barcode;
-    @Column
+    @Column(nullable = false)
     private String description;
     @Column
     private String key;

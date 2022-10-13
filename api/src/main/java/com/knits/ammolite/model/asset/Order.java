@@ -15,7 +15,7 @@ public class Order {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String code;
     @Column
     private LocalDateTime date;

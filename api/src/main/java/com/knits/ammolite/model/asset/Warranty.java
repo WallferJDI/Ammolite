@@ -14,11 +14,11 @@ public class Warranty {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String number;
-    @Column
+    @Column(nullable = false)
     private LocalDateTime startDate;
-    @Column
+    @Column(nullable = false)
     private LocalDateTime endDate;
 
     @OneToOne

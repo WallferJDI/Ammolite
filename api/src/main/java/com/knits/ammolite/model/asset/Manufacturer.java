@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-
 public class Manufacturer {
 
     @Id

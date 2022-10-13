@@ -21,7 +21,7 @@ public class Depreciation {
     @Column
     private  boolean depreciationAsset = true;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime startDate;
     @Column
     private Integer depreciableCost;

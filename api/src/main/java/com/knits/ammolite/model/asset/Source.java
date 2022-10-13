@@ -4,6 +4,7 @@ import com.knits.ammolite.model.enums.Ownership;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Data
@@ -18,6 +19,7 @@ public class Source {
     @Column
     private Ownership ownership;
     @OneToOne
+    @NotEmpty
     @JoinColumn(name = "id")
     private Vendor vendor;
     @OneToOne
