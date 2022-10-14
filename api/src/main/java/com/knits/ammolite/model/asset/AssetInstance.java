@@ -43,10 +43,10 @@ public class AssetInstance {
     @ElementCollection(targetClass = String.class)
     @Column
     private Map<String,String> technicalSpecifications = new HashMap<>();
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Source source;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Depreciation depreciation;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Warranty warranty;
 }

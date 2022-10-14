@@ -23,7 +23,7 @@ public class AssetService {
     private final CategoryService categoryService;
 
     public AssetDto save(AssetDto assetDto){
-        log.debug("Request to save Asset : {}", assetMapper);
+        log.debug("Request to save Asset : {}", assetDto);
         assetDto.setCategory(categoryService.save(assetDto.getName()));
         assetDto.setManufacturer(manufacturerService.save(assetDto.getManufacturer().getName()));
         Asset asset = assetMapper.toEntity(assetDto);

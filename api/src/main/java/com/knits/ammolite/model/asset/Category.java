@@ -18,7 +18,8 @@ public class Category {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(nullable = false)
+
+    @Column(nullable = false,unique = true)
     private String name;
 
     @Fetch(FetchMode.JOIN)
@@ -28,5 +29,6 @@ public class Category {
     @Fetch(FetchMode.JOIN)
     @OneToMany(cascade = CascadeType.REFRESH,mappedBy = "parentCategory",orphanRemoval = true)
     private Set<Category> subcategory = new HashSet<>();
+
 
 }

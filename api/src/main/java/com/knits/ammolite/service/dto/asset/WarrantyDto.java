@@ -14,7 +14,7 @@ public class WarrantyDto {
     private LocalDateTime endDate;
     private Provider provider;
     private Byte[] file;
-    private Warranty template;
+    private WarrantyDto template;
     private boolean fullCoverage;
     private Integer maxCoverage;
     private String description;

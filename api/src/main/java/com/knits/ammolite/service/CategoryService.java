@@ -27,6 +27,5 @@ public class CategoryService {
             category = repository.findByName(name).get();
         }
         return mapper.toDto(category);
-
     }
 }

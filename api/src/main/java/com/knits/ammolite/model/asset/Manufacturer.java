@@ -14,6 +14,6 @@ public class Manufacturer {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(nullable = false  )
+    @Column(nullable = false)
     private String name;
 }
