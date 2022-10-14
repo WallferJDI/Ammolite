@@ -14,7 +14,6 @@ import java.time.ZonedDateTime;
 
 import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -24,8 +23,16 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Builder
 @Table(name = "business_units")
 @SQLDelete(sql = "UPDATE business_units SET status = 'INACTIVE' WHERE id=?")
-@FilterDef(name = "deletedFilter", parameters = @ParamDef(name = "INACTIVE", type = "string"))
-@Filter(name = "deletedFilter", condition = "status = :'INACTIVE'")
+//@Where(clause = "status='ACTIVE'")
+
+@FilterDef(
+        name = "deletedUserFilter",
+        parameters = @ParamDef(name = "isDeleted", type = "boolean")
+)
+@Filter(
+        name = "deletedUserFilter",
+        condition ="status=:'INACTIVE'"
+)
 public class BusinessUnit implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,10 +56,10 @@ public class BusinessUnit implements Serializable {
     private ZonedDateTime endDate;
 
     @Enumerated(STRING)
-    @ColumnDefault("ACTIVE")
-    private Status status = Status.valueOf("ACTIVE");
+    @Column(columnDefinition = "ACTIVE", insertable = false)
+    private Status status;
 
-    @ManyToOne(cascade = REFRESH)
+    @ManyToOne(cascade = REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 

@@ -1,10 +1,13 @@
 package com.knits.ammolite.controller;
 
+import com.knits.ammolite.model.BusinessUnit;
 import com.knits.ammolite.service.BusinessUnitService;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,5 +56,14 @@ public class BusinessUnitController {
     public ResponseEntity<List<BusinessUnitDto>> getAll(@RequestBody BusinessUnitSearchDto businessUnitSearchDto) {
         log.debug("REST request to search BusinessUnit");
         return ResponseEntity.ok().body(businessUnitService.getAll(businessUnitSearchDto).toList());
+    }
+
+    @GetMapping(value = "/s", produces = {"application/json"}, consumes = {"application/json"})
+    public ResponseEntity<List<BusinessUnitDto>> get(
+            @RequestParam(value = "isDeleted", required = false, defaultValue = "false") boolean isDeleted){
+
+        //Page<BusinessUnitDto> businessUnitDtos = businessUnitService.find(status, businessUnitSearchDto);
+        List<BusinessUnitDto> businessUnitDtos = businessUnitService.find(isDeleted);
+        return  new ResponseEntity<>(businessUnitDtos, HttpStatus.OK);
     }
 }

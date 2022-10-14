@@ -47,7 +47,7 @@ public class Division implements Serializable {
     private ZonedDateTime endDate;
 
     @Enumerated(STRING)
-    @ColumnDefault("ACTIVE")
+    @Column(columnDefinition = "ACTIVE", insertable = false)
     private Status status = Status.valueOf("ACTIVE");
 
     @ManyToOne(cascade = REFRESH)
