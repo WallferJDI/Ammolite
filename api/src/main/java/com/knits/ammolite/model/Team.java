@@ -32,13 +32,13 @@ public class Team {
     private LocalDateTime endDate;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.Active;
+    private Status status;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @Fetch(FetchMode.JOIN)
     private User creator;
 
-
-
-
+    public void setStatus(Status status) {
+        this.status = status==null ? Status.Active : status;
+    }
 }
