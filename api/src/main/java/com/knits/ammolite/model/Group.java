@@ -1,19 +1,28 @@
 package com.knits.ammolite.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.*;
 
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import java.time.LocalDateTime;
+
 
 
 @Entity
 @Table(name = "groups")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+
 public class Group {
 
     private static final long serialVersionUID = 1L;
@@ -36,12 +45,13 @@ public class Group {
     private LocalDateTime endDate;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.Active;
+    private Status status;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     @Fetch(FetchMode.JOIN)
     private User creator;
 
-
-
+    public void setStatus(Status status) {
+        this.status = status==null ? Status.Active : status;
+    }
 }
