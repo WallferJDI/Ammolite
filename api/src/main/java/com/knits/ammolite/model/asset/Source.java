@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Data
 public class Source {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")

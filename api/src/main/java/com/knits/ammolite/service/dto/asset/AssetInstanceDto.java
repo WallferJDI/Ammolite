@@ -3,10 +3,11 @@ package com.knits.ammolite.service.dto.asset;
 
 import com.knits.ammolite.model.enums.Condition;
 import com.knits.ammolite.model.enums.State;
-import com.knits.ammolite.model.enums.Type;
+import com.knits.ammolite.model.enums.AssetType;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -20,11 +21,12 @@ public class AssetInstanceDto {
     private String key;
     private Condition condition;
     private State state;
-    private Type type;
+    private AssetType type;
     private Map<String,String> technicalSpecifications = new HashMap<>();
     private SourceDto source;
     private DepreciationDto depreciation;
     private WarrantyDto warranty;
+    private List<DocumentDto> documents;
 
 
 }

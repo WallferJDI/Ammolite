@@ -1,6 +1,7 @@
 package com.knits.ammolite.model.asset;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLInsert;
 
 import javax.persistence.*;
@@ -28,11 +29,13 @@ public class Warranty {
     @ManyToOne
     private Warranty template;
     @Column
-    private boolean fullCoverage = true;
+    private Boolean fullCoverage = true;
     @Column
     private Integer maxCoverage;
     @Column
     private String description;
 
-
+    public void setFullCoverage(Boolean fullCoverage) {
+        this.fullCoverage = fullCoverage==null?true:fullCoverage;
+    }
 }

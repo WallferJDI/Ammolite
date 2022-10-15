@@ -1,5 +1,6 @@
 package com.knits.ammolite.model.asset;
 
+import com.knits.ammolite.model.enums.DepreciationMethod;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -17,7 +18,7 @@ public class Depreciation {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
     @Column
-    private  boolean depreciationAsset = true;
+    private  Boolean depreciationAsset;
     @Column(nullable = false)
     private LocalDateTime startDate;
     @Column
@@ -30,5 +31,11 @@ public class Depreciation {
     @Column
     private Month lifespan;
     @Column
+    private DepreciationMethod depreciationMethod;
+    @Column
     private Integer salvation;
+
+    public void setDepreciationAsset(Boolean depreciationAsset) {
+        this.depreciationAsset = depreciationAsset ==null?true:depreciationAsset;
+    }
 }

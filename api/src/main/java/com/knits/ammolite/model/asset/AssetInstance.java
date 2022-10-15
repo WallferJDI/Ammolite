@@ -3,17 +3,20 @@ package com.knits.ammolite.model.asset;
 
 import com.knits.ammolite.model.enums.Condition;
 import com.knits.ammolite.model.enums.State;
-import com.knits.ammolite.model.enums.Type;
+import com.knits.ammolite.model.enums.AssetType;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.LongStream;
 
 @Entity
 @Table
 @Data
-public class AssetInstance {
+public class AssetInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +42,7 @@ public class AssetInstance {
     @Column
     private State state;
     @Column
-    private Type type;
+    private AssetType type;
     @ElementCollection(targetClass = String.class)
     @Column
     private Map<String,String> technicalSpecifications = new HashMap<>();
@@ -49,4 +52,7 @@ public class AssetInstance {
     private Depreciation depreciation;
     @ManyToOne(cascade = CascadeType.ALL)
     private Warranty warranty;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Document> documents;
 }
