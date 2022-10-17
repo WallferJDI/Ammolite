@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.service.mapper;
 
 import com.knits.ammolite.model.organization.Organization;
@@ -67,3 +68,4 @@ public class OrganizationMapper {
     }
 
 }
+*/

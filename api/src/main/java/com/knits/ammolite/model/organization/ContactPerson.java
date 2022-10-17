@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.model.organization;
 
 import lombok.Data;
@@ -35,3 +36,4 @@ public class ContactPerson {
     private String note;
 
 }
+*/

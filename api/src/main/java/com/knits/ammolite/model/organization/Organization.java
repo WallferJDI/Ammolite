@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.model.organization;
 
 
@@ -50,3 +51,4 @@ public class Organization implements Serializable {
     @JoinColumn(name = "id")
     private ContactPerson contactPerson;
 }
+*/

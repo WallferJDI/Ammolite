@@ -2,11 +2,12 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.mocks.dto.CostCenterDtoMock;
 import com.knits.ammolite.mocks.model.CostCenterMock;
-import com.knits.ammolite.model.CostCenter;
-import com.knits.ammolite.repository.CostCenterRepository;
-import com.knits.ammolite.service.dto.CostCenterDto;
+import com.knits.ammolite.model.company.CostCenter;
+import com.knits.ammolite.repository.company.CostCenterRepository;
+import com.knits.ammolite.service.company.CostCenterService;
+import com.knits.ammolite.service.dto.company.CostCenterDto;
 import com.knits.ammolite.service.dto.search.CostCenterSearchDto;
-import com.knits.ammolite.service.mapper.CostCenterMapper;
+import com.knits.ammolite.service.mapper.company.CostCenterMapper;
 import com.knits.ammolite.service.mapper.CostCenterMapperImpl;
 import com.knits.ammolite.service.mapper.UserMapper;
 import org.junit.jupiter.api.DisplayName;

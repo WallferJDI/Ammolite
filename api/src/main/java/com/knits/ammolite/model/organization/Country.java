@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.model.organization;
 
 import lombok.Data;
@@ -21,3 +22,4 @@ public class Country {
         this.name = name;
     }
 }
+*/

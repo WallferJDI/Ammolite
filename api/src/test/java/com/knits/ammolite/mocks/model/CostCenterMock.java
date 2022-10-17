@@ -1,8 +1,7 @@
 package com.knits.ammolite.mocks.model;
 
-import com.knits.ammolite.model.CostCenter;
-import com.knits.ammolite.model.Status;
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.company.CostCenter;
+import com.knits.ammolite.model.company.Status;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -19,7 +18,6 @@ public class CostCenterMock {
                 .startDate(ZonedDateTime.now())
                 .endDate(ZonedDateTime.of(2022, 1, 1, 0, 0, 0, 0, ZoneId.of("UTC")))
                 .status(Status.ACTIVE)
-                .createdBy(new User(1L, "Test", "123", "Mock", "User", "test@mock.com", true))
                 .build();
     }
 

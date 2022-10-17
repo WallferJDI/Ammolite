@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.controller;
 
 import com.knits.ammolite.service.OrganizationService;
@@ -31,3 +32,4 @@ public class OrganizationController {
 
 
 }
+*/

@@ -1,6 +1,6 @@
 package com.knits.ammolite.service.dto.search;
 
-import com.knits.ammolite.model.BusinessUnit;
+import com.knits.ammolite.model.company.BusinessUnit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

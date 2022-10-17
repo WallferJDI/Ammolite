@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.service;
 
 
@@ -47,3 +48,4 @@ public class OrganizationService {
 
 
 }
+*/

@@ -2,12 +2,12 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.mocks.dto.BusinessUnitDtoMock;
 import com.knits.ammolite.mocks.model.BusinessUnitMock;
-import com.knits.ammolite.model.BusinessUnit;
-import com.knits.ammolite.model.Status;
-import com.knits.ammolite.repository.BusinessUnitRepository;
-import com.knits.ammolite.service.dto.BusinessUnitDto;
+import com.knits.ammolite.model.company.BusinessUnit;
+import com.knits.ammolite.repository.company.BusinessUnitRepository;
+import com.knits.ammolite.service.company.BusinessUnitService;
+import com.knits.ammolite.service.dto.company.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
-import com.knits.ammolite.service.mapper.BusinessUnitMapper;
+import com.knits.ammolite.service.mapper.company.BusinessUnitMapper;
 import com.knits.ammolite.service.mapper.BusinessUnitMapperImpl;
 import com.knits.ammolite.service.mapper.UserMapper;
 import org.junit.jupiter.api.DisplayName;

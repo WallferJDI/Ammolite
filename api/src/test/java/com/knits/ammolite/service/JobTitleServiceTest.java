@@ -2,11 +2,12 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.mocks.dto.JobTitleDtoMock;
 import com.knits.ammolite.mocks.model.JobTitleMock;
-import com.knits.ammolite.model.JobTitle;
-import com.knits.ammolite.repository.JobTitleRepository;
-import com.knits.ammolite.service.dto.JobTitleDto;
+import com.knits.ammolite.model.company.JobTitle;
+import com.knits.ammolite.repository.company.JobTitleRepository;
+import com.knits.ammolite.service.company.JobTitleService;
+import com.knits.ammolite.service.dto.company.JobTitleDto;
 import com.knits.ammolite.service.dto.search.JobTitleSearchDto;
-import com.knits.ammolite.service.mapper.JobTitleMapper;
+import com.knits.ammolite.service.mapper.company.JobTitleMapper;
 import com.knits.ammolite.service.mapper.JobTitleMapperImpl;
 import com.knits.ammolite.service.mapper.UserMapper;
 import org.junit.jupiter.api.DisplayName;

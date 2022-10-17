@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.service.dto;
 
 import com.knits.ammolite.model.organization.ContactPerson;
@@ -20,3 +21,4 @@ public class OrganizationDto {
 
 
 }
+*/
