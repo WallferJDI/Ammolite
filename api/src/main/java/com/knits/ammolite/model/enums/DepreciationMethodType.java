@@ -1,6 +1,6 @@
 package com.knits.ammolite.model.enums;
 
-public enum DepreciationMethod {
+public enum DepreciationMethodType {
     STRAIGHT("Straight Line"),
     DOUBLE("Double Declining"),
     SUM("Sum of the years"),
@@ -8,7 +8,7 @@ public enum DepreciationMethod {
     ;
     private final String text;
 
-    DepreciationMethod(String text) {
+    DepreciationMethodType(String text) {
         this.text = text;
     }
 

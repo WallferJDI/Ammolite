@@ -26,8 +26,8 @@ public class Asset  implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @ManyToOne
-    private Manufacturer manufacturer;
+    @Column
+    private String manufacturer;
 
     @Column(columnDefinition = "text", nullable = false)
     private String description;

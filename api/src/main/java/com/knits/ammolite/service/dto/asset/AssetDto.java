@@ -1,7 +1,7 @@
 package com.knits.ammolite.service.dto.asset;
 
 import com.knits.ammolite.service.dto.CategoryDto;
-import com.knits.ammolite.service.dto.ManufacturerDto;
+
 import lombok.Data;
 
 import java.net.URL;
@@ -11,7 +11,7 @@ import java.util.Map;
 @Data
 public class AssetDto {
     private Long id;
-    private ManufacturerDto manufacturer;
+    private String manufacturer;
     private String description;
     private String name;
     private String code;

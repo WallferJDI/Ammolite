@@ -1,14 +1,12 @@
 package com.knits.ammolite.model.asset;
 
-import com.knits.ammolite.model.enums.DepreciationMethod;
+import com.knits.ammolite.model.enums.DepreciationMethodType;
 import lombok.Data;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.Date;
 
 @Entity
 @Data
@@ -21,13 +19,13 @@ public class Depreciation {
     @Column(nullable = false)
     private LocalDateTime startDate;
     @Column
-    private Integer depreciableCost;
+    private BigDecimal depreciableCost;
     @Column
-    private Integer currentValue;
+    private BigDecimal currentValue;
     @Column
     private Month lifespan;
     @Column
-    private DepreciationMethod depreciationMethod;
+    private DepreciationMethodType depreciationMethod;
     @Column
     private Integer salvation;
 

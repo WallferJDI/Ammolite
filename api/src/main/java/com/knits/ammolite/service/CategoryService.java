@@ -18,9 +18,10 @@ public class CategoryService {
     private final CategoryMapper mapper;
 
     public CategoryDto save(String name){
-        Category category = new Category();
+        Category category;
 
         if(repository.findByName(name).isEmpty()){
+            category = new Category();
             category.setName(name);
             repository.save(category);
         }else{

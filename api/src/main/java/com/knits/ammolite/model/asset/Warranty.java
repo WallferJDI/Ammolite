@@ -5,6 +5,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLInsert;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,21 +22,33 @@ public class Warranty {
     private LocalDateTime startDate;
     @Column(nullable = false)
     private LocalDateTime endDate;
-
+    @Column
+    private BigDecimal cost;
     @Column
     private String provider;
     @Column
     private Byte[] file;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Warranty template;
     @Column
     private Boolean fullCoverage = true;
     @Column
-    private Integer maxCoverage;
+    private BigDecimal maxCoverage;
     @Column
     private String description;
 
     public void setFullCoverage(Boolean fullCoverage) {
         this.fullCoverage = fullCoverage==null?true:fullCoverage;
+    }
+
+    public void setTemplate(Warranty template) {
+        this.template = template;
+        setFullCoverage(template.getFullCoverage());
+        setMaxCoverage(template.getMaxCoverage());
+        setDescription(template.getDescription());
+    }
+
+    public void setMaxCoverage(BigDecimal maxCoverage) {
+        this.maxCoverage = getFullCoverage()==true?getCost():maxCoverage;
     }
 }

@@ -15,7 +15,6 @@ public class CountryService {
     private final CountryRepository repository;
 
     public Country getCountryByName(String name){
-        Country country = new Country();
         if (repository.findByName(name).isEmpty()){
             return new Country(name);
         }

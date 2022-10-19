@@ -29,7 +29,7 @@ public class Organization implements Serializable {
     private String alias;
 
     @Column(nullable = false)
-    private String VAT;
+    private String vatNumber;
 
     @Column(nullable = false)
     private String registrationCode;

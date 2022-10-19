@@ -1,19 +1,17 @@
 package com.knits.ammolite.model.asset;
 
 
-import com.knits.ammolite.model.enums.Condition;
+import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;
-import com.knits.ammolite.model.enums.State;
+import com.knits.ammolite.model.enums.StateType;
 import com.knits.ammolite.model.enums.AssetType;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.LongStream;
 
 @Entity
 @Table
@@ -40,9 +38,9 @@ public class AssetInstance implements Serializable {
     @Column
     private String key;
     @Column
-    private Condition condition;
+    private ConditionType condition;
     @Column
-    private State state;
+    private StateType state;
     @Column
     private AssetType type;
     @ElementCollection(targetClass = String.class)

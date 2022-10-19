@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface OrganizationRepository extends JpaSpecificationExecutor<Organization>, PagingAndSortingRepository<Organization,Long> {
 
    Optional<Organization> findByName(String organizationName);
-    Optional<Organization> findByVAT(String VAT);
+    Optional<Organization> findByVatNumber(String vatNumber);
 }

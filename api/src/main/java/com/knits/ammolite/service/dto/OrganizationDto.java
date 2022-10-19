@@ -9,7 +9,7 @@ public class OrganizationDto {
     private Long id;
     private String name;
     private String alias;
-    private String VAT;
+    private String vatNumber;
     private String registrationCode;
     private Country taxRegistrationCountry;
     private Country legalAddressCountry;

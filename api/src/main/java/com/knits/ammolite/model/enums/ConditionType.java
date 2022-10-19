@@ -1,5 +1,5 @@
 package com.knits.ammolite.model.enums;
 
-public enum Condition {
+public enum ConditionType {
     New,Excellent,Good,Average,Poor,Replace
 }

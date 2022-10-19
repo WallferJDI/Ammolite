@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Predicate;
@@ -20,8 +21,8 @@ import java.util.List;
 @AllArgsConstructor
 public class OrganizationSearchDto extends AbstractSearchableDto<Organization>{
 
-    private String organizationName;
-    private String organizationAlias;
+    private String name;
+    private String alias;
 
     @Override
     public Specification<Organization> getSpecification() {
@@ -30,15 +31,15 @@ public class OrganizationSearchDto extends AbstractSearchableDto<Organization>{
             Predicate noFiltersApplied = criteriaBuilder.conjunction();
             List<Predicate> filters = new ArrayList<>();
             filters.add(noFiltersApplied);
-            if(organizationName != null && !organizationName.isEmpty()){
+            if(StringUtils.isEmpty(name)){
                 Predicate organizationNamePredicate = criteriaBuilder
-                        .like(root.get("name"),"%"+organizationName+"%");
+                        .like(root.get("name"),"%"+ name +"%");
                 filters.add(organizationNamePredicate);
             }
 
-            if(organizationAlias != null && !organizationAlias.isEmpty()){
+            if(StringUtils.isEmpty(alias)){
                 Predicate organizationNamePredicate = criteriaBuilder
-                        .like(root.get("alias"),"%"+organizationAlias+"%");
+                        .like(root.get("alias"),"%"+ alias +"%");
                 filters.add(organizationNamePredicate);
             }
             return criteriaBuilder.and(filters.toArray(new Predicate[filters.size()]));

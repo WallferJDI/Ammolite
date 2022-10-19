@@ -1,10 +1,9 @@
 package com.knits.ammolite.service.dto.asset;
 
 import com.knits.ammolite.model.enums.AssetType;
-import com.knits.ammolite.model.enums.Condition;
+import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;
-import com.knits.ammolite.model.enums.State;
-import com.knits.ammolite.service.dto.asset.*;
+import com.knits.ammolite.model.enums.StateType;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -20,8 +19,8 @@ public class AssetInstanceDto implements Serializable {
     private String tag;
     private String description;
     private String key;
-    private Condition condition;
-    private State state;
+    private ConditionType condition;
+    private StateType state;
     private AssetType type;
     private Map<String,String> technicalSpecifications = new HashMap<>();
     private Ownership ownership;
