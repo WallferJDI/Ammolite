@@ -17,17 +17,13 @@ public class Depreciation {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
-    @Column
-    private  Boolean depreciationAsset;
+
     @Column(nullable = false)
     private LocalDateTime startDate;
     @Column
     private Integer depreciableCost;
     @Column
     private Integer currentValue;
-    @Fetch(FetchMode.JOIN)
-    @OneToOne(cascade = CascadeType.REFRESH)
-    private Depreciation depreciableTemplate;
     @Column
     private Month lifespan;
     @Column
@@ -35,7 +31,5 @@ public class Depreciation {
     @Column
     private Integer salvation;
 
-    public void setDepreciationAsset(Boolean depreciationAsset) {
-        this.depreciationAsset = depreciationAsset ==null?true:depreciationAsset;
-    }
+
 }

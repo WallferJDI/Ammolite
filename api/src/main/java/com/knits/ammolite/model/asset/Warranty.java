@@ -22,8 +22,8 @@ public class Warranty {
     @Column(nullable = false)
     private LocalDateTime endDate;
 
-    @OneToOne
-    private Provider provider;
+    @Column
+    private String provider;
     @Column
     private Byte[] file;
     @ManyToOne

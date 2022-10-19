@@ -4,10 +4,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "[order]")
 @Data
 public class Order {
     @Id
@@ -20,9 +21,9 @@ public class Order {
     @Column
     private LocalDateTime date;
     @Column
-    private Integer cost;
+    private BigDecimal cost;
     @Column
-    private String costCenter;
+    private BigDecimal costCenter;
     @Column
     private String invoiceNumber;
 }

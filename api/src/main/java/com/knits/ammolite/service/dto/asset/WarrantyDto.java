@@ -1,7 +1,5 @@
 package com.knits.ammolite.service.dto.asset;
 
-import com.knits.ammolite.model.asset.Provider;
-import com.knits.ammolite.model.asset.Warranty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,7 +10,7 @@ public class WarrantyDto {
     private String number;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private Provider provider;
+    private String provider;
     private Byte[] file;
     private WarrantyDto template;
     private boolean fullCoverage;
