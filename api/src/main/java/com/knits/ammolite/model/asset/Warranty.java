@@ -1,8 +1,7 @@
 package com.knits.ammolite.model.asset;
 
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.SQLInsert;
+
 
 import javax.persistence.*;
 import java.math.BigDecimal;

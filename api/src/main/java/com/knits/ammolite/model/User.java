@@ -1,6 +1,5 @@
 package com.knits.ammolite.model;
 
-import com.knits.ammolite.annotations.ValidEmail;
 import lombok.Data;
 
 import javax.persistence.*;
