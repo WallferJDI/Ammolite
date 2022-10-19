@@ -5,11 +5,10 @@ import com.knits.ammolite.model.User;
 import com.knits.ammolite.model.enums.Status;
 import lombok.Data;
 
-
 import java.time.LocalDateTime;
 
 @Data
-public class GroupDto {
+public class TeamDto {
     private Long id;
     private String name;
     private String description;
@@ -17,5 +16,4 @@ public class GroupDto {
     private LocalDateTime endDate;
     private Status status;
     private User creator;
-
 }
