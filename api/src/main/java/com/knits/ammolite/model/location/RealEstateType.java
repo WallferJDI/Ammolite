@@ -1,4 +1,4 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.location;
 
 
 public enum RealEstateType {

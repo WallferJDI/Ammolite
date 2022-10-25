@@ -1,4 +1,4 @@
-package com.knits.ammolite.service.dto;
+package com.knits.ammolite.service.dto.location;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

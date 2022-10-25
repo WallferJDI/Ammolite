@@ -1,4 +1,4 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.location;
 
 
 import lombok.*;
@@ -11,6 +11,7 @@ import java.io.Serializable;
 
 import static javax.persistence.CascadeType.*;
 import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @AllArgsConstructor
@@ -30,7 +31,7 @@ public class Location implements Serializable {
     @NonNull
     private String title;
 
-    @ManyToOne(cascade = ALL, fetch = EAGER)
+    @ManyToOne(cascade = PERSIST, fetch = LAZY)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 

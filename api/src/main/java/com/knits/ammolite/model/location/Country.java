@@ -1,5 +1,6 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.location;
 
+import com.knits.ammolite.model.location.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +9,8 @@ import org.hibernate.annotations.Filter;
 
 import javax.persistence.*;
 import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -24,8 +27,7 @@ public class Country {
 
     private String title;
 
-    @OneToMany(mappedBy = "country", fetch = LAZY)
-    @Filter(name = "deletedLocationFilter", condition = "deleted = :isDeleted")
+    @OneToMany(mappedBy = "country", cascade = ALL)
     private List<Location> locationList;
 
 }
