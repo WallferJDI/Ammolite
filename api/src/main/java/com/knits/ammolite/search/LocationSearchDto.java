@@ -1,9 +1,8 @@
 package com.knits.ammolite.search;
 
-import com.knits.ammolite.model.Location;
-import com.knits.ammolite.model.OwnershipType;
-import com.knits.ammolite.model.RealEstateType;
-import com.knits.ammolite.service.dto.CountryDto;
+import com.knits.ammolite.model.location.Location;
+import com.knits.ammolite.model.location.OwnershipType;
+import com.knits.ammolite.model.location.RealEstateType;
 import org.springframework.data.jpa.domain.Specification;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.apache.logging.log4j.util.Strings;
+
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,8 @@ public class LocationSearchDto extends AbstractSearchableDto<Location> {
     private String zipCode;
     private String ownership;
     private String realEstate;
+
+
 
     @Override
     public Specification<Location> getSpecification() {

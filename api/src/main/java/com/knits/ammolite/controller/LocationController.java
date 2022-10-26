@@ -3,7 +3,7 @@ package com.knits.ammolite.controller;
 import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.search.LocationSearchDto;
 import com.knits.ammolite.service.LocationService;
-import com.knits.ammolite.service.dto.LocationDto;
+import com.knits.ammolite.service.dto.location.LocationDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

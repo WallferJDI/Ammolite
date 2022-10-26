@@ -1,12 +1,11 @@
 package com.knits.ammolite.service;
 
+import com.knits.ammolite.exceptions.LocationException;
 import com.knits.ammolite.exceptions.UserException;
-import com.knits.ammolite.model.Location;
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.repository.LocationRepository;
 import com.knits.ammolite.search.LocationSearchDto;
-import com.knits.ammolite.service.dto.LocationDto;
-import com.knits.ammolite.service.mapper.CountryMapper;
+import com.knits.ammolite.service.dto.location.LocationDto;
 import com.knits.ammolite.service.mapper.LocationMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +48,7 @@ public class LocationService {
         if ( locationFromDb.getId()==null) {
             String message = "Location with id = " + locationDto.getId() + " does not exist.";
             log.warn(message);
-            throw new RuntimeException(message);
+            throw new LocationException(message);
         }
         mapper.update(locationDto,locationFromDb);
         repository.save(locationFromDb);
@@ -57,8 +56,8 @@ public class LocationService {
     }
 
     public LocationDto partialUpdate (LocationDto locationDto){
-        log.debug("Request to partialUpdate Location : {}", locationDto);
-        Location location = repository.findById(locationDto.getId()).orElseThrow(() -> new UserException("Location#" + locationDto.getId() + " not found"));
+        log.debug("Request to partial update Location : {}", locationDto);
+        Location location = repository.findById(locationDto.getId()).orElseThrow(() -> new LocationException("Location#" + locationDto.getId() + " not found"));
         mapper.partialUpdate(locationDto, location);
         repository.save(location);
         return mapper.toDto(location);
@@ -66,7 +65,7 @@ public class LocationService {
 
     public void delete(Long id){
         log.debug("Set status deleted = true to Location Id: {}", id);
-        Location location = repository.findById(id).orElseThrow(() -> new UserException("Location#" + id + " not found"));
+        Location location = repository.findById(id).orElseThrow(() -> new LocationException("Location#" + id + " not found"));
         location.setDeleted(true);
         repository.save(location);
     }

@@ -1,6 +1,9 @@
 package com.knits.ammolite.mokcs.model;
 
-import com.knits.ammolite.model.*;
+import com.knits.ammolite.model.location.Country;
+import com.knits.ammolite.model.location.Location;
+import com.knits.ammolite.model.location.OwnershipType;
+import com.knits.ammolite.model.location.RealEstateType;
 
 import java.util.ArrayList;
 import java.util.List;

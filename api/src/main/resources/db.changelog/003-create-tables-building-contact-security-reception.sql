@@ -7,7 +7,7 @@ create table if not exists contact
     first_name  varchar(100) not null,
     last_name varchar(100) not null,
     email varchar(100) not null,
-    phone varchar(100) not null
+    phone varchar(100) not null unique
     );
 
 create table if not exists security_contact
@@ -16,13 +16,13 @@ create table if not exists security_contact
     first_name  varchar(100) not null,
     last_name varchar(100) not null,
     email varchar(100) not null,
-    phone varchar(100) not null
+    phone varchar(100) not null unique
     );
 
 create table if not exists reception
 (
     id  serial primary key,
-    phone varchar(100) not null,
+    phone varchar(100) not null unique,
     fax varchar(100) not null
     );
 
@@ -47,4 +47,5 @@ create table if not exists building
     constraint fk_reception
     foreign key (reception_id)
     references reception (id)
-        on UPDATE cascade);
+        on UPDATE cascade,
+    deleted boolean default false);

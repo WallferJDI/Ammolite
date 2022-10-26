@@ -1,5 +1,7 @@
 package com.knits.ammolite.service;
 
+import com.knits.ammolite.exceptions.BuildingException;
+import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.building.Building;
 import com.knits.ammolite.model.building.Contact;
 import com.knits.ammolite.model.building.Reception;
@@ -8,6 +10,7 @@ import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.repository.*;
 import com.knits.ammolite.service.dto.UserDto;
 import com.knits.ammolite.service.dto.building.BuildingDto;
+import com.knits.ammolite.service.dto.location.LocationDto;
 import com.knits.ammolite.service.mapper.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,27 +31,18 @@ public class BuildingService {
     @Autowired
     private LocationRepository locationRepository;
     @Autowired
-    private ContactRepository contactRepository;
-    @Autowired
-    private SecurityContactRepository securityContactRepository;
-    @Autowired
-    private ReceptionRepository receptionRepository;
-    @Autowired
     private BuildingMapper buildingMapper;
     @Autowired
     private LocationMapper locationMapper;
-    @Autowired
-    private ContactMapper contactMapper;
-    @Autowired
-    private SecurityContactMapper securityContactMapper;
-    @Autowired
-    private ReceptionMapper receptionMapper;
-
 
 
     public BuildingDto create(BuildingDto buildingDto) {
         log.debug("Request to create Building : {}", buildingDto);
-        checkForUniqueness(buildingDto);
+        Location location = locationRepository.findByTitle(buildingDto.getLocation().getTitle());
+        if(location!=null){
+            log.info("Location for adding the Building already exists in DB");
+        }
+        buildingDto.setLocation(locationMapper.toDto(location));
         Building building = buildingMapper.toEntity(buildingDto);
         buildingRepository.save(building);
         return buildingMapper.toDto(building);
@@ -58,24 +52,23 @@ public class BuildingService {
         return buildingRepository.findAll().stream().map(buildingMapper::toDto).collect(Collectors.toList());
     }
 
-    public BuildingDto checkForUniqueness(BuildingDto buildingDto) {
-        log.debug("Request to check Buildings fields for uniqueness : {}", buildingDto);
-        Location location = locationRepository.findByTitle(buildingDto.getLocation().getTitle());
-        Contact contact = contactRepository.findByPhone(buildingDto.getContact().getPhone());
-        SecurityContact securityContact = securityContactRepository.findByPhone(buildingDto.getContact().getPhone());
-        Reception reception = receptionRepository.findByPhone(buildingDto.getContact().getPhone());
-        if(location!=null){
-            log.info("Location for adding the Building already exists in DB");
+    public BuildingDto update(BuildingDto buildingDto){
+        log.debug("Request to edit Building : {}", buildingDto);
+        final Building buildingFromDb = buildingRepository.findById(buildingDto.getId()).get();
+        if (buildingFromDb.getId()==null) {
+            String message = "Building with id = " + buildingDto.getId() + " does not exist.";
+            log.warn(message);
         }
-        if(contact!=null){
-            log.info("Contact phone number already exists in DB");
-        }
-        if(securityContact!=null){
-            log.info("Security contact phone number already exists in DB");
-        }
-        if(reception!=null){
-            log.info("Reception phone number already exists in DB");
-        }
-        buildingDto.setLocation(locationMapper.toDto(location));
-        return buildingDto;
-}}
+        buildingMapper.update(buildingFromDb,buildingDto);
+        buildingRepository.save(buildingFromDb);
+        return buildingMapper.toDto(buildingFromDb);
+    }
+
+    public BuildingDto partialUpdate (BuildingDto buildingDto){
+        log.debug("Request to partialUpdate Building : {}", buildingDto);
+        Building building = buildingRepository.findById(buildingDto.getId()).orElseThrow(() -> new BuildingException("Building#" + buildingDto.getId() + " not found"));
+        buildingMapper.partialUpdate(building, buildingDto);
+        buildingRepository.save(building);
+        return buildingMapper.toDto(building);
+    }
+}

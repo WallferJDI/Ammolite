@@ -1,14 +1,7 @@
 package com.knits.ammolite.mokcs.dto;
 
-import com.knits.ammolite.model.Country;
-import com.knits.ammolite.model.Location;
-import com.knits.ammolite.model.OwnershipType;
-import com.knits.ammolite.model.RealEstateType;
-import com.knits.ammolite.service.dto.CountryDto;
-import com.knits.ammolite.service.dto.LocationDto;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.knits.ammolite.service.dto.location.CountryDto;
+import com.knits.ammolite.service.dto.location.LocationDto;
 
 public class LocationDtoMock {
 

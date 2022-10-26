@@ -1,18 +1,11 @@
 package service;
 
-import com.knits.ammolite.model.Country;
-import com.knits.ammolite.model.Location;
-import com.knits.ammolite.model.OwnershipType;
-import com.knits.ammolite.model.RealEstateType;
+import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.mokcs.dto.LocationDtoMock;
 import com.knits.ammolite.mokcs.model.LocationMock;
 import com.knits.ammolite.repository.LocationRepository;
-import com.knits.ammolite.search.LocationSearchDto;
 import com.knits.ammolite.service.LocationService;
-import com.knits.ammolite.service.dto.CountryDto;
-import com.knits.ammolite.service.dto.LocationDto;
-import com.knits.ammolite.service.mapper.CountryMapper;
-import com.knits.ammolite.service.mapper.CountryMapperImpl;
+import com.knits.ammolite.service.dto.location.LocationDto;
 import com.knits.ammolite.service.mapper.LocationMapper;
 import com.knits.ammolite.service.mapper.LocationMapperImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -22,20 +15,12 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
