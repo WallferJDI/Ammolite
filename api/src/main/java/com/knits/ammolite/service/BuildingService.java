@@ -1,6 +1,7 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.BuildingException;
+import com.knits.ammolite.exceptions.LocationException;
 import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.building.Building;
 import com.knits.ammolite.model.building.Contact;
@@ -71,4 +72,8 @@ public class BuildingService {
         buildingRepository.save(building);
         return buildingMapper.toDto(building);
     }
-}
+
+    public void delete(Long id){
+        log.debug("Set status deleted = true to Building Id: {}", id);
+        buildingRepository.deleteById(id);
+}}

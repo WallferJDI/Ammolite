@@ -25,6 +25,7 @@ import org.mockito.quality.Strictness;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -121,5 +122,20 @@ public class BuildingServiceTest {
         assertThat(toUpdateDto).isEqualTo(updatedDto);
 
     }
+
+    @Test
+    @DisplayName("Delete Building success")
+    void deleteSuccess (){
+
+        Long entityIdToDelete = 1L;
+        Building foundEntity = BuildingMock.shallowBuilding(entityIdToDelete);
+        BuildingDto toDeleteDto =buildingMapper.toDto(foundEntity);
+        when(buildingRepository.findById(entityIdToDelete)).thenReturn(Optional.of(foundEntity));
+        buildingService.delete(entityIdToDelete);
+        verify(buildingRepository,times(1)).deleteById(entityIdToDelete);
+
+    }
+
+
 
 }

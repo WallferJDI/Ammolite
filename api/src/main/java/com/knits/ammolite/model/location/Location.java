@@ -12,6 +12,7 @@ import java.io.Serializable;
 import static javax.persistence.CascadeType.*;
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @AllArgsConstructor
@@ -19,12 +20,14 @@ import static javax.persistence.FetchType.LAZY;
 @Builder
 @Data
 @Table(name = "location")
+@SQLDelete(sql = "UPDATE location SET deleted = true WHERE id=?")
+@Where(clause = "deleted = false")
 public class Location implements Serializable {
 
     private final static long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @GeneratedValue(strategy = SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 

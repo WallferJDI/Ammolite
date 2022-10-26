@@ -21,7 +21,6 @@ public class LocationController {
     @PostMapping(value = "/create",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<LocationDto> createLocation(@RequestBody LocationDto locationDto){
         log.debug("REST request to createLocation Location ");
-        checkIfNullOrEmpty(locationDto);
         if (locationDto == null) {
             throw new UserException("Location data are missing");
         }
@@ -65,35 +64,12 @@ public class LocationController {
         return ResponseEntity.noContent().build();
     }
 
+
     @GetMapping(value = "/search",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<List<LocationDto>> searchLocation(@RequestBody LocationSearchDto locationSearch){
         log.debug("REST request to search Location by: {}",locationSearch);
         return ResponseEntity.ok().body(locationService.search(locationSearch).toList());
     }
-
-    public void checkIfNullOrEmpty(LocationDto locationDto){
-        String title = locationDto.getTitle();
-        String country = String.valueOf(locationDto.getCountry());
-        String address = locationDto.getAddress();
-        String zipCode = locationDto.getZipCode();
-        if(title==null||title.isEmpty()){
-            String titleMessage = "Title can`t be null or empty";
-            log.warn(titleMessage);
-            throw new UserException(titleMessage);
-        } if (country==null||country.isEmpty()){
-            String countryMessage = "Country can`t be null or empty";
-            log.warn(countryMessage);
-            throw new UserException(countryMessage);}
-        if (address==null||address.isEmpty()){
-            String addressMessage = "Address can`t be null or empty";
-            log.warn(addressMessage);
-            throw new UserException(addressMessage);}
-        if (zipCode==null||zipCode.isEmpty()){
-            String zipCodeMessage = "ZipCode can`t be null or empty";
-            log.warn(zipCodeMessage);
-            throw new UserException(zipCodeMessage);}
-    }
-
 
 
 }

@@ -62,4 +62,11 @@ public class BuildingController {
                 .ok()
                 .body(buildingService.partialUpdate(buildingDto));
     }
+
+    @DeleteMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<Void> deleteBuilding(@PathVariable Long id) {
+        log.debug("REST request to delete Building with Id : {}", id);
+        buildingService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
