@@ -1,4 +1,4 @@
-package com.knits.ammolite.service.mapper;
+package com.knits.ammolite.service.mapper.location;
 
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.service.dto.location.LocationDto;

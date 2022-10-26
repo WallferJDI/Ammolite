@@ -1,12 +1,11 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.LocationException;
-import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.location.Location;
-import com.knits.ammolite.repository.LocationRepository;
+import com.knits.ammolite.repository.location.LocationRepository;
 import com.knits.ammolite.search.LocationSearchDto;
 import com.knits.ammolite.service.dto.location.LocationDto;
-import com.knits.ammolite.service.mapper.LocationMapper;
+import com.knits.ammolite.service.mapper.location.LocationMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Filter;

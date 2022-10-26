@@ -1,18 +1,14 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.BuildingException;
-import com.knits.ammolite.exceptions.LocationException;
-import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.building.Building;
-import com.knits.ammolite.model.building.Contact;
-import com.knits.ammolite.model.building.Reception;
-import com.knits.ammolite.model.building.SecurityContact;
 import com.knits.ammolite.model.location.Location;
-import com.knits.ammolite.repository.*;
-import com.knits.ammolite.service.dto.UserDto;
+import com.knits.ammolite.repository.building.BuildingRepository;
+import com.knits.ammolite.repository.location.LocationRepository;
 import com.knits.ammolite.service.dto.building.BuildingDto;
 import com.knits.ammolite.service.dto.location.LocationDto;
-import com.knits.ammolite.service.mapper.*;
+import com.knits.ammolite.service.mapper.building.BuildingMapper;
+import com.knits.ammolite.service.mapper.location.LocationMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +45,8 @@ public class BuildingService {
         return buildingMapper.toDto(building);
     }
 
-    public List<BuildingDto> findAll() {
-        return buildingRepository.findAll().stream().map(buildingMapper::toDto).collect(Collectors.toList());
+    public List<BuildingDto> findAllByLocation(LocationDto locationDto) {
+        return buildingRepository.findAllByLocation_Title(locationDto.getTitle()).stream().map(buildingMapper::toDto).collect(Collectors.toList());
     }
 
     public BuildingDto update(BuildingDto buildingDto){

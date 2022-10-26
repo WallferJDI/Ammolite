@@ -33,11 +33,11 @@ public class BuildingController {
     }
 
     @GetMapping(value = "/all", produces = {"application/json"})
-    public ResponseEntity<List<BuildingDto>> getAllBuildings() {
-        log.debug("REST request to get all Buildings");
+    public ResponseEntity<List<BuildingDto>> getAllBuildings(@RequestBody LocationDto locationDto) {
+        log.debug("REST request to get all Buildings by Location");
         return ResponseEntity
                 .ok()
-                .body(buildingService.findAll());
+                .body(buildingService.findAllByLocation(locationDto));
     }
 
     @PutMapping(value = "/update", produces = {"application/json"}, consumes = { "application/json"})

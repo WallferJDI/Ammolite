@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.building;
 
 import com.knits.ammolite.model.building.SecurityContact;
 import org.springframework.data.jpa.repository.JpaRepository;

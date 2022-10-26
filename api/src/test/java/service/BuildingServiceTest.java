@@ -3,17 +3,21 @@ package service;
 import com.knits.ammolite.model.building.Building;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.mokcs.dto.BuildingDtoMock;
+import com.knits.ammolite.mokcs.dto.LocationDtoMock;
 import com.knits.ammolite.mokcs.model.BuildingMock;
 import com.knits.ammolite.mokcs.model.LocationMock;
-import com.knits.ammolite.repository.*;
+import com.knits.ammolite.repository.building.BuildingRepository;
+import com.knits.ammolite.repository.building.ContactRepository;
+import com.knits.ammolite.repository.building.ReceptionRepository;
+import com.knits.ammolite.repository.building.SecurityContactRepository;
+import com.knits.ammolite.repository.location.LocationRepository;
 import com.knits.ammolite.service.BuildingService;
 import com.knits.ammolite.service.dto.building.BuildingDto;
-import com.knits.ammolite.service.dto.building.ContactDto;
 import com.knits.ammolite.service.dto.location.LocationDto;
-import com.knits.ammolite.service.mapper.BuildingMapper;
-import com.knits.ammolite.service.mapper.BuildingMapperImpl;
-import com.knits.ammolite.service.mapper.LocationMapper;
-import com.knits.ammolite.service.mapper.LocationMapperImpl;
+import com.knits.ammolite.service.mapper.building.BuildingMapper;
+import com.knits.ammolite.service.mapper.building.BuildingMapperImpl;
+import com.knits.ammolite.service.mapper.location.LocationMapper;
+import com.knits.ammolite.service.mapper.location.LocationMapperImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +26,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -136,6 +141,18 @@ public class BuildingServiceTest {
 
     }
 
+    @Test
+    @DisplayName("Find All Buildings By Location success")
+    void findAllSuccess (){
+        int expectedSize=10;
+        LocationDto location = LocationDtoMock.shallowLocationDto(1l);
+        List<Building> resultSet =BuildingMock.shallowListOfBuilding(expectedSize);
+        when(buildingRepository.findAllByLocation_Title(location.getTitle())).thenReturn(resultSet);
 
+        List<BuildingDto> resultsetDto = buildingService.findAllByLocation(location);
+        verify(buildingMapper, times(expectedSize)).toDto(any(Building.class));
+        assertThat(resultsetDto.size()).isEqualTo(expectedSize);
+    }
 
-}
+    }
+

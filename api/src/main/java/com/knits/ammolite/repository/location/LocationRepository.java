@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.location;
 
 import com.knits.ammolite.model.location.Location;
 import org.springframework.data.domain.Page;

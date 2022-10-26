@@ -10,6 +10,7 @@ import com.knits.ammolite.model.location.OwnershipType;
 import com.knits.ammolite.model.location.RealEstateType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BuildingMock {
 
@@ -23,5 +24,13 @@ public class BuildingMock {
                 .reception(new Reception(1l,"A mock Fax,","A mock Phone"))
                 .isDeleted(false)
                 .build();
+    }
+
+    public static List<Building> shallowListOfBuilding(int howMany){
+        List<Building> mockBuildings = new ArrayList<>();
+        for (int i=0;i<howMany; i++){
+            mockBuildings.add(shallowBuilding(Long.valueOf(i)));
+        }
+        return mockBuildings;
     }
 }
