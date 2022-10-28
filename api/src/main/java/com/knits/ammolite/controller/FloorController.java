@@ -1,8 +1,10 @@
 package com.knits.ammolite.controller;
 
+import com.knits.ammolite.exceptions.BuildingException;
 import com.knits.ammolite.exceptions.FloorException;
 import com.knits.ammolite.service.FloorService;
 import com.knits.ammolite.service.dto.FloorDto;
+import com.knits.ammolite.service.dto.building.BuildingDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,29 @@ public class FloorController {
         return ResponseEntity
                 .ok()
                 .body(floorService.findAll());
+    }
+
+    @PutMapping(value = "/update", produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<FloorDto> updateFloor(@RequestBody FloorDto floorDto){
+        log.debug("REST request to edit Building");
+        if (floorDto == null) {
+            throw new FloorException("Floor data are missing");
+        }
+        return ResponseEntity.ok().body(floorService.update(floorDto));
+    }
+
+    @PatchMapping(value = "/update/{id}",  produces = {"application/json"}, consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<FloorDto> partialUpdateBuilding(
+            @PathVariable(value = "id", required = false) final Long id,
+            @RequestBody FloorDto floorDto){
+        log.debug("REST request to partial update Floor ");
+
+        if (floorDto == null) {
+            throw new FloorException("Floor data are missing");
+        }
+        return ResponseEntity
+                .ok()
+                .body(floorService.partialUpdate(floorDto));
     }
 
 

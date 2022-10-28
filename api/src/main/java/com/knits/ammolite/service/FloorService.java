@@ -8,6 +8,7 @@ import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.dto.UserDto;
+import com.knits.ammolite.service.dto.building.BuildingDto;
 import com.knits.ammolite.service.mapper.FloorMapper;
 import com.knits.ammolite.service.mapper.building.BuildingMapper;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,26 @@ public class FloorService {
 
     public List<FloorDto> findAll() {
         return floorRepository.findAll().stream().map(floorMapper::toDto).collect(Collectors.toList());
+    }
+
+    public FloorDto update(FloorDto floorDto){
+        log.debug("Request to edit Floor : {}", floorDto);
+        final Floor floorFromDb = floorRepository.findById(floorDto.getId()).get();
+        if (floorFromDb.getId()==null) {
+            String message = "Floor with id = " + floorDto.getId() + " does not exist.";
+            log.warn(message);
+        }
+        floorMapper.update(floorFromDb,floorDto);
+        floorRepository.save(floorFromDb);
+        return floorMapper.toDto(floorFromDb);
+    }
+
+    public FloorDto partialUpdate (FloorDto floorDto){
+        log.debug("Request to partial Update Floor : {}", floorDto);
+        Floor floor = floorRepository.findById(floorDto.getId()).orElseThrow(() -> new FloorException("Floor " + floorDto.getId() + " not found"));
+        floorMapper.partialUpdate(floor, floorDto);
+        floorRepository.save(floor);
+        return floorMapper.toDto(floor);
     }
 
 }
