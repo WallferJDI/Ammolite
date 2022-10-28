@@ -1,14 +1,10 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.exceptions.BuildingException;
 import com.knits.ammolite.exceptions.FloorException;
 import com.knits.ammolite.model.Floor;
-import com.knits.ammolite.model.building.Building;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.dto.FloorDto;
-import com.knits.ammolite.service.dto.UserDto;
-import com.knits.ammolite.service.dto.building.BuildingDto;
 import com.knits.ammolite.service.mapper.FloorMapper;
 import com.knits.ammolite.service.mapper.building.BuildingMapper;
 import lombok.RequiredArgsConstructor;
@@ -65,5 +61,9 @@ public class FloorService {
         floorRepository.save(floor);
         return floorMapper.toDto(floor);
     }
+
+    public void delete(Long id){
+        log.debug("Set status deleted = true to Floor Id: {}", id);
+        floorRepository.deleteById(id);}
 
 }

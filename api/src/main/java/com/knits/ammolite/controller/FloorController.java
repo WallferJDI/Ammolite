@@ -60,5 +60,12 @@ public class FloorController {
                 .body(floorService.partialUpdate(floorDto));
     }
 
+    @DeleteMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<Void> deleteFloor(@PathVariable Long id) {
+        log.debug("REST request to delete Floor with Id : {}", id);
+        floorService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
