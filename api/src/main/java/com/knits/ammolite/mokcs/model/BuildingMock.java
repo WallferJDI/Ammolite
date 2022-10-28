@@ -22,6 +22,8 @@ public class BuildingMock {
                 .contact(new Contact(1l,"A mock Firstname","A mock Lastname","A mock Email,","A mock Phone"))
                 .security(new SecurityContact(1l,"A mock Firstname","A mock Lastname","A mock Email,","A mock Phone"))
                 .reception(new Reception(1l,"A mock Fax,","A mock Phone"))
+                .realEstate(RealEstateType.OFFICE)
+                .street("A mock Address")
                 .isDeleted(false)
                 .build();
     }

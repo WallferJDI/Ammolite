@@ -1,0 +1,48 @@
+package com.knits.ammolite.service;
+
+import com.knits.ammolite.exceptions.BuildingException;
+import com.knits.ammolite.exceptions.FloorException;
+import com.knits.ammolite.model.Floor;
+import com.knits.ammolite.model.building.Building;
+import com.knits.ammolite.repository.FloorRepository;
+import com.knits.ammolite.repository.building.BuildingRepository;
+import com.knits.ammolite.service.dto.FloorDto;
+import com.knits.ammolite.service.dto.UserDto;
+import com.knits.ammolite.service.mapper.FloorMapper;
+import com.knits.ammolite.service.mapper.building.BuildingMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Slf4j
+@RequiredArgsConstructor
+@Service
+@Transactional
+public class FloorService {
+
+    @Autowired
+    private FloorRepository floorRepository;
+    @Autowired
+    private BuildingRepository buildingRepository;
+    @Autowired
+    private BuildingMapper buildingMapper;
+    @Autowired
+    private FloorMapper floorMapper;
+
+    public FloorDto create(FloorDto floorDto) {
+        log.debug("Request to create Floor : {}", floorDto);
+        //Building building = buildingRepository.findById(floorDto.getBuilding().getId()).orElseThrow(() -> new BuildingException("Building #" + floorDto.getBuilding().getId() + " not found"));
+        Floor floor = floorMapper.toEntity(floorDto);
+        floorRepository.save(floor);
+        return floorMapper.toDto(floor); }
+
+    public List<FloorDto> findAll() {
+        return floorRepository.findAll().stream().map(floorMapper::toDto).collect(Collectors.toList());
+    }
+
+}

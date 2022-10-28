@@ -22,6 +22,10 @@ public class BuildingDto {
 
     private ReceptionDto reception;
 
+    private String realEstate;
+
+    private String street;
+
     private boolean isDeleted;
 
 }

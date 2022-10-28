@@ -20,10 +20,10 @@ public interface LocationMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void partialUpdate(LocationDto locationDto, @MappingTarget Location location);
 
-    @Mapping(source = "location.ownership",target = "ownership")
-    @Mapping(source = "location.realEstate",target = "realEstate")
+   @Mapping(source = "location.ownership",target = "ownership")
+   @Mapping(source = "location.realEstate",target = "realEstate")
     List<LocationDto> toDtos(List<Location> locations);
-    @InheritInverseConfiguration
+   @InheritInverseConfiguration
     List<Location> toEntities (List<LocationDto> locationDtos);
 
 

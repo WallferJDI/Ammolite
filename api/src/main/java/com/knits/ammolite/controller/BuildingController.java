@@ -27,7 +27,7 @@ public class BuildingController {
     public ResponseEntity<BuildingDto> createBuilding(@RequestBody BuildingDto buildingDto){
         log.debug("REST request to create Building");
         if (buildingDto == null) {
-            throw new UserException("Building data are missing");
+            throw new BuildingException("Building data are missing");
         }
         return ResponseEntity.ok().body(buildingService.create(buildingDto));
     }
@@ -44,7 +44,7 @@ public class BuildingController {
     public ResponseEntity<BuildingDto> updateBuilding(@RequestBody BuildingDto buildingDto){
         log.debug("REST request to edit Building");
         if (buildingDto == null) {
-            throw new UserException("Location data are missing");
+            throw new BuildingException("Location data are missing");
         }
         return ResponseEntity.ok().body(buildingService.update(buildingDto));
     }

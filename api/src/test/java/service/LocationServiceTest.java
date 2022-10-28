@@ -19,7 +19,6 @@ import org.mockito.quality.Strictness;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -88,13 +87,13 @@ class LocationServiceTest {
     @Test
     @DisplayName("delete success")
     void deleteSuccess (){
+
         Long entityIdToDelete = 1L;
         Location foundEntity = LocationMock.shallowLocation(entityIdToDelete);
-        foundEntity.setDeleted(true);
-        LocationDto toUpdateDto =mapper.toDto(foundEntity);
+        LocationDto toDeleteDto =mapper.toDto(foundEntity);
         when(repository.findById(entityIdToDelete)).thenReturn(Optional.of(foundEntity));
-        service.delete(toUpdateDto.getId());
-        verify(repository, times(1)).save(foundEntity);
-        assertSame(foundEntity.isDeleted(),toUpdateDto.isDeleted());
+        service.delete(entityIdToDelete);
+        verify(repository,times(1)).deleteById(entityIdToDelete);
+
     }
 }

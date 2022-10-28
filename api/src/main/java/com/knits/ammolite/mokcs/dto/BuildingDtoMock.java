@@ -16,6 +16,8 @@ public class BuildingDtoMock {
                 .contact(new ContactDto(1l,"A mock Firstname","A mock Lastname","A mock Email,","A mock Phone"))
                 .security(new SecurityContactDto(1l,"A mock Firstname","A mock Lastname","A mock Email,","A mock Phone"))
                 .reception(new ReceptionDto(1l,"A mock Fax,","A mock Phone"))
+                .realEstate("OFFICE")
+                .street("A mock Address")
                 .isDeleted(false)
                 .build();
     }

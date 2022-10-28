@@ -1,6 +1,7 @@
 package com.knits.ammolite.model.building;
 
 import com.knits.ammolite.model.location.Location;
+import com.knits.ammolite.model.location.RealEstateType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -54,6 +55,12 @@ public class Building  implements Serializable {
 
     @Column(name = "deleted")
     private boolean isDeleted=false;
+
+    @Column(name = "real_estate")
+    @Enumerated(EnumType.STRING)
+    private RealEstateType realEstate;
+
+    private String street;
 
 
 

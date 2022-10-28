@@ -1,11 +1,9 @@
 package service;
 
 import com.knits.ammolite.model.building.Building;
-import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.mokcs.dto.BuildingDtoMock;
 import com.knits.ammolite.mokcs.dto.LocationDtoMock;
 import com.knits.ammolite.mokcs.model.BuildingMock;
-import com.knits.ammolite.mokcs.model.LocationMock;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.repository.building.ContactRepository;
 import com.knits.ammolite.repository.building.ReceptionRepository;
