@@ -12,7 +12,7 @@ public class BuildingDtoMock {
     public static BuildingDto shallowBuildingDto(Long id){
         return BuildingDto.builder()
                 .id(id)
-                .location(new LocationDto(1l,"A mock Location",new CountryDto(),"A mock Address","A mock zipCode","OFFICE",false,"A mock Longitude","A mock Longitude","OUR_PREMISES" ,false))
+                .location(new LocationDto(1l,"A mock Location",new CountryDto(),"A mock Address","A mock zipCode","OUR_PREMISES",false,"A mock Longitude","A mock Longitude","OFFICE" ,false))
                 .contact(new ContactDto(1l,"A mock Firstname","A mock Lastname","A mock Email,","A mock Phone"))
                 .security(new SecurityContactDto(1l,"A mock Firstname","A mock Lastname","A mock Email,","A mock Phone"))
                 .reception(new ReceptionDto(1l,"A mock Fax,","A mock Phone"))

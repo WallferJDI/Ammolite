@@ -1,12 +1,19 @@
 package service;
 
 import com.knits.ammolite.model.Floor;
+import com.knits.ammolite.model.building.Building;
+import com.knits.ammolite.model.location.RealEstateType;
+import com.knits.ammolite.mokcs.dto.BuildingDtoMock;
 import com.knits.ammolite.mokcs.dto.FloorDtoMock;
+import com.knits.ammolite.mokcs.dto.LocationDtoMock;
+import com.knits.ammolite.mokcs.model.BuildingMock;
 import com.knits.ammolite.mokcs.model.FloorMock;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.FloorService;
 import com.knits.ammolite.service.dto.FloorDto;
+import com.knits.ammolite.service.dto.building.BuildingDto;
+import com.knits.ammolite.service.dto.location.LocationDto;
 import com.knits.ammolite.service.mapper.FloorMapper;
 import com.knits.ammolite.service.mapper.FloorMapperImpl;
 import com.knits.ammolite.service.mapper.building.BuildingMapper;
@@ -21,6 +28,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -50,17 +58,20 @@ public class FloorServiceTest {
     @Captor
     private ArgumentCaptor<Floor> floorCaptor;
 
+    @Captor
+    private ArgumentCaptor<Building> buildingCaptor;
+
     @Test
     @DisplayName("Save Floor Success")
     void saveSuccess() {
 
         FloorDto toSaveDto = FloorDtoMock.shallowFloorDto(null);
-
-        when(floorRepository.save(Mockito.any(Floor.class)))
+        Building building = buildingMapper.toEntity(toSaveDto.getBuilding());
+        buildingRepository.save(building);
+        when(buildingRepository.findById(toSaveDto.getBuilding().getId())).thenReturn(Optional.of(building));
+        when(floorRepository.save(any(Floor.class)))
                 .thenAnswer(i -> i.getArguments()[0]);
-
         FloorDto savedDto = floorService.create(toSaveDto);
-
         verify(floorRepository).save(floorCaptor.capture());
         Floor toSaveEntity = floorCaptor.getValue();
 
@@ -130,5 +141,18 @@ public class FloorServiceTest {
         floorService.delete(entityIdToDelete);
         verify(floorRepository,times(1)).deleteById(entityIdToDelete);
 
+    }
+
+    @Test
+    @DisplayName("Find All Buildings By Location success")
+    void findAllSuccess (){
+        int expectedSize=10;
+        FloorDto floorDto = FloorDtoMock.shallowFloorDto(1l);
+        List<Floor> resultSet = FloorMock.shallowListOfFloors(expectedSize);
+        when(floorRepository.findAllByRealEstate(RealEstateType.valueOf(floorDto.getRealEstate()))).thenReturn(resultSet);
+
+        List<FloorDto> resultsetDto = floorService.findAllByRealEstate(floorDto);
+        verify(floorMapper, times(expectedSize)).toDto(any(Floor.class));
+        assertThat(resultsetDto.size()).isEqualTo(expectedSize);
     }
 }

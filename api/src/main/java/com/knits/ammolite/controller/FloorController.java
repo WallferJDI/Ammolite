@@ -8,6 +8,7 @@ import com.knits.ammolite.service.dto.building.BuildingDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,11 +31,11 @@ public class FloorController {
     }
 
     @GetMapping(value = "/all", produces = {"application/json"})
-    public ResponseEntity<List<FloorDto>> getAll() {
+    public ResponseEntity<List<FloorDto>> getAll(@RequestBody FloorDto floorDto) {
         log.debug("REST request to get all Floors");
         return ResponseEntity
                 .ok()
-                .body(floorService.findAll());
+                .body(floorService.findAllByRealEstate(floorDto));
     }
 
     @PutMapping(value = "/update", produces = {"application/json"}, consumes = { "application/json"})

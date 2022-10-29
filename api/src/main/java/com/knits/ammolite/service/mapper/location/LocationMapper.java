@@ -9,8 +9,8 @@ import java.util.List;
 @Mapper(componentModel = "spring",imports = {CountryMapper.class})
 public interface LocationMapper {
 
-   @Mapping(source = "location.ownership",target = "ownership")
-   @Mapping(source = "location.realEstate",target = "realEstate")
+   @Mapping(source = "ownership",target = "ownership")
+   @Mapping(source = "realEstate",target = "realEstate")
     LocationDto toDto(Location location);
 
     @InheritInverseConfiguration
@@ -20,8 +20,8 @@ public interface LocationMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void partialUpdate(LocationDto locationDto, @MappingTarget Location location);
 
-   @Mapping(source = "location.ownership",target = "ownership")
-   @Mapping(source = "location.realEstate",target = "realEstate")
+   @Mapping(source = "ownership",target = "ownership")
+   @Mapping(source = "realEstate",target = "realEstate")
     List<LocationDto> toDtos(List<Location> locations);
    @InheritInverseConfiguration
     List<Location> toEntities (List<LocationDto> locationDtos);

@@ -1,7 +1,10 @@
 package com.knits.ammolite.service;
 
+import com.knits.ammolite.exceptions.BuildingException;
 import com.knits.ammolite.exceptions.FloorException;
 import com.knits.ammolite.model.Floor;
+import com.knits.ammolite.model.building.Building;
+import com.knits.ammolite.model.location.RealEstateType;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.dto.FloorDto;
@@ -27,19 +30,17 @@ public class FloorService {
     @Autowired
     private BuildingRepository buildingRepository;
     @Autowired
-    private BuildingMapper buildingMapper;
-    @Autowired
     private FloorMapper floorMapper;
 
     public FloorDto create(FloorDto floorDto) {
         log.debug("Request to create Floor : {}", floorDto);
-        //Building building = buildingRepository.findById(floorDto.getBuilding().getId()).orElseThrow(() -> new BuildingException("Building #" + floorDto.getBuilding().getId() + " not found"));
+        buildingRepository.findById(floorDto.getBuilding().getId()).orElseThrow(() -> new BuildingException("Building #" + floorDto.getBuilding().getId() + " not found"));
         Floor floor = floorMapper.toEntity(floorDto);
         floorRepository.save(floor);
         return floorMapper.toDto(floor); }
 
-    public List<FloorDto> findAll() {
-        return floorRepository.findAll().stream().map(floorMapper::toDto).collect(Collectors.toList());
+    public List<FloorDto> findAllByRealEstate(FloorDto floorDto) {
+        return floorRepository.findAllByRealEstate(RealEstateType.valueOf(floorDto.getRealEstate())).stream().map(floorMapper::toDto).collect(Collectors.toList());
     }
 
     public FloorDto update(FloorDto floorDto){
