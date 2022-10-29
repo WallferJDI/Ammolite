@@ -15,7 +15,7 @@ public class LocationMock {
         return Location.builder()
                 .id(id)
                 .title("A mock Title")
-                .country(new Country(1l,"A mock Country",new ArrayList<>()))
+                .country(new Country(1L,"A mock Country",new ArrayList<>()))
                 .address("A mock Address")
                 .zipCode("A mock zipCode")
                 .mapCoordinates(false)

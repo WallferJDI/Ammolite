@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Filter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -18,7 +19,9 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @Builder
 @Data
-public class Country {
+public class Country implements Serializable {
+
+    private final static long serialVersionUID = 9L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")

@@ -3,17 +3,12 @@ package service;
 import com.knits.ammolite.model.Floor;
 import com.knits.ammolite.model.building.Building;
 import com.knits.ammolite.model.location.RealEstateType;
-import com.knits.ammolite.mokcs.dto.BuildingDtoMock;
 import com.knits.ammolite.mokcs.dto.FloorDtoMock;
-import com.knits.ammolite.mokcs.dto.LocationDtoMock;
-import com.knits.ammolite.mokcs.model.BuildingMock;
 import com.knits.ammolite.mokcs.model.FloorMock;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.FloorService;
 import com.knits.ammolite.service.dto.FloorDto;
-import com.knits.ammolite.service.dto.building.BuildingDto;
-import com.knits.ammolite.service.dto.location.LocationDto;
 import com.knits.ammolite.service.mapper.FloorMapper;
 import com.knits.ammolite.service.mapper.FloorMapperImpl;
 import com.knits.ammolite.service.mapper.building.BuildingMapper;
@@ -58,8 +53,6 @@ public class FloorServiceTest {
     @Captor
     private ArgumentCaptor<Floor> floorCaptor;
 
-    @Captor
-    private ArgumentCaptor<Building> buildingCaptor;
 
     @Test
     @DisplayName("Save Floor Success")
