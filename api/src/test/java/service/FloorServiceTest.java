@@ -99,7 +99,7 @@ public class FloorServiceTest {
     }
 
     @Test
-    @DisplayName("Update Building success")
+    @DisplayName("Update Floor success")
     void updateSuccess (){
 
         Long entityIdToUpdate = 1L;
@@ -124,7 +124,7 @@ public class FloorServiceTest {
     }
 
     @Test
-    @DisplayName("Delete Building success")
+    @DisplayName("Delete Floor success")
     void deleteSuccess (){
 
         Long entityIdToDelete = 1L;
@@ -137,7 +137,7 @@ public class FloorServiceTest {
     }
 
     @Test
-    @DisplayName("Find All Buildings By Location success")
+    @DisplayName("Find All Floor By Real Estate success")
     void findAllSuccess (){
         int expectedSize=10;
         FloorDto floorDto = FloorDtoMock.shallowFloorDto(1l);

@@ -34,4 +34,11 @@ public class WorkAreaController {
                 .ok()
                 .body(workAreaService.findAll());
     }
+
+    @DeleteMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<Void> deleteWorkArea(@PathVariable Long id) {
+        log.debug("REST request to delete Work Area with Id : {}", id);
+        workAreaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -3,9 +3,12 @@ package service;
 import com.knits.ammolite.model.Floor;
 import com.knits.ammolite.model.WorkArea;
 import com.knits.ammolite.mokcs.dto.WorkAreaDtoMock;
+import com.knits.ammolite.mokcs.model.FloorMock;
+import com.knits.ammolite.mokcs.model.WorkAreaMock;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.WorkAreaRepository;
 import com.knits.ammolite.service.WorkAreaService;
+import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.dto.WorkAreaDto;
 import com.knits.ammolite.service.mapper.FloorMapper;
 import com.knits.ammolite.service.mapper.FloorMapperImpl;
@@ -47,7 +50,7 @@ public class WorkAreaServiceTest {
     private ArgumentCaptor<WorkArea> workAreaCaptor;
 
     @Test
-    @DisplayName("Save Floor Success")
+    @DisplayName("Save WorkArea Success")
     void saveSuccess() {
 
         WorkAreaDto toSaveDto = WorkAreaDtoMock.shallowWorkAreaDto(null);
@@ -65,5 +68,18 @@ public class WorkAreaServiceTest {
         verify(workAreaMapper, times(1)).toDto(toSaveEntity);
 
         assertThat(toSaveDto).isEqualTo(savedDto);
+    }
+
+    @Test
+    @DisplayName("Delete WorkArea success")
+    void deleteSuccess (){
+
+        Long entityIdToDelete = 1L;
+        WorkArea foundEntity = WorkAreaMock.shallowWorkArea(entityIdToDelete);
+        WorkAreaDto toDeleteDto =workAreaMapper.toDto(foundEntity);
+        when(workAreaRepository.findById(entityIdToDelete)).thenReturn(Optional.of(foundEntity));
+        workAreaService.delete(entityIdToDelete);
+        verify(workAreaRepository,times(1)).deleteById(entityIdToDelete);
+
     }
 }

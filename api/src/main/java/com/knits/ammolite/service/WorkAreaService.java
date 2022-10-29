@@ -40,4 +40,8 @@ public class WorkAreaService {
     public List<WorkAreaDto> findAll() {
         return workAreaRepository.findAll().stream().map(workAreaMapper::toDto).collect(Collectors.toList());
     }
+
+    public void delete(Long id){
+        log.debug("Set status deleted = true to WorkArea Id: {}", id);
+        workAreaRepository.deleteById(id);}
 }
