@@ -2,6 +2,7 @@ package com.knits.ammolite.controller;
 
 import com.knits.ammolite.exceptions.WorkAreaException;
 import com.knits.ammolite.service.WorkAreaService;
+import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.dto.WorkAreaDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,11 @@ public class WorkAreaController {
     }
 
     @GetMapping(value = "/all", produces = {"application/json"})
-    public ResponseEntity<List<WorkAreaDto>> getAll() {
-        log.debug("REST request to get all Floors");
+    public ResponseEntity<List<WorkAreaDto>> getAll(@RequestBody FloorDto floorDto) {
+        log.debug("REST request to get all Work Areas by Floor number");
         return ResponseEntity
                 .ok()
-                .body(workAreaService.findAll());
+                .body(workAreaService.findAllByFloorNumber(floorDto));
     }
 
     @DeleteMapping(value = "/delete/{id}",produces = {"application/json"}, consumes = { "application/json"})

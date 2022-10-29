@@ -4,6 +4,7 @@ import com.knits.ammolite.exceptions.WorkAreaException;
 import com.knits.ammolite.model.WorkArea;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.WorkAreaRepository;
+import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.dto.WorkAreaDto;
 import com.knits.ammolite.service.mapper.WorkAreaMapper;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +38,8 @@ public class WorkAreaService {
         workAreaRepository.save(workArea);
         return workAreaMapper.toDto(workArea); }
 
-    public List<WorkAreaDto> findAll() {
-        return workAreaRepository.findAll().stream().map(workAreaMapper::toDto).collect(Collectors.toList());
+    public List<WorkAreaDto> findAllByFloorNumber(FloorDto floorDto) {
+        return workAreaRepository.findAllByFloor_FloorNumber(floorDto.getFloorNumber()).stream().map(workAreaMapper::toDto).collect(Collectors.toList());
     }
 
     public void delete(Long id){

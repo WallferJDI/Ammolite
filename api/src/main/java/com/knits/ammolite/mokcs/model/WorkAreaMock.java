@@ -32,7 +32,7 @@ public class WorkAreaMock {
                 .build();
     }
 
-    public static List<WorkArea> shallowListOfFloors(int howMany){
+    public static List<WorkArea> shallowListOfWorkAreas(int howMany){
         List<WorkArea> mockWorkAreas = new ArrayList<>();
         for (int i=0;i<howMany; i++){
             mockWorkAreas.add(shallowWorkArea(Long.valueOf(i)));

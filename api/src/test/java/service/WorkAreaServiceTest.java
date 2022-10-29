@@ -2,6 +2,8 @@ package service;
 
 import com.knits.ammolite.model.Floor;
 import com.knits.ammolite.model.WorkArea;
+import com.knits.ammolite.model.location.RealEstateType;
+import com.knits.ammolite.mokcs.dto.FloorDtoMock;
 import com.knits.ammolite.mokcs.dto.WorkAreaDtoMock;
 import com.knits.ammolite.mokcs.model.FloorMock;
 import com.knits.ammolite.mokcs.model.WorkAreaMock;
@@ -22,6 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -81,5 +84,18 @@ public class WorkAreaServiceTest {
         workAreaService.delete(entityIdToDelete);
         verify(workAreaRepository,times(1)).deleteById(entityIdToDelete);
 
+    }
+
+    @Test
+    @DisplayName("Find All WorkArea By Floor number success")
+    void findAllSuccess (){
+        int expectedSize=10;
+        FloorDto floorDto = FloorDtoMock.shallowFloorDto(1l);
+        List<WorkArea> resultSet = WorkAreaMock.shallowListOfWorkAreas(expectedSize);
+        when(workAreaRepository.findAllByFloor_FloorNumber(floorDto.getFloorNumber())).thenReturn(resultSet);
+
+        List<WorkAreaDto> resultsetDto = workAreaService.findAllByFloorNumber(floorDto);
+        verify(workAreaMapper, times(expectedSize)).toDto(any(WorkArea.class));
+        assertThat(resultsetDto.size()).isEqualTo(expectedSize);
     }
 }
