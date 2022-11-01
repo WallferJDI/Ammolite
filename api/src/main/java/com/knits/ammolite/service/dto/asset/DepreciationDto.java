@@ -8,7 +8,7 @@ import java.time.Month;
 @Data
 public class DepreciationDto {
     private Long id;
-    private  boolean depreciationAsset;
+    private Boolean depreciationAsset;
     private LocalDateTime startDate;
     private Integer depreciableCost;
     private Integer currentValue;

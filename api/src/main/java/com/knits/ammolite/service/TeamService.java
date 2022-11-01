@@ -21,7 +21,12 @@ public class TeamService {
 
     public TeamDto createTeam(TeamDto teamDto){
         log.debug("Request to save Team : {}", teamDto);
-        Team team = teamRepository.save( teamMapper.toEntity(teamDto));
+        Team team;
+        if(teamRepository.existsById(teamDto.getId())){
+            team = teamRepository.findById(teamDto.getId()).get();
+        }else{
+            team = teamRepository.save(teamMapper.toEntity(teamDto));
+        }
         return teamMapper.toDto(team);
 
     }

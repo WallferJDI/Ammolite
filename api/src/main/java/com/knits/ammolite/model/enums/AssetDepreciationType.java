@@ -1,5 +1,5 @@
 package com.knits.ammolite.model.enums;
 
-public enum AssetType {
+public enum AssetDepreciationType {
     Capitalized,CIP,Expensed
 }

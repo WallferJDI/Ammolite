@@ -21,7 +21,13 @@ public class GroupService {
 
     public GroupDto createGroup(GroupDto groupDto){
         log.debug("Request to save Group : {}", groupDto);
-        Group group =  groupRepository.save(groupMapper.toEntity(groupDto));
+
+        Group group;
+        if(groupRepository.existsById(groupDto.getId())){
+            group = groupRepository.findById(groupDto.getId()).get();
+        }else{
+            group =  groupRepository.save(groupMapper.toEntity(groupDto));
+        }
         return groupMapper.toDto(group);
     }
 

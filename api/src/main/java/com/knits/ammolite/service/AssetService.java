@@ -2,6 +2,7 @@ package com.knits.ammolite.service;
 
 
 import com.knits.ammolite.model.asset.Asset;
+import com.knits.ammolite.model.asset.Category;
 import com.knits.ammolite.repository.AssetRepository;
 import com.knits.ammolite.service.dto.asset.AssetDto;
 import com.knits.ammolite.service.mapper.asset.AssetMapper;
@@ -23,9 +24,13 @@ public class AssetService {
 
     public AssetDto save(AssetDto assetDto){
         log.debug("Request to save Asset : {}", assetDto);
+        Asset asset;
         assetDto.setCategory(categoryService.save(assetDto.getName()));
-        Asset asset = assetMapper.toEntity(assetDto);
-        assetRepository.save(asset);
+        if(assetRepository.existsById(assetDto.getId())){
+            asset = assetRepository.findById(assetDto.getId()).get();
+        }else{
+            asset = assetRepository.save(assetMapper.toEntity(assetDto)) ;
+        }
         return assetMapper.toDto(asset);
 
     }

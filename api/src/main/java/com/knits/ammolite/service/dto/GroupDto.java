@@ -1,7 +1,5 @@
 package com.knits.ammolite.service.dto;
 
-
-import com.knits.ammolite.model.User;
 import com.knits.ammolite.model.enums.Status;
 import lombok.Data;
 
@@ -16,6 +14,5 @@ public class GroupDto {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private Status status;
-    private User creator;
-
+    private UserDto creator;
 }

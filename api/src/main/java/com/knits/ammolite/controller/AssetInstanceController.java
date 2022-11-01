@@ -18,6 +18,7 @@ public class AssetInstanceController {
 
     private final AssetInstanceService assetInstanceService;
 
+
     @PostMapping(value = "/asset-instances",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<AssetInstanceDto> createAssetInstance(@RequestBody AssetInstanceDto assetInstanceDto){
         log.debug("REST request to create AssetInstance");

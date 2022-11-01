@@ -27,7 +27,7 @@ public class Depreciation {
     @Column
     private DepreciationMethodType depreciationMethod;
     @Column
-    private Integer salvation;
+    private BigDecimal salvation;
 
 
 }

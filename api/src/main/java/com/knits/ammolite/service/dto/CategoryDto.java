@@ -10,6 +10,6 @@ import java.util.Set;
 public class CategoryDto {
     private Long id;
     private String name;
-    private Category parentCategory;
+    private CategoryDto parentCategory;
     private Set<Category> subcategory = new HashSet<>();
 }

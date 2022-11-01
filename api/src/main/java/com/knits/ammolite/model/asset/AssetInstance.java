@@ -4,7 +4,7 @@ package com.knits.ammolite.model.asset;
 import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;
 import com.knits.ammolite.model.enums.StateType;
-import com.knits.ammolite.model.enums.AssetType;
+import com.knits.ammolite.model.enums.AssetDepreciationType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -42,25 +42,25 @@ public class AssetInstance implements Serializable {
     @Column
     private StateType state;
     @Column
-    private AssetType type;
+    private AssetDepreciationType type;
     @ElementCollection(targetClass = String.class)
     @Column
     private Map<String,String> technicalSpecifications = new HashMap<>();
 
     @Column
     private Ownership ownership;
-    @Column(nullable = false)
-    private String vendor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vendor vendor;
     @OneToOne
     @JoinColumn(name = "id")
     private Order order;
     @Column
     private  Boolean depreciationAsset;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Depreciation depreciation;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Warranty warranty;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Document> documents;
 
     public void setDepreciationAsset(Boolean depreciationAsset) {
