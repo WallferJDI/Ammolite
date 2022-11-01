@@ -1,6 +1,6 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.model.Group;
+import com.knits.ammolite.model.organization.Group;
 import com.knits.ammolite.repository.GroupRepository;
 import com.knits.ammolite.service.dto.GroupDto;
 import com.knits.ammolite.service.mapper.GroupMapper;
@@ -23,8 +23,8 @@ public class GroupService {
         log.debug("Request to save Group : {}", groupDto);
 
         Group group;
-        if(groupRepository.existsById(groupDto.getId())){
-            group = groupRepository.findById(groupDto.getId()).get();
+        if(groupRepository.existsByName(groupDto.getName())){
+            group = groupRepository.findByName(groupDto.getName()).get();
         }else{
             group =  groupRepository.save(groupMapper.toEntity(groupDto));
         }

@@ -1,6 +1,6 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.model.Team;
+import com.knits.ammolite.model.organization.Team;
 import com.knits.ammolite.repository.TeamRepository;
 import com.knits.ammolite.service.dto.TeamDto;
 import com.knits.ammolite.service.mapper.TeamMapper;
@@ -22,8 +22,8 @@ public class TeamService {
     public TeamDto createTeam(TeamDto teamDto){
         log.debug("Request to save Team : {}", teamDto);
         Team team;
-        if(teamRepository.existsById(teamDto.getId())){
-            team = teamRepository.findById(teamDto.getId()).get();
+        if(teamRepository.existsByName(teamDto.getName())){
+            team = teamRepository.findByName(teamDto.getName()).get();
         }else{
             team = teamRepository.save(teamMapper.toEntity(teamDto));
         }
