@@ -1,5 +1,6 @@
 package com.knits.ammolite.controller;
 
+import com.knits.ammolite.exceptions.FloorException;
 import com.knits.ammolite.exceptions.WorkAreaException;
 import com.knits.ammolite.service.WorkAreaService;
 import com.knits.ammolite.service.dto.FloorDto;
@@ -41,5 +42,28 @@ public class WorkAreaController {
         log.debug("REST request to delete Work Area with Id : {}", id);
         workAreaService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/update", produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<WorkAreaDto> updateWorkArea(@RequestBody WorkAreaDto workAreaDto){
+        log.debug("REST request to edit Work Area");
+        if (workAreaDto == null) {
+            throw new WorkAreaException("Work Area data are missing");
+        }
+        return ResponseEntity.ok().body(workAreaService.update(workAreaDto));
+    }
+
+    @PatchMapping(value = "/update/{id}",  produces = {"application/json"}, consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<WorkAreaDto> partialUpdateWorkArea(
+            @PathVariable(value = "id", required = false) final Long id,
+            @RequestBody WorkAreaDto workAreaDto){
+        log.debug("REST request to partial update Work Area ");
+
+        if (workAreaDto == null) {
+            throw new WorkAreaException("Work Area data are missing");
+        }
+        return ResponseEntity
+                .ok()
+                .body(workAreaService.partialUpdate(workAreaDto));
     }
 }

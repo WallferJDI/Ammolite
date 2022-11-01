@@ -2,10 +2,8 @@ package service;
 
 import com.knits.ammolite.model.Floor;
 import com.knits.ammolite.model.WorkArea;
-import com.knits.ammolite.model.location.RealEstateType;
 import com.knits.ammolite.mokcs.dto.FloorDtoMock;
 import com.knits.ammolite.mokcs.dto.WorkAreaDtoMock;
-import com.knits.ammolite.mokcs.model.FloorMock;
 import com.knits.ammolite.mokcs.model.WorkAreaMock;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.WorkAreaRepository;
@@ -97,5 +95,53 @@ public class WorkAreaServiceTest {
         List<WorkAreaDto> resultsetDto = workAreaService.findAllByFloorNumber(floorDto);
         verify(workAreaMapper, times(expectedSize)).toDto(any(WorkArea.class));
         assertThat(resultsetDto.size()).isEqualTo(expectedSize);
+    }
+
+    @Test
+    @DisplayName("partial Update success")
+    void partialUpdate (){
+
+        Long entityIdToUpdate = 1L;
+        String updateRealEstate = "WAREHOUSE";
+        WorkArea foundEntity = WorkAreaMock.shallowWorkArea(entityIdToUpdate);
+        WorkAreaDto toUpdateDto =workAreaMapper.toDto(foundEntity);
+        toUpdateDto.setRealEstate(updateRealEstate);
+        when(workAreaRepository.findById(entityIdToUpdate)).thenReturn(Optional.of(foundEntity));
+        WorkAreaDto updatedDto =workAreaService.partialUpdate(toUpdateDto);
+
+        verify(workAreaRepository).save(workAreaCaptor.capture());
+        WorkArea toUpdateEntity = workAreaCaptor.getValue();
+
+        verify(workAreaMapper, times(1)).partialUpdate(toUpdateEntity,toUpdateDto);
+        verify(workAreaRepository, times(1)).save(foundEntity);
+        verify(workAreaMapper, times(2)).toDto(foundEntity);
+
+        assertThat(toUpdateDto).isEqualTo(updatedDto);
+
+    }
+
+    @Test
+    @DisplayName("Update Floor success")
+    void updateSuccess (){
+
+        Long entityIdToUpdate = 1L;
+        String updateRealEstate = "WAREHOUSE";
+        String updateRoomNumber = "2";
+
+        WorkArea foundEntity = WorkAreaMock.shallowWorkArea(entityIdToUpdate);
+        WorkAreaDto toUpdateDto =workAreaMapper.toDto(foundEntity);
+        toUpdateDto.setRealEstate(updateRealEstate);
+        toUpdateDto.setRoomNumber(updateRoomNumber);
+        when(workAreaRepository.findById(entityIdToUpdate)).thenReturn(Optional.of(foundEntity));
+        WorkAreaDto updatedDto =workAreaService.partialUpdate(toUpdateDto);
+
+        verify(workAreaRepository).save(workAreaCaptor.capture());
+        WorkArea toUpdateEntity = workAreaCaptor.getValue();
+
+        verify(workAreaMapper, times(1)).partialUpdate(toUpdateEntity,toUpdateDto);
+        verify(workAreaRepository, times(1)).save(foundEntity);
+        verify(workAreaMapper, times(2)).toDto(foundEntity);
+
+        assertThat(toUpdateDto).isEqualTo(updatedDto);
     }
 }

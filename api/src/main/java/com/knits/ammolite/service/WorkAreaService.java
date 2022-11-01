@@ -45,4 +45,24 @@ public class WorkAreaService {
     public void delete(Long id){
         log.debug("Set status deleted = true to WorkArea Id: {}", id);
         workAreaRepository.deleteById(id);}
+
+    public WorkAreaDto update(WorkAreaDto workAreaDto){
+        log.debug("Request to edit Work Area : {}", workAreaDto);
+        final WorkArea workAreaFromDb = workAreaRepository.findById(workAreaDto.getId()).get();
+        if (workAreaFromDb.getId()==null) {
+            String message = "Work Area with id = " + workAreaDto.getId() + " does not exist.";
+            log.warn(message);
+        }
+        workAreaMapper.update(workAreaFromDb,workAreaDto);
+        workAreaRepository.save(workAreaFromDb);
+        return workAreaMapper.toDto(workAreaFromDb);
+    }
+
+    public WorkAreaDto partialUpdate (WorkAreaDto workAreaDto){
+        log.debug("Request to partial Update Work Area : {}", workAreaDto);
+        WorkArea workArea = workAreaRepository.findById(workAreaDto.getId()).orElseThrow(() -> new WorkAreaException("Work Area " + workAreaDto.getId() + " not found"));
+        workAreaMapper.partialUpdate(workArea, workAreaDto);
+        workAreaRepository.save(workArea);
+        return workAreaMapper.toDto(workArea);
+    }
 }

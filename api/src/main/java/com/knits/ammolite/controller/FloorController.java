@@ -40,7 +40,7 @@ public class FloorController {
 
     @PutMapping(value = "/update", produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<FloorDto> updateFloor(@RequestBody FloorDto floorDto){
-        log.debug("REST request to edit Building");
+        log.debug("REST request to edit Floor");
         if (floorDto == null) {
             throw new FloorException("Floor data are missing");
         }
