@@ -17,15 +17,12 @@ public class CategoryService {
     private final CategoryRepository repository;
     private final CategoryMapper mapper;
 
-    public CategoryDto save(String name){
+    public CategoryDto save(CategoryDto categoryDto){
         Category category;
-
-        if(repository.findByName(name).isEmpty()){
-            category = new Category();
-            category.setName(name);
-            repository.save(category);
+        if(repository.findByName(categoryDto.getName()).isEmpty()){
+            category = repository.save(mapper.toEntity(categoryDto));
         }else{
-            category = repository.findByName(name).get();
+            category = repository.findByName(categoryDto.getName()).get();
         }
         return mapper.toDto(category);
     }

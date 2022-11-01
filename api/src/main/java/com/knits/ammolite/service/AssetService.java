@@ -25,7 +25,7 @@ public class AssetService {
     public AssetDto save(AssetDto assetDto){
         log.debug("Request to save Asset : {}", assetDto);
         Asset asset;
-        assetDto.setCategory(categoryService.save(assetDto.getName()));
+        assetDto.setCategory(categoryService.save(assetDto.getCategory()));
         if(assetRepository.existsById(assetDto.getId())){
             asset = assetRepository.findById(assetDto.getId()).get();
         }else{
