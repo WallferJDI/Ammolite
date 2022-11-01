@@ -1,7 +1,5 @@
 package com.knits.ammolite.service.dto;
 
-import com.knits.ammolite.model.organization.ContactPerson;
-import com.knits.ammolite.model.organization.Country;
 import lombok.Data;
 
 @Data
