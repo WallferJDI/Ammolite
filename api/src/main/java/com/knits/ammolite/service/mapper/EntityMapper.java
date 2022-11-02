@@ -5,7 +5,6 @@ import org.mapstruct.*;
 import java.util.List;
 
 public interface EntityMapper<E, D> {
-
     E toEntity(D dto);
 
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
@@ -22,5 +21,4 @@ public interface EntityMapper<E, D> {
 
     @Named("update")
     void update(@MappingTarget E entity, D dto);
-
 }
