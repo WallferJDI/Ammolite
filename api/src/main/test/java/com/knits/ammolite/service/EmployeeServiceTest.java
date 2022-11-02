@@ -60,23 +60,6 @@ class EmployeeServiceTest {
 
         assertThat(toSaveDto).isEqualTo(savedDto);
 
-//        BuildingDto toSaveDto = BuildingDtoMock.shallowBuildingDto(null);
-//
-//        when(buildingRepository.save(Mockito.any(Building.class)))
-//                .thenAnswer(i -> i.getArguments()[0]);
-//
-//        BuildingDto savedDto= buildingService.create(toSaveDto);
-//
-//        verify(buildingRepository).save(buildingCaptor.capture());
-//        Building toSaveEntity = buildingCaptor.getValue();
-//
-//        verify(buildingMapper, times(1)).toEntity(toSaveDto);
-//        verify(buildingRepository, times(1)).save(toSaveEntity);
-//        verify(buildingMapper, times(1)).toDto(toSaveEntity);
-//
-//        assertThat(toSaveDto).isEqualTo(savedDto);
-
-    }
 
 
     @Test
