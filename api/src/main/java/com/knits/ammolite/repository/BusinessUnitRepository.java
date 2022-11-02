@@ -1,6 +1,6 @@
 package com.knits.ammolite.repository;
 
-import com.knits.ammolite.model.BusinessUnit;
+import com.knits.ammolite.model.company.BusinessUnit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

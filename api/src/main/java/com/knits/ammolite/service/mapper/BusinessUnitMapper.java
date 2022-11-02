@@ -1,6 +1,6 @@
 package com.knits.ammolite.service.mapper;
 
-import com.knits.ammolite.model.BusinessUnit;
+import com.knits.ammolite.model.company.BusinessUnit;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

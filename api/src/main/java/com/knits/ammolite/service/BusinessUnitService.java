@@ -1,13 +1,12 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.UserException;
-import com.knits.ammolite.model.BusinessUnit;
 import com.knits.ammolite.model.Status;
+import com.knits.ammolite.model.company.BusinessUnit;
 import com.knits.ammolite.repository.BusinessUnitRepository;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
 import com.knits.ammolite.service.mapper.BusinessUnitMapper;
-import com.knits.ammolite.service.mapper.UserMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.model.organization.Group;
+import com.knits.ammolite.model.company.Group;
 import com.knits.ammolite.repository.GroupRepository;
 import com.knits.ammolite.service.dto.GroupDto;
 import com.knits.ammolite.service.mapper.GroupMapper;

@@ -1,6 +1,6 @@
 package com.knits.ammolite.service.mapper;
 
-import com.knits.ammolite.model.organization.Team;
+import com.knits.ammolite.model.company.Team;
 import com.knits.ammolite.service.dto.TeamDto;
 import org.mapstruct.Mapper;
 

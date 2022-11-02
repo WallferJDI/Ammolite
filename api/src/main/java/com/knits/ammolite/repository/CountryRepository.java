@@ -1,6 +1,6 @@
 package com.knits.ammolite.repository;
 
-import com.knits.ammolite.model.organization.Country;
+import com.knits.ammolite.model.company.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

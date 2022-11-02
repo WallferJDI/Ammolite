@@ -1,4 +1,4 @@
-package com.knits.ammolite.model.organization;
+package com.knits.ammolite.model.company;
 
 
 import lombok.Data;

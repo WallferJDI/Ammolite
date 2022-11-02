@@ -1,6 +1,6 @@
 package com.knits.ammolite.repository;
 
-import com.knits.ammolite.model.organization.Team;
+import com.knits.ammolite.model.company.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

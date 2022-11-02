@@ -1,6 +1,6 @@
 package com.knits.ammolite.repository;
 
-import com.knits.ammolite.model.organization.Organization;
+import com.knits.ammolite.model.company.Organization;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

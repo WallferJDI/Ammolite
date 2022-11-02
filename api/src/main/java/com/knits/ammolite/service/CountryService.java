@@ -1,6 +1,6 @@
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.model.organization.Country;
+import com.knits.ammolite.model.company.Country;
 import com.knits.ammolite.repository.CountryRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

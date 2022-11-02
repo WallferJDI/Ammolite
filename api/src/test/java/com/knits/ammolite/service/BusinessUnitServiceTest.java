@@ -1,7 +1,7 @@
 /*
 package com.knits.ammolite.service;
 
-import com.knits.ammolite.model.BusinessUnit;
+import com.knits.ammolite.model.company.BusinessUnit;
 import com.knits.ammolite.repository.BusinessUnitRepository;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.mapper.BusinessUnitMapper;
