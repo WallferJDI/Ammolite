@@ -15,8 +15,7 @@ import org.springframework.data.domain.Sort;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class AbstractSearchableDto<T> implements Searchable<T> {
-
+public abstract class AbstractSearchableDto<T> implements Searchable<T>{
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer limit;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -25,6 +24,9 @@ public abstract class AbstractSearchableDto<T> implements Searchable<T> {
     private String sort;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Sort.Direction dir;
+
+
+
 
     @Override
     @JsonIgnore

@@ -3,13 +3,13 @@ package com.knits.ammolite.service.dto;
 import lombok.Data;
 
 @Data
-public class UserDto {
-
+public class ContactPersonDto {
     private Long id;
-    private String login;
-    private String password;
     private String firstName;
     private String lastName;
     private String email;
-    private Boolean active = true;
+    private String phoneNumber;
+    private String jobTitle;
+    private String note;
+
 }
