@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/file-uploader")
 @Slf4j
@@ -20,7 +22,7 @@ public class FileUploaderController {
     private FileUploaderService service;
 
     @PostMapping("/upload")
-    public ResponseEntity<FileUploaderDto> upload(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<FileUploaderDto> upload(@RequestParam("file") MultipartFile file) throws IOException {
         return ResponseEntity.ok().body(service.upload(file));
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @Slf4j
 @Service
 public class FileUploaderService {
@@ -19,13 +21,13 @@ public class FileUploaderService {
     @Autowired
     private FileUploaderMapper mapper;
 
-    public FileUploaderDto upload(MultipartFile file) {
+    public FileUploaderDto upload(MultipartFile file) throws IOException {
 
         FileUploaderDto fileUploaderDto = new FileUploaderDto();
         fileUploaderDto.setSize(file.getSize());
         fileUploaderDto.setTitle(file.getName());
         fileUploaderDto.setContentType(file.getContentType());
-        fileUploaderDto.setBytes(fileUploaderDto.getBytes());
+        fileUploaderDto.setBytes(file.getBytes());
         FileUploader fileUploader = mapper.toEntity(fileUploaderDto);
         repository.save(fileUploader);
         return mapper.toDto(fileUploader);
