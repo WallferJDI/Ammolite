@@ -15,14 +15,7 @@
 
 */
 // reactstrap components
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  Button,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Breadcrumb, BreadcrumbItem, Button, Container, Row, Col } from "reactstrap";
 
 interface Props {
   name: string;
@@ -37,9 +30,7 @@ const TimelineHeader = ({ name, parentName }: Props) => {
           <div className="header-body">
             <Row className="align-items-center py-4">
               <Col lg="6" xs="7">
-                <h6 className="fullcalendar-title h2 text-white d-inline-block mb-0">
-                  {name}
-                </h6>{" "}
+                <h6 className="fullcalendar-title h2 text-white d-inline-block mb-0">{name}</h6>{" "}
                 <Breadcrumb
                   className="d-none d-md-inline-block ml-lg-4"
                   listClassName="breadcrumb-links breadcrumb-dark"

@@ -8,9 +8,10 @@ import java.io.Serializable;
 /**
  * A user.
  */
-@Entity
+
 @Table(name = "user")
 @Data
+@Entity
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,5 +38,6 @@ public class User implements Serializable {
 
     @Column(nullable = false)
     private Boolean active = false;
+
 
 }
