@@ -1,7 +1,7 @@
 package com.knits.ammolite.model.company;
 
 
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.common.User;
 import com.knits.ammolite.model.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

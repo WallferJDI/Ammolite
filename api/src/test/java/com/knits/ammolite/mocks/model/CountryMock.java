@@ -1,6 +1,6 @@
 package com.knits.ammolite.mocks.model;
 
-import com.knits.ammolite.model.Country;
+import com.knits.ammolite.model.common.Country;
 
 import java.util.ArrayList;
 import java.util.List;

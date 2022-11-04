@@ -1,7 +1,7 @@
 package com.knits.ammolite.repository;
 
 
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.common.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

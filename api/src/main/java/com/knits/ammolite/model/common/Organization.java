@@ -1,6 +1,6 @@
-package com.knits.ammolite.model.company;
+package com.knits.ammolite.model.common;
 
-
+import com.knits.ammolite.model.partner.ContactPerson;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;

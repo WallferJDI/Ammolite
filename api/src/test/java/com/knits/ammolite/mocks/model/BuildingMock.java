@@ -4,7 +4,7 @@ import com.knits.ammolite.model.location.Building;
 import com.knits.ammolite.model.location.Contact;
 import com.knits.ammolite.model.location.Reception;
 import com.knits.ammolite.model.location.SecurityContact;
-import com.knits.ammolite.model.Country;
+import com.knits.ammolite.model.common.Country;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.model.location.OwnershipType;
 import com.knits.ammolite.model.location.RealEstateType;

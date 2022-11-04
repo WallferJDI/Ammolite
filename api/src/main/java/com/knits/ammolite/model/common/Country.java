@@ -1,4 +1,4 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.common;
 
 import com.knits.ammolite.model.location.Location;
 import lombok.AllArgsConstructor;

@@ -1,17 +1,23 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.common;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * A user.
  */
-
-@Table(name = "user")
-@Data
 @Entity
+@Table(name = "users")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +44,4 @@ public class User implements Serializable {
 
     @Column(nullable = false)
     private Boolean active = false;
-
-
 }

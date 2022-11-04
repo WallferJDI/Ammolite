@@ -1,16 +1,15 @@
 package com.knits.ammolite.model.location;
 
-
-import com.knits.ammolite.model.Country;
+import com.knits.ammolite.model.common.Country;
 import lombok.*;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-import static javax.persistence.CascadeType.*;
+import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -60,8 +59,5 @@ public class Location implements Serializable {
 
     @Column(name = "deleted")
     private boolean isDeleted=false;
-
-
-
 
 }

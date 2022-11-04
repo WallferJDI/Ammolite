@@ -1,5 +1,6 @@
-package com.knits.ammolite.service.dto;
+package com.knits.ammolite.service.dto.company;
 
+import com.knits.ammolite.service.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BusinessUnitDto {
+public class CostCenterDto {
 
     private Long id;
     private String title;

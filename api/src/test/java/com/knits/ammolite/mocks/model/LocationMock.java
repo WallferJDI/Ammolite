@@ -1,6 +1,6 @@
 package com.knits.ammolite.mocks.model;
 
-import com.knits.ammolite.model.Country;
+import com.knits.ammolite.model.common.Country;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.model.location.OwnershipType;
 import com.knits.ammolite.model.location.RealEstateType;

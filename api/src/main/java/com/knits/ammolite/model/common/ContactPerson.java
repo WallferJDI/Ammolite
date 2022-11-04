@@ -1,4 +1,4 @@
-package com.knits.ammolite.model.company;
+package com.knits.ammolite.model.common;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,5 +33,4 @@ public class ContactPerson {
 
     @Column
     private String note;
-
 }

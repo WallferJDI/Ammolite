@@ -1,7 +1,7 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.UserException;
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.common.User;
 import com.knits.ammolite.repository.UserRepository;
 import com.knits.ammolite.service.dto.UserDto;
 import com.knits.ammolite.service.mapper.UserMapper;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Service for managing {@link com.knits.ammolite.model.User}.
+ * Service for managing {@link User}.
  */
 @Service
 @Transactional

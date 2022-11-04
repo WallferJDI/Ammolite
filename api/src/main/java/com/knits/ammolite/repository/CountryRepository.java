@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.repository;
 
 import com.knits.ammolite.model.company.Country;
@@ -9,3 +10,4 @@ public interface CountryRepository  extends JpaRepository<Country,Long> {
 
     Optional<Country> findByName(String name);
 }
+*/

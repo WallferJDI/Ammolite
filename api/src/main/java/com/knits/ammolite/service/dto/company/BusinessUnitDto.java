@@ -1,4 +1,4 @@
-package com.knits.ammolite.service.dto.search;
+package com.knits.ammolite.service.dto.company;
 
 import com.knits.ammolite.service.dto.UserDto;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class JobTitleDto {
+public class BusinessUnitDto {
 
     private Long id;
     private String title;
