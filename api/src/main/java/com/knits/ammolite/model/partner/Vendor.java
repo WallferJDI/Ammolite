@@ -1,4 +1,4 @@
-package com.knits.ammolite.model.asset;
+package com.knits.ammolite.model.partner;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

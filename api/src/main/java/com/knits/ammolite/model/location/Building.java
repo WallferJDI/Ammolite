@@ -1,7 +1,5 @@
-package com.knits.ammolite.model.building;
+package com.knits.ammolite.model.location;
 
-import com.knits.ammolite.model.location.Location;
-import com.knits.ammolite.model.location.RealEstateType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

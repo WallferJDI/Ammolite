@@ -1,6 +1,5 @@
 package com.knits.ammolite.service.dto.asset;
 
-import com.knits.ammolite.model.asset.Vendor;
 import com.knits.ammolite.model.enums.AssetDepreciationType;
 import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;

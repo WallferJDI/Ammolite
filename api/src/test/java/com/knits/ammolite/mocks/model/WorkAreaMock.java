@@ -1,12 +1,12 @@
-package com.knits.ammolite.mokcs.model;
+package com.knits.ammolite.mocks.model;
 
-import com.knits.ammolite.model.Floor;
-import com.knits.ammolite.model.WorkArea;
-import com.knits.ammolite.model.building.Building;
-import com.knits.ammolite.model.building.Contact;
-import com.knits.ammolite.model.building.Reception;
-import com.knits.ammolite.model.building.SecurityContact;
-import com.knits.ammolite.model.location.Country;
+import com.knits.ammolite.model.location.Floor;
+import com.knits.ammolite.model.location.WorkArea;
+import com.knits.ammolite.model.location.Building;
+import com.knits.ammolite.model.location.Contact;
+import com.knits.ammolite.model.location.Reception;
+import com.knits.ammolite.model.location.SecurityContact;
+import com.knits.ammolite.model.Country;
 import com.knits.ammolite.model.location.Location;
 
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import java.util.List;
 
 import static com.knits.ammolite.model.location.OwnershipType.OUR_PREMISES;
 import static com.knits.ammolite.model.location.RealEstateType.OFFICE;
-import static com.knits.ammolite.mokcs.model.FloorMock.shallowFloor;
 
 public class WorkAreaMock {
 

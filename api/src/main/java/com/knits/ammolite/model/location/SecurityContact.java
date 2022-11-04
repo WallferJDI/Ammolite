@@ -1,36 +1,36 @@
 package com.knits.ammolite.model.location;
 
-import com.knits.ammolite.model.location.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Filter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
-
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class Country implements Serializable {
+@Table(name = "security_contact")
+public class SecurityContact implements Serializable {
 
-    private final static long serialVersionUID = 9L;
+    private final static long serialVersionUID = 5L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    private String title;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @OneToMany(mappedBy = "country", cascade = ALL)
-    private List<Location> locationList;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
+    private String email;
+
+    private String phone;
 }

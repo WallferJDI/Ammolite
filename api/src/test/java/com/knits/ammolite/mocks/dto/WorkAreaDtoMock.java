@@ -1,13 +1,5 @@
-package com.knits.ammolite.mokcs.dto;
+package com.knits.ammolite.mocks.dto;
 
-import com.knits.ammolite.model.Floor;
-import com.knits.ammolite.model.WorkArea;
-import com.knits.ammolite.model.building.Building;
-import com.knits.ammolite.model.building.Contact;
-import com.knits.ammolite.model.building.Reception;
-import com.knits.ammolite.model.building.SecurityContact;
-import com.knits.ammolite.model.location.Country;
-import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.dto.WorkAreaDto;
 import com.knits.ammolite.service.dto.building.BuildingDto;
@@ -16,11 +8,6 @@ import com.knits.ammolite.service.dto.building.ReceptionDto;
 import com.knits.ammolite.service.dto.building.SecurityContactDto;
 import com.knits.ammolite.service.dto.location.CountryDto;
 import com.knits.ammolite.service.dto.location.LocationDto;
-
-import java.util.ArrayList;
-
-import static com.knits.ammolite.model.location.OwnershipType.OUR_PREMISES;
-import static com.knits.ammolite.model.location.RealEstateType.OFFICE;
 
 public class WorkAreaDtoMock {
 

@@ -5,6 +5,8 @@ import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;
 import com.knits.ammolite.model.enums.StateType;
 import com.knits.ammolite.model.enums.AssetDepreciationType;
+import com.knits.ammolite.model.partner.Vendor;
+import com.knits.ammolite.model.procurement.Order;
 import lombok.Data;
 
 import javax.persistence.*;

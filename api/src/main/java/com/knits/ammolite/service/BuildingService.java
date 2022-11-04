@@ -1,7 +1,7 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.BuildingException;
-import com.knits.ammolite.model.building.Building;
+import com.knits.ammolite.model.location.Building;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.repository.location.LocationRepository;

@@ -1,29 +1,36 @@
-package com.knits.ammolite.model.building;
+package com.knits.ammolite.model.location;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
-@Table(name = "reception")
-public class Reception implements Serializable {
+@Table(name = "contact")
+public class Contact implements Serializable {
 
-    private final static long serialVersionUID = 6L;
+    private final static long serialVersionUID = 4L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    private String fax;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    private String email;
 
     private String phone;
 }

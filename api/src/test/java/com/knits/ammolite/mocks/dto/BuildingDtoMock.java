@@ -1,4 +1,4 @@
-package com.knits.ammolite.mokcs.dto;
+package com.knits.ammolite.mocks.dto;
 
 import com.knits.ammolite.service.dto.building.BuildingDto;
 import com.knits.ammolite.service.dto.building.ContactDto;

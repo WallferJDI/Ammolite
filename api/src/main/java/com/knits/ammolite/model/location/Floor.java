@@ -1,6 +1,6 @@
-package com.knits.ammolite.model;
+package com.knits.ammolite.model.location;
 
-import com.knits.ammolite.model.building.Building;
+import com.knits.ammolite.model.location.Building;
 import com.knits.ammolite.model.location.RealEstateType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 @Entity

@@ -1,6 +1,7 @@
 package com.knits.ammolite.model.location;
 
 
+import com.knits.ammolite.model.Country;
 import lombok.*;
 import org.hibernate.annotations.*;
 
@@ -10,7 +11,6 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 import static javax.persistence.CascadeType.*;
-import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 

@@ -1,14 +1,12 @@
-package com.knits.ammolite.mokcs.model;
+package com.knits.ammolite.mocks.model;
 
-import com.knits.ammolite.model.Floor;
-import com.knits.ammolite.model.building.Building;
-import com.knits.ammolite.model.building.Contact;
-import com.knits.ammolite.model.building.Reception;
-import com.knits.ammolite.model.building.SecurityContact;
-import com.knits.ammolite.model.location.Country;
+import com.knits.ammolite.model.location.Floor;
+import com.knits.ammolite.model.location.Building;
+import com.knits.ammolite.model.location.Contact;
+import com.knits.ammolite.model.location.Reception;
+import com.knits.ammolite.model.location.SecurityContact;
+import com.knits.ammolite.model.Country;
 import com.knits.ammolite.model.location.Location;
-import com.knits.ammolite.model.location.OwnershipType;
-import com.knits.ammolite.model.location.RealEstateType;
 
 
 import java.util.ArrayList;
