@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository.location;
+package com.knits.ammolite.repository.common;
 
 import com.knits.ammolite.model.common.Country;
 import org.springframework.data.jpa.repository.JpaRepository;

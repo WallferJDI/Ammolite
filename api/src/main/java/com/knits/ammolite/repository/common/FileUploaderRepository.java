@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.common;
 
 import com.knits.ammolite.model.partner.FileUploader;
 import org.springframework.data.jpa.repository.JpaRepository;

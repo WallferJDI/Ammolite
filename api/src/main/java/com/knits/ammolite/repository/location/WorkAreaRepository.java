@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.location;
 
 import com.knits.ammolite.model.location.WorkArea;
 import org.springframework.data.jpa.repository.JpaRepository;

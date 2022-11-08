@@ -2,7 +2,7 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.mocks.dto.UserDtoMock;
 import com.knits.ammolite.model.common.User;
-import com.knits.ammolite.repository.UserRepository;
+import com.knits.ammolite.repository.common.UserRepository;
 import com.knits.ammolite.service.dto.UserDto;
 import com.knits.ammolite.service.mapper.UserMapper;
 import org.junit.jupiter.api.DisplayName;

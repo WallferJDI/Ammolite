@@ -23,7 +23,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
-        <spring-boot.version>2.5.3</spring-boot.version>
+        <spring-boot.version>2.7.4</spring-boot.version>
         <org.projectlombok.version>1.18.16</org.projectlombok.version>
 
 	</properties>

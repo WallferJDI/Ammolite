@@ -2,8 +2,7 @@ package com.knits.ammolite.service;
 
 
 import com.knits.ammolite.model.asset.Asset;
-import com.knits.ammolite.model.asset.Category;
-import com.knits.ammolite.repository.AssetRepository;
+import com.knits.ammolite.repository.assets.AssetRepository;
 import com.knits.ammolite.service.dto.asset.AssetDto;
 import com.knits.ammolite.service.mapper.asset.AssetMapper;
 import lombok.RequiredArgsConstructor;

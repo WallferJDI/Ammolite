@@ -1,7 +1,7 @@
 package com.knits.ammolite.service;
 
 import com.knits.ammolite.model.company.Team;
-import com.knits.ammolite.repository.TeamRepository;
+import com.knits.ammolite.repository.company.TeamRepository;
 import com.knits.ammolite.service.dto.TeamDto;
 import com.knits.ammolite.service.mapper.TeamMapper;
 import lombok.RequiredArgsConstructor;

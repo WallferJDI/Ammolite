@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.company;
 
 import com.knits.ammolite.model.company.Group;
 import org.springframework.data.jpa.repository.JpaRepository;

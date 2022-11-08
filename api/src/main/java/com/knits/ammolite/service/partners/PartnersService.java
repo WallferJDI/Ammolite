@@ -1,9 +1,7 @@
 package com.knits.ammolite.service.partners;
 
-import com.knits.ammolite.model.company.BusinessUnit;
 import com.knits.ammolite.model.partner.Partner;
-import com.knits.ammolite.repository.PartnersRepository;
-import com.knits.ammolite.service.dto.company.BusinessUnitDto;
+import com.knits.ammolite.repository.partners.PartnersRepository;
 import com.knits.ammolite.service.dto.partner.PartnerDto;
 import com.knits.ammolite.service.mapper.partner.PartnerMapper;
 import lombok.extern.slf4j.Slf4j;

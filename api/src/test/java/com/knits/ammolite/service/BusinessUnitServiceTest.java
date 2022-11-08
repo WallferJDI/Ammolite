@@ -2,18 +2,14 @@ package com.knits.ammolite.service;
 
 <<<<<<< HEAD
 import com.knits.ammolite.model.company.BusinessUnit;
-import com.knits.ammolite.repository.BusinessUnitRepository;
+import com.knits.ammolite.repository.company.CostCenterRepository;
 import com.knits.ammolite.service.dto.BusinessUnitDto;
 import com.knits.ammolite.service.mapper.BusinessUnitMapper;
 =======
 import com.knits.ammolite.mocks.dto.BusinessUnitDtoMock;
 import com.knits.ammolite.mocks.model.BusinessUnitMock;
-import com.knits.ammolite.model.company.BusinessUnit;
-import com.knits.ammolite.repository.company.BusinessUnitRepository;
 import com.knits.ammolite.service.company.BusinessUnitService;
-import com.knits.ammolite.service.dto.company.BusinessUnitDto;
 import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
-import com.knits.ammolite.service.mapper.company.BusinessUnitMapper;
 >>>>>>> origin/S2-Maksim
 import com.knits.ammolite.service.mapper.BusinessUnitMapperImpl;
 import com.knits.ammolite.service.mapper.UserMapper;
@@ -35,7 +31,7 @@ import static org.mockito.Mockito.*;
 class BusinessUnitServiceTest {
 
     @Mock
-    BusinessUnitRepository repository;
+    CostCenterRepository.BusinessUnitRepository repository;
 
     @Spy
     private final BusinessUnitSearchDto searchDto = new BusinessUnitSearchDto();

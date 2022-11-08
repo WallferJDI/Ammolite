@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.assets;
 
 import com.knits.ammolite.model.asset.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

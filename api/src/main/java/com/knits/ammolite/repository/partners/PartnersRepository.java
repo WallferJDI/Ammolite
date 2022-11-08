@@ -1,4 +1,4 @@
-package com.knits.ammolite.repository;
+package com.knits.ammolite.repository.partners;
 
 import com.knits.ammolite.model.partner.Partner;
 import org.springframework.data.jpa.repository.JpaRepository;

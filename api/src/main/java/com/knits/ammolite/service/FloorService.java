@@ -4,7 +4,7 @@ import com.knits.ammolite.exceptions.BuildingException;
 import com.knits.ammolite.exceptions.FloorException;
 import com.knits.ammolite.model.location.Floor;
 import com.knits.ammolite.model.location.RealEstateType;
-import com.knits.ammolite.repository.FloorRepository;
+import com.knits.ammolite.repository.location.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.mapper.FloorMapper;

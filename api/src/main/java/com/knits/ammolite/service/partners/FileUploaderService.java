@@ -1,7 +1,7 @@
 package com.knits.ammolite.service.partners;
 
 import com.knits.ammolite.model.partner.FileUploader;
-import com.knits.ammolite.repository.FileUploaderRepository;
+import com.knits.ammolite.repository.common.FileUploaderRepository;
 import com.knits.ammolite.service.dto.partner.FileUploaderDto;
 import com.knits.ammolite.service.mapper.partner.FileUploaderMapper;
 import lombok.extern.slf4j.Slf4j;

@@ -2,8 +2,8 @@ package com.knits.ammolite.service;
 
 import com.knits.ammolite.exceptions.WorkAreaException;
 import com.knits.ammolite.model.location.WorkArea;
-import com.knits.ammolite.repository.FloorRepository;
-import com.knits.ammolite.repository.WorkAreaRepository;
+import com.knits.ammolite.repository.location.FloorRepository;
+import com.knits.ammolite.repository.location.WorkAreaRepository;
 import com.knits.ammolite.service.dto.FloorDto;
 import com.knits.ammolite.service.dto.WorkAreaDto;
 import com.knits.ammolite.service.mapper.WorkAreaMapper;

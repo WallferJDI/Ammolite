@@ -2,7 +2,7 @@ package com.knits.ammolite.service;
 
 
 import com.knits.ammolite.model.asset.Category;
-import com.knits.ammolite.repository.CategoryRepository;
+import com.knits.ammolite.repository.assets.CategoryRepository;
 import com.knits.ammolite.service.dto.CategoryDto;
 import com.knits.ammolite.service.mapper.CategoryMapper;
 import lombok.AllArgsConstructor;

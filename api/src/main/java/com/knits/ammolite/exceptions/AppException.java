@@ -2,7 +2,7 @@ package com.knits.ammolite.exceptions;
 
 import lombok.Data;
 
-@Data
+ @Data
 public class AppException extends RuntimeException{
 
     private int code;
