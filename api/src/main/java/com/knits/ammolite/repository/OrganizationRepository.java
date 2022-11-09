@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.repository;
 
 import com.knits.ammolite.model.company.Organization;
@@ -12,3 +13,4 @@ public interface OrganizationRepository extends JpaSpecificationExecutor<Organiz
    Optional<Organization> findByName(String organizationName);
     Optional<Organization> findByVatNumber(String vatNumber);
 }
+*/

@@ -1,43 +1,30 @@
 -- liquibase formatted sql
--- changeset Maksim:liqubase run create tables
+-- changeset kull:liqubase run create tables
+create type ownership_type as enum ('OUR_PREMISES','PARTNER_COMPANIES');
 
-create type status as enum ('ACTIVE', 'INACTIVE');
+create type real_estate_type as enum ('WAREHOUSE','OFFICE', 'MANUFACTURING_PLANT', 'POINT_OF_SALE');
 
-create table if not exists users
+create table if not exists country
 (
-id serial primary key,
-login varchar(50) not null unique,
-password_hash varchar(60) not null,
-first_name varchar(50),
-last_name varchar(50),
-email varchar(254) unique,
-active boolean not null
-);
+    id  serial primary key,
+    title  varchar(100) not null unique
+    );
 
-create table if not exists business_units
-(
-id serial primary key,
-title varchar(50) not null,
-description varchar,
-start_date timestamp default now(),
-end_date timestamp default null,
-status varchar default 'ACTIVE',
-created_by int,
-    constraint fk_users
-        foreign key (created_by)
-            references users (id)
-);
 
-create table if not exists job_titles
+create table if not exists location
 (
-id serial primary key,
-title varchar(50) not null,
-description varchar,
-start_date timestamp default now(),
-end_date timestamp default null,
-status varchar default 'ACTIVE',
-created_by int,
-    constraint fk_users
-        foreign key (created_by)
-            references users (id)
-)
+    id       serial primary key,
+    title    varchar(100) not null,
+    country_id int not null,
+    constraint fk_country
+        foreign key (country_id)
+             references country (id)
+        on UPDATE cascade,
+    address varchar(200) not null,
+    zip_code varchar(10) not null,
+    ownership varchar default 'OUR_PREMISES',
+    map_coordinates boolean default false,
+    latitude varchar(100),
+    longitude varchar(100),
+    real_estate varchar,
+    deleted boolean default false);

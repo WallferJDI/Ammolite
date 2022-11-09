@@ -1,7 +1,7 @@
 package com.knits.ammolite.service.dto;
 
 
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.common.User;
 import com.knits.ammolite.model.enums.Status;
 import lombok.Data;
 

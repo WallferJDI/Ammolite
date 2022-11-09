@@ -1,8 +1,8 @@
 package service;
 
 import com.knits.ammolite.model.location.Location;
-import com.knits.ammolite.mokcs.dto.LocationDtoMock;
-import com.knits.ammolite.mokcs.model.LocationMock;
+import com.knits.ammolite.mocks.dto.LocationDtoMock;
+import com.knits.ammolite.mocks.model.LocationMock;
 import com.knits.ammolite.repository.location.LocationRepository;
 import com.knits.ammolite.service.LocationService;
 import com.knits.ammolite.service.dto.location.LocationDto;

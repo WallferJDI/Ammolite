@@ -1,6 +1,6 @@
 package com.knits.ammolite.repository;
 
-import com.knits.ammolite.model.Floor;
+import com.knits.ammolite.model.location.Floor;
 import com.knits.ammolite.model.location.RealEstateType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

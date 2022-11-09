@@ -1,21 +1,20 @@
 package com.knits.ammolite.model.company;
 
-import com.knits.ammolite.model.Status;
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.common.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -24,6 +23,9 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Builder
 @Table(name = "job_titles")
+@SQLDelete(sql = "UPDATE job_titles SET status = 'INACTIVE' WHERE id=?")
+@FilterDef(name = "deletedFilter", parameters = @ParamDef(name = "INACTIVE", type = "string"))
+@Filter(name = "deletedFilter", condition = "status = :'INACTIVE'")
 public class JobTitle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,10 +48,10 @@ public class JobTitle implements Serializable {
     private ZonedDateTime endDate;
 
     @Enumerated(STRING)
-    @ColumnDefault("ACTIVE")
+    @Column(columnDefinition = "ACTIVE", insertable = false)
     private Status status = Status.valueOf("ACTIVE");
 
-    @ManyToOne(cascade = REFRESH, fetch = EAGER)
+    @ManyToOne(cascade = REFRESH)
     @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 

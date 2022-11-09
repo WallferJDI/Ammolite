@@ -1,6 +1,6 @@
 package com.knits.ammolite.service.mapper;
 
-import com.knits.ammolite.model.User;
+import com.knits.ammolite.model.common.User;
 import com.knits.ammolite.service.dto.UserDto;
 import org.springframework.stereotype.Component;
 

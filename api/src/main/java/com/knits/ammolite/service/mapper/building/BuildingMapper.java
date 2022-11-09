@@ -1,9 +1,9 @@
 package com.knits.ammolite.service.mapper.building;
 
-import com.knits.ammolite.model.building.Building;
-import com.knits.ammolite.model.building.Contact;
-import com.knits.ammolite.model.building.Reception;
-import com.knits.ammolite.model.building.SecurityContact;
+import com.knits.ammolite.model.location.Building;
+import com.knits.ammolite.model.location.Contact;
+import com.knits.ammolite.model.location.Reception;
+import com.knits.ammolite.model.location.SecurityContact;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.service.dto.building.BuildingDto;
 import com.knits.ammolite.service.mapper.EntityMapper;

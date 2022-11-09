@@ -1,7 +1,7 @@
 
 package com.knits.ammolite.service.mapper.location;
 
-import com.knits.ammolite.model.location.Country;
+import com.knits.ammolite.model.common.Country;
 import com.knits.ammolite.service.dto.location.CountryDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

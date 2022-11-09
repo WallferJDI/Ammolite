@@ -42,12 +42,12 @@ public class BusinessUnitSearchDto extends AbstractSearchableDto<BusinessUnit> {
             }
 
             if (createdBy != null) {
-                Predicate createdBuAsPredicate = criteriaBuilder.equal(root.get("user").get("id"), createdBy);
+                Predicate createdBuAsPredicate = criteriaBuilder.equal(root.get("createdBy").get("id"), createdBy);
                 filters.add(createdBuAsPredicate);
             }
 
             if (Strings.isNotBlank(startDateFrom)) {
-                ZonedDateTime from = ZonedDateTime.parse(startDateFrom, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                ZonedDateTime from = ZonedDateTime.parse(startDateFrom, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
                 Predicate startDateAsPredicate = criteriaBuilder.greaterThanOrEqualTo(root.get("startDate"), from);
                 filters.add(startDateAsPredicate);

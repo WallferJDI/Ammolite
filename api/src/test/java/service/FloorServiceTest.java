@@ -1,10 +1,10 @@
 package service;
 
-import com.knits.ammolite.model.Floor;
-import com.knits.ammolite.model.building.Building;
+import com.knits.ammolite.model.location.Floor;
+import com.knits.ammolite.model.location.Building;
 import com.knits.ammolite.model.location.RealEstateType;
-import com.knits.ammolite.mokcs.dto.FloorDtoMock;
-import com.knits.ammolite.mokcs.model.FloorMock;
+import com.knits.ammolite.mocks.dto.FloorDtoMock;
+import com.knits.ammolite.mocks.model.FloorMock;
 import com.knits.ammolite.repository.FloorRepository;
 import com.knits.ammolite.repository.building.BuildingRepository;
 import com.knits.ammolite.service.FloorService;

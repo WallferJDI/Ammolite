@@ -1,3 +1,4 @@
+/*
 package com.knits.ammolite.service.dto;
 
 import lombok.Data;
@@ -18,3 +19,4 @@ public class OrganizationDto {
     private boolean deleted;
 
 }
+*/
