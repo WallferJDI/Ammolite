@@ -1,15 +1,11 @@
 package com.knits.ammolite.service.company;
 
+import com.knits.ammolite.dto.company.BusinessUnitDto;
+import com.knits.ammolite.dto.search.BusinessUnitSearchDto;
 import com.knits.ammolite.exceptions.UserException;
-<<<<<<< HEAD:api/src/main/java/com/knits/ammolite/service/BusinessUnitService.java
-import com.knits.ammolite.model.Status;
+import com.knits.ammolite.mapper.company.BusinessUnitMapper;
 import com.knits.ammolite.model.company.BusinessUnit;
-import com.knits.ammolite.repository.company.CostCenterRepository;
-import com.knits.ammolite.service.dto.BusinessUnitDto;
-import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
-import com.knits.ammolite.service.mapper.BusinessUnitMapper;
-=======
->>>>>>> origin/S2-Maksim:api/src/main/java/com/knits/ammolite/service/company/BusinessUnitService.java
+import com.knits.ammolite.repository.company.BusinessUnitRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Filter;
 import org.hibernate.Session;
@@ -27,7 +23,7 @@ import java.util.List;
 public class BusinessUnitService {
 
     @Autowired
-    private CostCenterRepository.BusinessUnitRepository repository;
+    private BusinessUnitRepository repository;
 
     @Autowired
     private BusinessUnitMapper mapper;

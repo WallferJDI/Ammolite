@@ -1,7 +1,7 @@
 package com.knits.ammolite.controller.partner;
 
-import com.knits.ammolite.service.dto.partner.PartnerDto;
-import com.knits.ammolite.service.partners.PartnersService;
+import com.knits.ammolite.dto.partner.PartnerDto;
+import com.knits.ammolite.service.partner.PartnersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

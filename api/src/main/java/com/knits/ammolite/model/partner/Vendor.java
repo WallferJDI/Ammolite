@@ -1,54 +1,38 @@
 package com.knits.ammolite.model.partner;
 
+import com.knits.ammolite.model.company.BinaryData;
+import com.knits.ammolite.model.enums.DeliveryTerms;
+import com.knits.ammolite.model.enums.PaymentTerms;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import java.io.Serializable;
 import java.util.List;
 
-import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Table(name = "vendors")
-public class Vendor implements Serializable {
+public class Vendor extends Partner {
 
     private static final long serialVersionUID = 2L;
-
-    @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
-
-    @ManyToOne(cascade = REFRESH, fetch = LAZY)
-    @JoinColumn(name = "compnay_id")
-    private CompanyData companyName;
 
     @OneToMany
     private List<BusinessCategory> businessCategories;
 
-    @OneToMany
-    private List<Product> products;
-
-    @Min(1)
-    @Max(5)
+    @Column
     private int qualityRate;
 
-    @Min(1)
-    @Max(5)
+    @Column
     private int deliveryRate;
 
+    @Column
     private int creditLimit;
 
     @Enumerated(STRING)
@@ -57,6 +41,6 @@ public class Vendor implements Serializable {
     @Enumerated(STRING)
     private PaymentTerms paymentTerms;
 
-    @OneToOne
-    private FileUploader serviceAgreement;
+    @OneToMany
+    private BinaryData serviceAgreement;
 }

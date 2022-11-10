@@ -1,6 +1,6 @@
 package com.knits.ammolite.mocks.dto;
 
-import com.knits.ammolite.service.dto.location.CountryDto;
+import com.knits.ammolite.dto.common.CountryDto;
 
 public class CountryDtoMock {
 
@@ -8,7 +8,7 @@ public class CountryDtoMock {
 
         return CountryDto.builder()
                 .id(id)
-                .title("A mock Title")
+                .name("A mock name")
                 .build();
     }
 

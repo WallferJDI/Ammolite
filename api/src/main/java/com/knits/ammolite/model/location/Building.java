@@ -1,6 +1,10 @@
 package com.knits.ammolite.model.location;
 
+import com.knits.ammolite.model.common.ContactPerson;
+import com.knits.ammolite.model.common.Office;
+import com.knits.ammolite.model.enums.LocationUsageType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -39,33 +43,26 @@ public class Building  implements Serializable {
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    @OneToOne (fetch = LAZY,cascade = PERSIST)
-    @JoinColumn(name = "contact_id", nullable = false)
-    private Contact contact;
-
-    @OneToOne(fetch = LAZY,cascade = PERSIST)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "security_contact_id", nullable = false)
-    private SecurityContact security;
+    private ContactPerson securityContact;
 
-    @OneToOne(fetch = LAZY,cascade = PERSIST)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "reception_id", nullable = false)
-    private Reception reception;
+    private ContactPerson contact;
+
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "reception_id", nullable = false)
+    private Office reception;
 
     @Column(name = "deleted")
+    @Builder.Default
     private boolean isDeleted=false;
 
     @Column(name = "real_estate")
     @Enumerated(EnumType.STRING)
-    private RealEstateType realEstate;
+    private LocationUsageType usage;
 
+    @Column(name = "street")
     private String street;
-
-
-
-
-
-
-
-
-
 }

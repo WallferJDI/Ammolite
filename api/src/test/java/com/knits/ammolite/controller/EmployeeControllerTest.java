@@ -1,7 +1,6 @@
 package com.knits.ammolite.controller;
-import com.knits.ammolite.service.mapper.EmployeeMapper;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.knits.ammolite.controller.company.EmployeeController;
+import com.knits.ammolite.mapper.company.EmployeeMapper;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Captor;
 import org.mockito.Spy;

@@ -1,7 +1,7 @@
 package com.knits.ammolite.mocks.dto;
 
 
-import com.knits.ammolite.service.dto.DepartmentDto;
+import com.knits.ammolite.dto.company.DepartmentDto;
 
 public class DepartmentDtoMock {
 

@@ -1,7 +1,6 @@
 package com.knits.ammolite.model.location;
 
-import com.knits.ammolite.model.location.Floor;
-import com.knits.ammolite.model.location.RealEstateType;
+import com.knits.ammolite.model.enums.LocationUsageType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,12 +33,12 @@ public class WorkArea implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "room_number")
-    private String roomNumber;
+    @Column(name = "area_name")
+    private String name;
 
     @Column(name = "real_estate")
     @Enumerated(EnumType.STRING)
-    private RealEstateType realEstate;
+    private LocationUsageType usage;
 
     @ManyToOne(cascade = MERGE, fetch = LAZY)
     @JoinColumn(name = "floor_id", nullable = false)

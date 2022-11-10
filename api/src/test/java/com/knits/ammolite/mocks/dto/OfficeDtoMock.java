@@ -1,7 +1,7 @@
 package com.knits.ammolite.mocks.dto;
 
 
-import com.knits.ammolite.service.dto.OfficeDto;
+import com.knits.ammolite.dto.company.OfficeDto;
 
 public class OfficeDtoMock {
     public static OfficeDto shallowOfficeDto(Long id) {

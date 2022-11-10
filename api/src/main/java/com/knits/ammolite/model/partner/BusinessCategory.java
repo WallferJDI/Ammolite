@@ -26,5 +26,6 @@ public class BusinessCategory implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    String title;
+    @Column
+    private String title;
 }

@@ -1,9 +1,9 @@
 package com.knits.ammolite.mocks.model;
 
 import com.knits.ammolite.mocks.dto.*;
-import com.knits.ammolite.model.common.Organization;
-import com.knits.ammolite.model.company.BusinessUnit;
-import com.knits.ammolite.model.company.JobTitle;
+import com.knits.ammolite.model.common.Office;
+import com.knits.ammolite.model.company.*;
+import com.knits.ammolite.model.security.Role;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +21,13 @@ public class EmployeeMock {
                     .startDate("10/11/2022")
                     .companyPhone("123456789")
                     .companyMobileNumber("123456789")
-                    .role(new Role(id, RoleDtoMock.shallowRoleDto(id).getName()))
-                    .businessUnit(new BusinessUnit(id, BusinessUnitDtoMock.shallowBusinessUnitDto(id).getName()))
-                    .organization(new Organization(id, OrganizationDtoMock.shallowOrganizationDto(id).getName()))
-                    .office(new Office(id, OfficeDtoMock.shallowOfficeDto(id).getName()))
-                    .jobTitle(new JobTitle(id, JobTitleDtoMock.shallowJobTitleDto(id).getName()))
-                    .department(new Department(id, DepartmentDtoMock.shallowDepartmentDto(id).getName()))
-                    .division(new Division(id, DivisionDtoMock.shallowDivisionDto(id).getName()))
+                   // .role(new Role(id, RoleDtoMock.shallowRoleDto(id).getName()))
+                    //.businessUnit(BusinessUnitMock.shallowBusinessUnit(id))
+                  //  .organization(OrganizationMock.shallowOrganization(id))
+                  //  .office(new Office(id, OfficeDtoMock.shallowOfficeDto(id).getName()))
+                   // .jobTitle(JobTitleMock.shallowJobTitle(id))
+                    //.department(DepartmentMock.shallowDepartmentDto(id))
+                  //  .division(DivisionMock.shallowDivision(id))
                     .build();
         }
 

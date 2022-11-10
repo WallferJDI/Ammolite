@@ -1,5 +1,6 @@
 package com.knits.ammolite.repository.company;
 
+import com.knits.ammolite.model.company.Department;
 import com.knits.ammolite.model.company.Division;
 import com.knits.ammolite.model.company.Gender;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,6 @@ public interface DivisionRepository extends PagingAndSortingRepository<Division,
     @Query("SELECT e from CostCenter e where e.status = 'ACTIVE'")
     Page<Division> findAllDivisions(Specification<Division> costCenterSpecification, Pageable pageable);
 
-    interface DepartmentRepository extends JpaRepository<Gender.Department, Long> {
+    interface DepartmentRepository extends JpaRepository<Department, Long> {
     }
 }

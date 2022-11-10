@@ -1,6 +1,9 @@
 package com.knits.ammolite.model.location;
 
+import com.knits.ammolite.model.common.Address;
 import com.knits.ammolite.model.common.Country;
+import com.knits.ammolite.model.enums.LocationUsageType;
+import com.knits.ammolite.model.enums.OwnershipType;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
@@ -31,33 +34,35 @@ public class Location implements Serializable {
     private Long id;
 
     @NonNull
-    private String title;
+    private String name;
 
     @ManyToOne(cascade = PERSIST, fetch = LAZY)
     @JoinColumn(name = "country_id", nullable = false)
-    private Country country;
-
-    @NonNull
-    private String address;
+    private Address address;
 
     @Column(name = "zip_code", nullable = false)
     private String zipCode;
 
     @Enumerated(EnumType.STRING)
     @ColumnDefault("OUR_PREMISES")
+    @Builder.Default
     private OwnershipType ownership = OwnershipType.valueOf("OUR_PREMISES");
 
     @Column(name = "map_coordinates")
     private boolean mapCoordinates;
 
+    @Column(name = "latitude")
     private String latitude;
+
+    @Column(name = "longitude")
     private String longitude;
 
     @Column(name = "real_estate")
     @Enumerated(EnumType.STRING)
-    private RealEstateType realEstate;
+    private LocationUsageType realEstate;
 
     @Column(name = "deleted")
+    @Builder.Default
     private boolean isDeleted=false;
 
 }

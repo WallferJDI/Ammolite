@@ -1,8 +1,8 @@
 package com.knits.ammolite.controller.company;
 
 import com.knits.ammolite.service.company.DivisionService;
-import com.knits.ammolite.service.dto.company.DivisionDto;
-import com.knits.ammolite.service.dto.search.DivisionSearchDto;
+import com.knits.ammolite.dto.company.DivisionDto;
+import com.knits.ammolite.dto.search.DivisionSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

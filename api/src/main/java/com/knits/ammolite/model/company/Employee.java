@@ -1,6 +1,8 @@
 package com.knits.ammolite.model.company;
 
+import com.knits.ammolite.model.common.Office;
 import com.knits.ammolite.model.common.Organization;
+import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.model.security.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +41,7 @@ public class Employee implements Serializable {
     private String lastName;
 
     @Column(name = "email", length = 254, unique = true, nullable = false)
-    private String email = firstName + "." + lastName + "@kuehne-nagel.com";
+    private String email;
 
     @Column(name = "date_of_birth", nullable = false)
     private String dateOfBirth;
@@ -87,7 +89,7 @@ public class Employee implements Serializable {
             optional = false
     )
     @JoinColumn(name = "office", referencedColumnName = "office_id")
-    private Office office;
+    private Location office;
 
 
     @OneToOne(
@@ -122,6 +124,7 @@ public class Employee implements Serializable {
 
 
     @Column(name = "deleted", nullable = false)
+    @Builder.Default
     private boolean deleted = Boolean.FALSE;
 
 }

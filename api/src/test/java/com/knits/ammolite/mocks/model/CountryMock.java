@@ -11,7 +11,7 @@ public class CountryMock {
 
         return Country.builder()
                 .id(id)
-                .title("A mock Title")
+                .name("A mock Country name")
                 .build();
     }
 
