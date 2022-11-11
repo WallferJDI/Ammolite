@@ -1,8 +1,8 @@
 package com.knits.ammolite.controller.company;
 
 import com.knits.ammolite.service.company.CostCenterService;
-import com.knits.ammolite.service.dto.company.CostCenterDto;
-import com.knits.ammolite.service.dto.search.CostCenterSearchDto;
+import com.knits.ammolite.dto.company.CostCenterDto;
+import com.knits.ammolite.dto.search.CostCenterSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

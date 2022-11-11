@@ -1,8 +1,8 @@
 package com.knits.ammolite.controller.company;
 
 import com.knits.ammolite.service.company.BusinessUnitService;
-import com.knits.ammolite.service.dto.company.BusinessUnitDto;
-import com.knits.ammolite.service.dto.search.BusinessUnitSearchDto;
+import com.knits.ammolite.dto.company.BusinessUnitDto;
+import com.knits.ammolite.dto.search.BusinessUnitSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

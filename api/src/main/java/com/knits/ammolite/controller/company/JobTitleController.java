@@ -1,8 +1,8 @@
 package com.knits.ammolite.controller.company;
 
 import com.knits.ammolite.service.company.JobTitleService;
-import com.knits.ammolite.service.dto.company.JobTitleDto;
-import com.knits.ammolite.service.dto.search.JobTitleSearchDto;
+import com.knits.ammolite.dto.company.JobTitleDto;
+import com.knits.ammolite.dto.search.JobTitleSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

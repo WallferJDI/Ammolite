@@ -1,7 +1,6 @@
 package com.knits.ammolite.model.location;
 
-import com.knits.ammolite.model.location.Building;
-import com.knits.ammolite.model.location.RealEstateType;
+import com.knits.ammolite.model.enums.LocationUsageType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,12 +36,13 @@ public class Floor implements Serializable {
 
     @Column(name = "real_estate")
     @Enumerated(EnumType.STRING)
-    private RealEstateType realEstate;
+    private LocationUsageType usage;
 
-    @ManyToOne(cascade = MERGE, fetch = LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "building_id", nullable = false)
     private Building building;
 
     @Column(name = "deleted")
+    @Builder.Default
     private boolean isDeleted=false;
 }

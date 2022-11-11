@@ -1,6 +1,6 @@
 package com.knits.ammolite.mocks.dto;
 
-import com.knits.ammolite.service.dto.UserDto;
+import com.knits.ammolite.dto.security.UserDto;
 
 public class UserDtoMock {
 

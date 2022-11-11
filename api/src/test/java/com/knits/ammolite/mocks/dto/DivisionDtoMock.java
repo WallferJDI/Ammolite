@@ -1,6 +1,6 @@
 package com.knits.ammolite.mocks.dto;
 
-import com.knits.ammolite.service.dto.company.DivisionDto;
+import com.knits.ammolite.dto.company.DivisionDto;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

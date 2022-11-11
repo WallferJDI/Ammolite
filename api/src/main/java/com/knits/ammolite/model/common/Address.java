@@ -1,7 +1,5 @@
 package com.knits.ammolite.model.common;
 
-import com.knits.ammolite.model.partner.City;
-import com.knits.ammolite.model.partner.Country;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import static javax.persistence.CascadeType.*;
+import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -25,17 +23,16 @@ public class Address {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @ManyToOne(cascade = PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
-    @ManyToOne(cascade = PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", nullable = false)
-    private City city;
+    @Column(name = "street", nullable = false)
+    private String city;
 
     @Column(name = "street", nullable = false)
     private String street;
 
-    @Column(name = "zip_code", nullable = false)
+    @Column(name = "street", nullable = false)
     private String zipCode;
-}
+ }

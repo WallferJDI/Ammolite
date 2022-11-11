@@ -1,0 +1,20 @@
+package com.knits.ammolite.model.common;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+public class Office {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    private Long id;
+    private String name;
+    private String telephone;
+    private String email;
+}

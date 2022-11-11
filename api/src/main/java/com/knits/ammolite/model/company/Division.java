@@ -1,6 +1,6 @@
 package com.knits.ammolite.model.company;
 
-import com.knits.ammolite.model.common.User;
+import com.knits.ammolite.model.security.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -49,6 +49,7 @@ public class Division implements Serializable {
 
     @Enumerated(STRING)
     @Column(columnDefinition = "ACTIVE", insertable = false)
+    @Builder.Default
     private Status status = Status.valueOf("ACTIVE");
 
     @ManyToOne(cascade = REFRESH)

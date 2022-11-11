@@ -1,6 +1,6 @@
 package com.knits.ammolite.model.company;
 
-import com.knits.ammolite.model.common.User;
+import com.knits.ammolite.model.security.User;
 import com.knits.ammolite.model.enums.Status;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

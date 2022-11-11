@@ -28,9 +28,8 @@ public class Country implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    private String title;
-
-    @OneToMany(mappedBy = "country", cascade = ALL)
-    private List<Location> locationList;
+    private String iso2;
+    private String iso3;
+    private String name;
 
 }

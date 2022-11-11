@@ -1,8 +1,10 @@
 package com.knits.ammolite.exceptions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+ @EqualsAndHashCode(callSuper=false)
 public class AppException extends RuntimeException{
 
     private int code;
