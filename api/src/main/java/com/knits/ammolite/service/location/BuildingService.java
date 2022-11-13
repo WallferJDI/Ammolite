@@ -35,7 +35,7 @@ public class BuildingService {
 
     public BuildingDto create(BuildingDto buildingDto) {
         log.debug("Request to create Building : {}", buildingDto);
-        Location location = locationRepository.findByTitle(buildingDto.getLocation().getTitle());
+        Location location = locationRepository.findByName(buildingDto.getLocation().getTitle());
         if(location!=null){
             log.info("Location for adding the Building already exists in DB");
         }
@@ -46,7 +46,7 @@ public class BuildingService {
     }
 
     public List<BuildingDto> findAllByLocation(LocationDto locationDto) {
-        return buildingRepository.findAllByLocation_Title(locationDto.getTitle()).stream().map(buildingMapper::toDto).collect(Collectors.toList());
+        return buildingRepository.findAllByLocation(locationDto.getTitle()).stream().map(buildingMapper::toDto).collect(Collectors.toList());
     }
 
     public BuildingDto update(BuildingDto buildingDto){

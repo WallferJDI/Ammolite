@@ -27,12 +27,12 @@ public class Address {
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
-    @Column(name = "street", nullable = false)
+    @Column(name = "city", nullable = false)
     private String city;
 
     @Column(name = "street", nullable = false)
     private String street;
 
-    @Column(name = "street", nullable = false)
+    @Column(name = "zipCode", nullable = false)
     private String zipCode;
  }

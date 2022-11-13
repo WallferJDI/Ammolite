@@ -81,14 +81,14 @@ public class Employee implements Serializable {
             fetch = FetchType.LAZY,
             optional = false
     )
-    @JoinColumn(name = "organization", referencedColumnName = "organization_id")
+    @JoinColumn(name = "organization", referencedColumnName = "id")
     private Organization organization;
 
     @OneToOne(
             fetch = FetchType.LAZY,
             optional = false
     )
-    @JoinColumn(name = "office", referencedColumnName = "office_id")
+    @JoinColumn(name = "office", referencedColumnName = "id")
     private Location office;
 
 
@@ -96,14 +96,14 @@ public class Employee implements Serializable {
             fetch = FetchType.LAZY,
             optional = false
     )
-    @JoinColumn(name = "job_title", referencedColumnName = "job_title_id")
+    @JoinColumn(name = "job_title", referencedColumnName = "id")
     private JobTitle jobTitle;
 
     @OneToOne(
             fetch = FetchType.LAZY,
             optional = false
     )
-    @JoinColumn(name = "department", referencedColumnName = "department_id")
+    @JoinColumn(name = "department", referencedColumnName = "id")
     private Department department;
 
 
@@ -111,15 +111,15 @@ public class Employee implements Serializable {
             fetch = FetchType.LAZY,
             optional = false
     )
-    @JoinColumn(name = "division", referencedColumnName = "division_id")
+    @JoinColumn(name = "division", referencedColumnName = "id")
     private Division division;
 
     @OneToOne(
             fetch = FetchType.LAZY,
             optional = false
     )
-    @JoinColumn(name = "solid_line_manager", referencedColumnName = "employee_id")
-    @Column(name = "solid_line_manager", nullable = false)
+    @JoinColumn(name = "solid_line_manager", referencedColumnName = "id", nullable = false)
+  //  @Column(name = "solid_line_manager")
     private Employee solidLineManager;
 
 

@@ -48,7 +48,7 @@ public class Building  implements Serializable {
     private ContactPerson securityContact;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "reception_id", nullable = false)
+    @JoinColumn(name = "contact", nullable = false)
     private ContactPerson contact;
 
     @OneToOne(fetch = LAZY)

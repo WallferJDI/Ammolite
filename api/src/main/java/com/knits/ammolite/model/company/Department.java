@@ -14,7 +14,6 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @Column(name = "department_id")
     private Long id;
     private String name;
 }

@@ -41,6 +41,7 @@ public class BusinessUnit implements Serializable {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "business_unit_id")
     private Long id;
 
     @Column(name = "title", length = 50, nullable = false)

@@ -16,7 +16,7 @@ public interface LocationRepository extends JpaRepository<Location,Long>,PagingA
     @Query("select l FROM Location l WHERE l.isDeleted = false")
     Page<Location> findAll(Specification<Location> s, Pageable p);
 
-    Location findByTitle(String location);
+    Location findByName(String location);
 
 
 

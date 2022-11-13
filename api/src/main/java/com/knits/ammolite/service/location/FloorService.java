@@ -37,7 +37,7 @@ public class FloorService {
         return floorMapper.toDto(floor); }
 
     public List<FloorDto> findAllByRealEstate(FloorDto floorDto) {
-        return floorRepository.findAllByRealEstate(LocationUsageType.valueOf(floorDto.getRealEstate())).stream().map(floorMapper::toDto).collect(Collectors.toList());
+        return floorRepository.findAllByUsage(LocationUsageType.valueOf(floorDto.getRealEstate())).stream().map(floorMapper::toDto).collect(Collectors.toList());
     }
 
     public FloorDto update(FloorDto floorDto){

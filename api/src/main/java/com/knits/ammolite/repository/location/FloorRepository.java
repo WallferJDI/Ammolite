@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface FloorRepository extends JpaRepository<Floor,Long> {
 
-    List<Floor>findAllByRealEstate(LocationUsageType realEstate);
+    List<Floor> findAllByUsage(LocationUsageType realEstate);
 
 
 }

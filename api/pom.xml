@@ -23,7 +23,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
-        <spring-boot.version>2.7.4</spring-boot.version>
+        <spring-boot.version>2.5.3</spring-boot.version>
         <org.projectlombok.version>1.18.16</org.projectlombok.version>
 
 	</properties>
@@ -86,11 +86,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-			<version>4.16.1</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.liquibase</groupId>-->
+<!--			<artifactId>liquibase-core</artifactId>-->
+<!--			<version>4.16.1</version>-->
+<!--		</dependency>-->
 
 		<!-- test -->
 		<dependency>

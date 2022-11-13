@@ -42,5 +42,5 @@ public class Vendor extends Partner {
     private PaymentTerms paymentTerms;
 
     @OneToMany
-    private BinaryData serviceAgreement;
+    private List<BinaryData> serviceAgreement;
 }

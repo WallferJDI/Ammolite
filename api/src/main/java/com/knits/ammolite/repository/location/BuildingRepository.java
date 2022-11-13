@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface BuildingRepository extends JpaRepository<Building,Long> {
 
-    List<Building> findAllByLocation_Title(String location);
+    List<Building> findAllByLocation(String location);
 }
