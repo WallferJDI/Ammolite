@@ -48,6 +48,7 @@ public class Asset  implements Serializable {
 
     @ElementCollection(targetClass = String.class)
     @Column
+    @Builder.Default
     private Map<String,String> technicalSpecifications = new HashMap<>() ;
 
 }

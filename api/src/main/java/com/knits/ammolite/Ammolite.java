@@ -1,12 +1,12 @@
 package com.knits.ammolite;
 
 import com.knits.ammolite.config.ApplicationProperties;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;

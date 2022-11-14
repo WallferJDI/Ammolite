@@ -3,6 +3,7 @@
 ######################
 /target/classes/static/**
 /src/test/javascript/coverage/
+*.yml
 
 ######################
 # Eclipse
@@ -47,6 +48,7 @@ local.properties
 *.ipr
 *.ids
 *.orig
+*.yml
 classes/
 out/
 
@@ -131,3 +133,6 @@ Desktop.ini
 ######################
 /coverage/
 /.nyc_output/
+!/src/main/resources/application.yml
+!/src/main/resources/application-dev.yml
+!/src/main/resources/application-prod.yml

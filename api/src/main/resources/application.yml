@@ -13,12 +13,12 @@
 # ===================================================================
 spring:
   application:
-    name: Product
+    name: Ammolite
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
     # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
-    active: #spring.profiles.active#
+    active: "dev" #spring.profiles.active#
   data:
     jpa:
       repositories:
@@ -33,3 +33,5 @@ spring:
 
 server:
   port: 8081
+
+
