@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "contact_person")
 @Data
 @NoArgsConstructor
-public class ContactPerson {
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
@@ -33,4 +33,7 @@ public class ContactPerson {
 
     @Column
     private String note;
+
+    @Column
+    private Boolean reception;
 }

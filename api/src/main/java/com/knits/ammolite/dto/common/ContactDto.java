@@ -3,7 +3,7 @@ package com.knits.ammolite.dto.common;
 import lombok.Data;
 
 @Data
-public class ContactPersonDto {
+public class ContactDto {
     private Long id;
     private String firstName;
     private String lastName;

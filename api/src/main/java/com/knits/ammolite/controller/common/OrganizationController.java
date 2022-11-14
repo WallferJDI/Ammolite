@@ -1,10 +1,9 @@
-/*
-package com.knits.ammolite.controller;
+package com.knits.ammolite.controller.common;
 
 
-import com.knits.ammolite.service.OrganizationService;
-import com.knits.ammolite.service.dto.OrganizationDto;
-import com.knits.ammolite.service.dto.search.OrganizationSearchDto;
+import com.knits.ammolite.dto.common.OrganizationDto;
+import com.knits.ammolite.dto.search.OrganizationSearchDto;
+import com.knits.ammolite.service.common.OrganizationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -51,4 +50,4 @@ public class OrganizationController {
 
 
 }
-*/
+

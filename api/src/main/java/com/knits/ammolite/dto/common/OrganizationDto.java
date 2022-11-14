@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -20,7 +18,7 @@ public class OrganizationDto {
     private CountryDto taxRegistrationCountry;
     private CountryDto legalAddressCountry;
 
-    private ContactPersonDto contactPerson;
+    private ContactDto contactPerson;
     @Builder.Default
     private boolean deleted = Boolean.FALSE;
 }

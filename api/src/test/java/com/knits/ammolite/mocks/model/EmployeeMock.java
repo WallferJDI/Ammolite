@@ -1,9 +1,7 @@
 package com.knits.ammolite.mocks.model;
 
-import com.knits.ammolite.mocks.dto.*;
-import com.knits.ammolite.model.common.Office;
-import com.knits.ammolite.model.company.*;
-import com.knits.ammolite.model.security.Role;
+import com.knits.ammolite.model.company.Employee;
+import com.knits.ammolite.model.company.Gender;
 
 import java.util.ArrayList;
 import java.util.List;

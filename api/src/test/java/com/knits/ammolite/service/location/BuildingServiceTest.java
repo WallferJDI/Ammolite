@@ -8,7 +8,7 @@ import com.knits.ammolite.mocks.dto.BuildingDtoMock;
 import com.knits.ammolite.mocks.dto.LocationDtoMock;
 import com.knits.ammolite.mocks.model.BuildingMock;
 import com.knits.ammolite.model.location.Building;
-import com.knits.ammolite.repository.common.ContactPersonRepository;
+import com.knits.ammolite.repository.common.ContactRepository;
 import com.knits.ammolite.repository.location.BuildingRepository;
 import com.knits.ammolite.repository.location.LocationRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +34,7 @@ public class BuildingServiceTest {
     @Mock
     private LocationRepository locationRepository;
     @Mock
-    private ContactPersonRepository contactRepository;
+    private ContactRepository contactRepository;
     @Spy
     private BuildingMapper buildingMapper;
     @Spy
@@ -101,7 +101,6 @@ public class BuildingServiceTest {
         BuildingDto toUpdateDto =buildingMapper.toDto(foundEntity);
         toUpdateDto.getReferenceContact().setPhoneNumber(updateContactPhoneNumber);
         toUpdateDto.getSecurityContact().setPhoneNumber(updateSecurityPhoneNumber);
-        toUpdateDto.getReception().setTelephone(updateReceptionPhoneNumber);
         when(buildingRepository.findById(entityIdToUpdate)).thenReturn(Optional.of(foundEntity));
         BuildingDto updatedDto =buildingService.partialUpdate(toUpdateDto);
 
