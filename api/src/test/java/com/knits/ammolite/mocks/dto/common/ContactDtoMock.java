@@ -1,11 +1,13 @@
 package com.knits.ammolite.mocks.dto.common;
 
-import com.knits.ammolite.dto.common.ContactPersonDto;
 
-public class ContactPersonDtoMock {
+import com.knits.ammolite.dto.common.ContactDto;
 
-    public static ContactPersonDto getContactPersonDtoAllFields(Long id){
-       return ContactPersonDto.builder()
+public class ContactDtoMock {
+
+    public static ContactDto getContactPersonDtoAllFields(Long id){
+
+       return ContactDto.builder()
                 .id(id)
                 .firstName("first name")
                 .email("contact@mail.ee")

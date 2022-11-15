@@ -1,6 +1,6 @@
 package com.knits.ammolite.dto.location;
 
-import com.knits.ammolite.dto.common.ContactPersonDto;
+import com.knits.ammolite.dto.common.ContactDto;
 import com.knits.ammolite.dto.company.OfficeDto;
 import com.knits.ammolite.model.enums.LocationUsageType;
 import lombok.AllArgsConstructor;
@@ -18,11 +18,9 @@ public class BuildingDto {
 
     private LocationDto location;
 
-    private ContactPersonDto referenceContact;
+    private ContactDto referenceContact;
 
-    private ContactPersonDto securityContact;
-
-    private OfficeDto reception;
+    private ContactDto securityContact;
 
     private LocationUsageType usage;
 

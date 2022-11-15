@@ -13,7 +13,7 @@ public class OrganizationMock {
                 .registrationCode("8811234")
                 .legalAddressCountry(AddressMock.getAddressAllFields(id))
                 .taxRegistrationCountry(CountryMock.getCountryAllFields(id))
-                .contactPerson(ContactPersonMock.getContactPersonAllFields(id))
+                .contactPerson(ContactMock.getContactPersonAllFields(id))
                 .deleted(false)
                 .build();
 

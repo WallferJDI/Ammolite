@@ -1,7 +1,6 @@
 package com.knits.ammolite.model.location;
 
-import com.knits.ammolite.model.common.ContactPerson;
-import com.knits.ammolite.model.common.Office;
+import com.knits.ammolite.model.common.Contact;
 import com.knits.ammolite.model.enums.LocationUsageType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +14,6 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import java.io.Serializable;
 
-import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 import static org.hibernate.annotations.CascadeType.SAVE_UPDATE;
@@ -45,15 +43,11 @@ public class Building  implements Serializable {
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "security_contact_id", nullable = false)
-    private ContactPerson securityContact;
+    private Contact securityContact;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "contact", nullable = false)
-    private ContactPerson contact;
-
-    @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "reception_id", nullable = false)
-    private Office reception;
+    @JoinColumn(name = "contact_id", nullable = false)
+    private Contact referenceContact;
 
     @Column(name = "deleted")
     @Builder.Default

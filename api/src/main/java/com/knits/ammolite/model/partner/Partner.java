@@ -1,12 +1,11 @@
 package com.knits.ammolite.model.partner;
 
 import com.knits.ammolite.model.common.Address;
-import com.knits.ammolite.model.common.ContactPerson;
+import com.knits.ammolite.model.common.Contact;
 import com.knits.ammolite.model.common.Organization;
 import com.knits.ammolite.model.company.Status;
 import com.knits.ammolite.model.security.User;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -16,8 +15,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
-import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -47,7 +44,7 @@ public class Partner implements Serializable {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "contact_id")
-    private ContactPerson contact;
+    private Contact contact;
 
     @Column(name = "logo_url")
     private String logoUrl;

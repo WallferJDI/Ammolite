@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Builder
 @Table(name = "contact_person")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactPerson {
+@Builder
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
@@ -37,4 +37,7 @@ public class ContactPerson {
 
     @Column
     private String note;
+
+    @Column
+    private Boolean reception;
 }

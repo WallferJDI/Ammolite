@@ -1,4 +1,3 @@
-
 package com.knits.ammolite.service.common;
 
 
@@ -58,7 +57,7 @@ public class OrganizationService {
     }
 
     public Page<OrganizationDto> search(OrganizationSearchDto organizationSearchDto) {
-        Page<Organization> organizationPage = organizationRepository.findAll(organizationSearchDto.getPageable());
+        Page<Organization> organizationPage = organizationRepository.findAll(organizationSearchDto.getSpecification(),organizationSearchDto.getPageable());
         List<OrganizationDto> organizationDtos = new ArrayList<>();
         organizationPage.forEach((entity) -> organizationDtos.add(organizationMapper.toDto(entity)));
         return new PageImpl<>(organizationDtos, organizationSearchDto.getPageable(), organizationPage.getTotalElements());

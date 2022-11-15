@@ -1,6 +1,5 @@
 package com.knits.ammolite.model.company;
 
-import com.knits.ammolite.model.common.Office;
 import com.knits.ammolite.model.common.Organization;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.model.security.Role;

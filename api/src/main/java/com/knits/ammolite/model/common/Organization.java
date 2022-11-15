@@ -49,7 +49,7 @@ public class Organization implements Serializable {
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "contact_id")
-    private ContactPerson contactPerson;
+    private Contact contactPerson;
 
     @Column
     private boolean deleted = Boolean.FALSE;

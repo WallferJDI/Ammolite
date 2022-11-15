@@ -1,11 +1,11 @@
 package com.knits.ammolite.mocks.model.common;
 
 
-import com.knits.ammolite.model.common.ContactPerson;
+import com.knits.ammolite.model.common.Contact;
 
-public class ContactPersonMock {
-    public static ContactPerson getContactPersonAllFields(Long id){
-        return ContactPerson.builder()
+public class ContactMock {
+    public static Contact getContactPersonAllFields(Long id){
+        return Contact.builder()
                 .id(id)
                 .firstName("first name")
                 .email("contact@mail.ee")

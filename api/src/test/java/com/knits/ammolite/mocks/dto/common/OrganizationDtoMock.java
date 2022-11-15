@@ -16,7 +16,7 @@ public class OrganizationDtoMock {
                 .registrationCode("8811234")
                 .legalAddressCountry(AddressDtoMock.getAddressDtoAllFields(id))
                 .taxRegistrationCountry(CountryDtoMock.getCountryDtoAllFields(id))
-                .contactPerson(ContactPersonDtoMock.getContactPersonDtoAllFields(id))
+                .contactPerson(ContactDtoMock.getContactPersonDtoAllFields(id))
                 .deleted(false)
                 .build();
 
