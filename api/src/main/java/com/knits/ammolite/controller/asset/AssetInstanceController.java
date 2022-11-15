@@ -1,5 +1,6 @@
 package com.knits.ammolite.controller.asset;
 
+import com.knits.ammolite.dto.asset.WarrantyDto;
 import com.knits.ammolite.service.asset.AssetInstanceService;
 import com.knits.ammolite.dto.asset.AssetInstanceDto;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,13 @@ public class AssetInstanceController {
         log.debug("REST request to create AssetInstance");
         return ResponseEntity.ok()
                 .body(assetInstanceService.save(assetInstanceDto));
+    }
+
+
+    @PostMapping(value = "/asset-add-warranty",produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<AssetInstanceDto> addWarranty(@RequestBody AssetInstanceDto assetInstanceDto, WarrantyDto warrantyDto){
+        log.debug("REST request to create AssetInstance");
+        return ResponseEntity.ok()
+                .body(assetInstanceService.addWarrantyToExistingInstance(assetInstanceDto,warrantyDto));
     }
 }
