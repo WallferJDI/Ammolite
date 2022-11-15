@@ -25,7 +25,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
-    password:
+    password: 12309800
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -33,6 +33,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        ddl-auto: update
     show-sql: true
 
 server:

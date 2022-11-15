@@ -18,7 +18,7 @@ public class OrganizationDto {
     private String vatNumber;
     private String registrationCode;
     private CountryDto taxRegistrationCountry;
-    private CountryDto legalAddressCountry;
+    private AddressDto legalAddressCountry;
 
     private ContactPersonDto contactPerson;
     @Builder.Default

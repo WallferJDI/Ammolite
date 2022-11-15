@@ -1,14 +1,18 @@
 package com.knits.ammolite.model.common;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Builder
 @Table(name = "contact_person")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class ContactPerson {
 
     @Id

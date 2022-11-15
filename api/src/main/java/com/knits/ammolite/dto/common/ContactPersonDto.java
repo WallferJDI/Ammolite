@@ -1,8 +1,10 @@
 package com.knits.ammolite.dto.common;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class ContactPersonDto {
     private Long id;
     private String firstName;

@@ -1,13 +1,13 @@
-/*
-package com.knits.ammolite.service;
+
+package com.knits.ammolite.service.common;
 
 
+import com.knits.ammolite.dto.common.OrganizationDto;
+import com.knits.ammolite.dto.search.OrganizationSearchDto;
 import com.knits.ammolite.exceptions.UserException;
-import com.knits.ammolite.model.company.Organization;
-import com.knits.ammolite.repository.OrganizationRepository;
-import com.knits.ammolite.service.dto.OrganizationDto;
-import com.knits.ammolite.service.dto.search.OrganizationSearchDto;
-import com.knits.ammolite.service.mapper.OrganizationMapper;
+import com.knits.ammolite.mapper.common.OrganizationMapper;
+import com.knits.ammolite.model.common.Organization;
+import com.knits.ammolite.repository.common.OrganizationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -58,7 +58,7 @@ public class OrganizationService {
     }
 
     public Page<OrganizationDto> search(OrganizationSearchDto organizationSearchDto) {
-        Page<Organization> organizationPage = organizationRepository.findAll(organizationSearchDto.getSpecification(), organizationSearchDto.getPageable());
+        Page<Organization> organizationPage = organizationRepository.findAll(organizationSearchDto.getPageable());
         List<OrganizationDto> organizationDtos = new ArrayList<>();
         organizationPage.forEach((entity) -> organizationDtos.add(organizationMapper.toDto(entity)));
         return new PageImpl<>(organizationDtos, organizationSearchDto.getPageable(), organizationPage.getTotalElements());
@@ -69,4 +69,4 @@ public class OrganizationService {
         organizationRepository.deleteById(id);
     }
 }
-*/
+
