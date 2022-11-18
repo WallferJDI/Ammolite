@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/organizations")
 @Slf4j
 @RequiredArgsConstructor
 public class OrganizationController {
@@ -20,28 +20,28 @@ public class OrganizationController {
     private final OrganizationService organizationService;
 
 
-    @PostMapping(value = "/organizations", produces = {"application/json"}, consumes = { "application/json"})
+    @PostMapping(produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<OrganizationDto> createOrganization(@RequestBody OrganizationDto organizationDto){
         log.debug("REST request to create Organization");
         return ResponseEntity.ok()
                 .body(organizationService.save(organizationDto));
     }
 
-    @PutMapping(value = "/organizations", produces = {"application/json"}, consumes = { "application/json"})
+    @PutMapping(produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<OrganizationDto> partialUpdateOrganization(@RequestBody OrganizationDto organizationDto){
         log.debug("REST request to update Organization");
         return ResponseEntity.ok()
                 .body(organizationService.partialUpdate(organizationDto));
     }
 
-    @GetMapping(value = "/organizations")
+    @GetMapping(value = "/search")
     public ResponseEntity<List<OrganizationDto>> searchOrganization(OrganizationSearchDto searchDto ){
         log.debug("request to search organization");
         return ResponseEntity.ok()
                 .body(organizationService.search(searchDto).toList());
     }
 
-    @DeleteMapping("/organizations/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrganization(@PathVariable Long id){
         log.debug("REST request to delete Organization : {}", id);
         organizationService.delete(id);

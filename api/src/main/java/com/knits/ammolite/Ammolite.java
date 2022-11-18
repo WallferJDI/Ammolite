@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.env.Environment;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @SpringBootApplication
 @EnableConfigurationProperties({ ApplicationProperties.class })
 @Slf4j
+@EnableSwagger2
 public class Ammolite {
 
     public static void main(String[] args) {

@@ -39,7 +39,7 @@ public class Organization implements Serializable {
     @Column(nullable = false)
     private String registrationCode;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "tax_registration_country_id")
     private Country taxRegistrationCountry;
 

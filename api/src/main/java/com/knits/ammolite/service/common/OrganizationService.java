@@ -28,9 +28,15 @@ public class OrganizationService {
     private final OrganizationMapper organizationMapper;
     private final OrganizationRepository organizationRepository;
 
+    private final CountryService countryService;
+
 
     public OrganizationDto save(OrganizationDto organizationDto) {
         log.debug("Request to save Organization : {}", organizationDto);
+        organizationDto.setTaxRegistrationCountry(
+                countryService.save(organizationDto.getTaxRegistrationCountry()));
+        organizationDto.getLegalAddressCountry().setCountry(
+                countryService.save(organizationDto.getLegalAddressCountry().getCountry()));
         Organization organization = organizationMapper.toEntity(organizationDto);
         organization = organizationRepository.save(organization);
         return organizationMapper.toDto(organization);

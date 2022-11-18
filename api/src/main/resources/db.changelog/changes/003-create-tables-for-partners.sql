@@ -25,15 +25,13 @@ create table if not exists addresses
 (
 id          serial  primary key,
 country_id  int     not null,
-city_id     int     not null,
+city        varchar not null,
 street      varchar not null,
 zip_code    varchar not null,
     constraint fk_countries
         foreign key (country_id)
             references countries (id),
-    constraint fk_cities
-        foreign key (city_id)
-            references cities (id)
+
 );
 
 create table if not exists companys_data

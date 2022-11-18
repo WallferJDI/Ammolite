@@ -1,10 +1,12 @@
 package com.knits.ammolite.model.asset;
 
 
+import com.knits.ammolite.model.common.Address;
 import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;
 import com.knits.ammolite.model.enums.StateType;
 import com.knits.ammolite.model.enums.AssetDepreciationType;
+import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.model.partner.Vendor;
 import com.knits.ammolite.model.procurement.Order;
 import lombok.Data;
@@ -64,6 +66,8 @@ public class AssetInstance implements Serializable {
     private Warranty warranty;
     @OneToMany(fetch = FetchType.LAZY)
     private List<Document> documents;
+    @ManyToOne
+    private Address address;
 
     public void setDepreciationAsset(Boolean depreciationAsset) {
         this.depreciationAsset = depreciationAsset ==null?true:depreciationAsset;
