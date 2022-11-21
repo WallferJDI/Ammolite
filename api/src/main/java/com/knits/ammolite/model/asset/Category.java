@@ -23,7 +23,7 @@ public class Category {
     @ManyToOne(fetch = FetchType.LAZY)
     private Category parentCategory;
 
-    @OneToMany(cascade = CascadeType.REFRESH,mappedBy = "parentCategory",orphanRemoval = true,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "parentCategory",orphanRemoval = true,fetch = FetchType.LAZY)
     private Set<Category> subcategory = new HashSet<>();
 
 

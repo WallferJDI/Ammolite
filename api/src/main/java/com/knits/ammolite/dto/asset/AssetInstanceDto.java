@@ -1,5 +1,7 @@
 package com.knits.ammolite.dto.asset;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.knits.ammolite.config.Views;
 import com.knits.ammolite.dto.common.AddressDto;
 import com.knits.ammolite.dto.location.LocationDto;
 import com.knits.ammolite.model.enums.AssetDepreciationType;
@@ -19,33 +21,52 @@ import java.util.Map;
 
 @Data
 public class AssetInstanceDto implements Serializable {
+    @JsonView(Views.Public.class)
     private Long id;
+    @JsonView(Views.Public.class)
     private AssetDto asset;
     @NotEmpty
     @NotBlank
+    @JsonView(Views.Public.class)
     private String serialNumber;
     @NotEmpty
     @NotBlank
+    @JsonView(Views.Public.class)
     private String tag;
     @NotEmpty
     @NotBlank
+    @JsonView(Views.Public.class)
     private String barcode;
     @NotEmpty
     @NotBlank
+    @JsonView(Views.Public.class)
     private String description;
+    @JsonView(Views.Public.class)
     private String key;
+    @JsonView(Views.Public.class)
     private ConditionType condition;
+    @JsonView(Views.Public.class)
     private StateType state;
+    @JsonView(Views.Public.class)
     private AssetDepreciationType type;
+    @JsonView(Views.Public.class)
     private Map<String,String> technicalSpecifications = new HashMap<>();
+    @JsonView(Views.Internal.class)
     private Ownership ownership;
     @NotNull
+    @JsonView(Views.Internal.class)
     private VendorDto vendor;
+    @JsonView(Views.Internal.class)
     private OrderDto order;
+    @JsonView(Views.Public.class)
     private Boolean depreciationAsset;
+    @JsonView(Views.Internal.class)
     private DepreciationDto depreciation;
+    @JsonView(Views.Internal.class)
     private WarrantyDto warranty;
+    @JsonView(Views.Internal.class)
     private List<DocumentDto> documents;
     @NotNull
+    @JsonView(Views.Internal.class)
     private AddressDto address;
 }

@@ -16,7 +16,6 @@ import java.util.Map;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Asset  implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,13 +41,12 @@ public class Asset  implements Serializable {
     private Category category;
 
     @Column
-    private URL productUrl;
+    private String productUrl;
     @Column
-    private URL photoUrl;
+    private String photoUrl;
 
     @ElementCollection(targetClass = String.class)
     @Column
-    @Builder.Default
     private Map<String,String> technicalSpecifications = new HashMap<>() ;
 
 }

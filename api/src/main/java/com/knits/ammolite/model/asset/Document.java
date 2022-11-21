@@ -23,5 +23,5 @@ public class Document  {
     @Column
     private DocumentType type;
     @Column
-    private URL link;
+    private String link;
 }

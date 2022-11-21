@@ -1,5 +1,6 @@
 package com.knits.ammolite.dto.asset;
 
+import com.knits.ammolite.annotations.ValidURL;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,8 +22,10 @@ public class AssetPartDto implements Serializable {
     private String name;
     private String code;
     private CategoryDto category;
-    private URL productUrl;
-    private URL photoUrl;
+    @ValidURL
+    private String productUrl;
+    @ValidURL
+    private String photoUrl;
     private Map<String,String> technicalSpecifications = new HashMap<>() ;
     private AssetDto parentAsset;
 }

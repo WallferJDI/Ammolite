@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/asset-instances")
 @Slf4j
 @RequiredArgsConstructor
 public class AssetInstanceController {
@@ -19,7 +19,7 @@ public class AssetInstanceController {
     private final AssetInstanceService assetInstanceService;
 
 
-    @PostMapping(value = "/asset-instances",produces = {"application/json"}, consumes = { "application/json"})
+    @PostMapping(produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<AssetInstanceDto> createAssetInstance(@RequestBody AssetInstanceDto assetInstanceDto){
         log.debug("REST request to create AssetInstance");
         return ResponseEntity.ok()

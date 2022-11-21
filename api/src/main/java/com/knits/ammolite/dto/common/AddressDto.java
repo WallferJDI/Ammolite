@@ -1,5 +1,8 @@
 package com.knits.ammolite.dto.common;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.knits.ammolite.config.Views;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonView(Views.Public.class)
 public class AddressDto {
 
     @NotNull

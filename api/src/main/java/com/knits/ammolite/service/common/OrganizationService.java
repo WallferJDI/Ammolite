@@ -31,6 +31,12 @@ public class OrganizationService {
     private final CountryService countryService;
 
 
+
+
+    public List<OrganizationDto> getAll(){
+        return organizationMapper.toDtos(organizationRepository.findAll());
+    }
+
     public OrganizationDto save(OrganizationDto organizationDto) {
         log.debug("Request to save Organization : {}", organizationDto);
         organizationDto.setTaxRegistrationCountry(

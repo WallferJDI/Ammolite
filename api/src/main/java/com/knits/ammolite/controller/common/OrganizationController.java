@@ -1,6 +1,8 @@
 package com.knits.ammolite.controller.common;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.knits.ammolite.config.Views;
 import com.knits.ammolite.dto.common.OrganizationDto;
 import com.knits.ammolite.dto.search.OrganizationSearchDto;
 import com.knits.ammolite.service.common.OrganizationService;
@@ -35,10 +37,19 @@ public class OrganizationController {
     }
 
     @GetMapping(value = "/search")
+    @JsonView(Views.Internal.class)
     public ResponseEntity<List<OrganizationDto>> searchOrganization(OrganizationSearchDto searchDto ){
         log.debug("request to search organization");
         return ResponseEntity.ok()
                 .body(organizationService.search(searchDto).toList());
+    }
+
+    @GetMapping(value = "/all")
+    @JsonView(Views.Internal.class)
+    public ResponseEntity<List<OrganizationDto>> getAllOrganizations(){
+        log.debug("request to search organization");
+        return ResponseEntity.ok()
+                .body(organizationService.getAll());
     }
 
     @DeleteMapping("/{id}")

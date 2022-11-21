@@ -33,6 +33,8 @@ class OrganizationServiceTest {
     private OrganizationMapper organizationMapper = new OrganizationMapperImpl();
     @InjectMocks
     private OrganizationService organizationService;
+    @Mock
+    private CountryService countryService;
     @Captor
     private ArgumentCaptor<Organization> captor;
 

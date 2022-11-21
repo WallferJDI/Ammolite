@@ -18,6 +18,7 @@ import java.util.Optional;
 @EnableConfigurationProperties({ ApplicationProperties.class })
 @Slf4j
 @EnableSwagger2
+
 public class Ammolite {
 
     public static void main(String[] args) {

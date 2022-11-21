@@ -1,5 +1,6 @@
 package com.knits.ammolite.dto.company;
 
+import com.knits.ammolite.annotations.ValidEmail;
 import com.knits.ammolite.dto.RoleDto;
 import com.knits.ammolite.dto.common.OrganizationDto;
 import com.knits.ammolite.model.company.Gender;
@@ -22,7 +23,7 @@ public class EmployeeDto {
     @NotNull()
     private String lastName;
 
-
+    @ValidEmail
     private String email;
 
     @NotNull()
