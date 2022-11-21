@@ -30,7 +30,7 @@ class OrganizationServiceTest {
     @Mock
     private OrganizationRepository repository;
     @Spy
-    private OrganizationMapper organizationMapper = new OrganizationMapperImpl();
+    private OrganizationMapper mapper = new OrganizationMapperImpl();
     @InjectMocks
     private OrganizationService organizationService;
     @Mock
@@ -49,9 +49,9 @@ class OrganizationServiceTest {
         verify(repository).save(captor.capture());
         Organization toSaveEntity = captor.getValue();
 
-        verify(organizationMapper,times(1)).toEntity(inputOrganizationDto);
+        verify(mapper,times(1)).toEntity(inputOrganizationDto);
         verify(repository,times(1)).save(toSaveEntity);
-        verify(organizationMapper,times(1)).toDto(toSaveEntity);
+        verify(mapper,times(1)).toDto(toSaveEntity);
 
         assertThat(inputOrganizationDto).isEqualTo(outputOrgDto);
     }
@@ -65,7 +65,7 @@ class OrganizationServiceTest {
         String updateName = "updated Org name";
 
         Organization inputOrganization = OrganizationMock.getAllFieldsOrganization(entityIdToUpdate);
-        OrganizationDto updateOrgDto = organizationMapper.toDto(inputOrganization);
+        OrganizationDto updateOrgDto = mapper.toDto(inputOrganization);
         updateOrgDto.setName(updateName);
 
         when(repository.findById(entityIdToUpdate)).thenReturn(Optional.of(inputOrganization));
@@ -76,9 +76,9 @@ class OrganizationServiceTest {
         Organization toUpdateEntity = captor.getValue();
 
 
-        verify(organizationMapper,times(1)).partialUpdate(toUpdateEntity,updateOrgDto);
+        verify(mapper,times(1)).partialUpdate(toUpdateEntity,updateOrgDto);
         verify(repository,times(1)).save(inputOrganization);
-        verify(organizationMapper,times(2)).toDto(inputOrganization);
+        verify(mapper,times(2)).toDto(inputOrganization);
 
         assertThat(updateOrgDto).isEqualTo(outputDto);
 
@@ -89,7 +89,7 @@ class OrganizationServiceTest {
     void delete() {
         Long entityIdToDelete = 1L;
         Organization foundEntity = OrganizationMock.getAllFieldsOrganization(entityIdToDelete);
-        OrganizationDto toDeleteDto =organizationMapper.toDto(foundEntity);
+        OrganizationDto toDeleteDto = mapper.toDto(foundEntity);
         when(repository.findById(entityIdToDelete)).thenReturn(Optional.of(foundEntity));
         organizationService.delete(entityIdToDelete);
         verify(repository,times(1)).deleteById(entityIdToDelete);

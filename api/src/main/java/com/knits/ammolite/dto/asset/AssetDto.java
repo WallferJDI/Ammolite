@@ -3,7 +3,10 @@ package com.knits.ammolite.dto.asset;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.knits.ammolite.annotations.ValidURL;
 import com.knits.ammolite.config.Views;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -12,6 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AssetDto {
     @JsonView(Views.Public.class)
     private Long id;
