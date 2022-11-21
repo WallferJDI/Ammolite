@@ -12,7 +12,6 @@ import java.util.Map;
 @Entity
 @Table(name = "asset")
 @Data
-@Builder
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
