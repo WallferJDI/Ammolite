@@ -1,9 +1,9 @@
-package com.knits.ammolite.service;
+package com.knits.ammolite.service.asset;
 
+import com.knits.ammolite.dto.asset.AssetPartDto;
 import com.knits.ammolite.model.asset.AssetPart;
-import com.knits.ammolite.repository.AssetPartRepository;
-import com.knits.ammolite.service.dto.AssetPartDto;
-import com.knits.ammolite.service.mapper.AssetPartMapper;
+import com.knits.ammolite.repository.assets.AssetPartRepository;
+import com.knits.ammolite.mapper.asset.AssetPartMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

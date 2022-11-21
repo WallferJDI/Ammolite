@@ -1,6 +1,9 @@
 package com.knits.ammolite.model.asset;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.knits.ammolite.config.Constants;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 import javax.persistence.*;
@@ -18,8 +21,10 @@ public class Warranty {
     @Column(nullable = false)
     private String number;
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.JSON_DATE_PATTERN)
     private LocalDateTime startDate;
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.JSON_DATE_PATTERN)
     private LocalDateTime endDate;
     @Column
     private BigDecimal cost;

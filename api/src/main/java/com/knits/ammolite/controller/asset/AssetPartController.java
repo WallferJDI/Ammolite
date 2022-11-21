@@ -1,7 +1,7 @@
-package com.knits.ammolite.controller;
+package com.knits.ammolite.controller.asset;
 
-import com.knits.ammolite.service.AssetPartService;
-import com.knits.ammolite.service.dto.AssetPartDto;
+import com.knits.ammolite.dto.asset.AssetPartDto;
+import com.knits.ammolite.service.asset.AssetPartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

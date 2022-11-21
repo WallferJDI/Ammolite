@@ -1,6 +1,9 @@
 package com.knits.ammolite.model.procurement;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.knits.ammolite.config.Constants;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -18,6 +21,8 @@ public class Order {
     @Column(unique = true,nullable = false)
     private String code;
     @Column
+    @CreationTimestamp
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.JSON_DATE_TIME_PATTERN)
     private LocalDateTime date;
     @Column
     private BigDecimal cost;

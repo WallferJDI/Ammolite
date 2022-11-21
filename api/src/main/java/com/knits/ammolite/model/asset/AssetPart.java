@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class AssetPart extends Asset{
     private static final long serialVersionUID = 1L;
 
