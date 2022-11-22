@@ -9,7 +9,10 @@ import com.knits.ammolite.model.enums.ConditionType;
 import com.knits.ammolite.model.enums.Ownership;
 import com.knits.ammolite.model.enums.StateType;
 import com.knits.ammolite.model.location.Location;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -20,6 +23,9 @@ import java.util.List;
 import java.util.Map;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AssetInstanceDto implements Serializable {
     @JsonView(Views.Public.class)
     private Long id;
@@ -51,7 +57,7 @@ public class AssetInstanceDto implements Serializable {
     private AssetDepreciationType type;
     @JsonView(Views.Public.class)
     private Map<String,String> technicalSpecifications = new HashMap<>();
-    @JsonView(Views.Internal.class)
+    @JsonView(Views.Public.class)
     private Ownership ownership;
     @NotNull
     @JsonView(Views.Internal.class)

@@ -3,7 +3,6 @@ package com.knits.ammolite.service.common;
 import com.knits.ammolite.dto.asset.CategoryDto;
 import com.knits.ammolite.mapper.asset.CategoryMapper;
 import com.knits.ammolite.mapper.asset.CategoryMapperImpl;
-import com.knits.ammolite.mapper.common.OrganizationMapperImpl;
 import com.knits.ammolite.mocks.dto.common.CategoryDtoMock;
 import com.knits.ammolite.model.asset.Category;
 import com.knits.ammolite.repository.assets.CategoryRepository;

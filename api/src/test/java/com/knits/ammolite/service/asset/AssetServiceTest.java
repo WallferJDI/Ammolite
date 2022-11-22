@@ -1,12 +1,10 @@
 package com.knits.ammolite.service.asset;
 
 import com.knits.ammolite.dto.asset.AssetDto;
-import com.knits.ammolite.dto.asset.CategoryDto;
 import com.knits.ammolite.mapper.asset.AssetMapper;
 import com.knits.ammolite.mapper.asset.AssetMapperImpl;
 import com.knits.ammolite.mocks.dto.asset.AssetDtoMock;
 import com.knits.ammolite.model.asset.Asset;
-import com.knits.ammolite.model.asset.Category;
 import com.knits.ammolite.repository.assets.AssetRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

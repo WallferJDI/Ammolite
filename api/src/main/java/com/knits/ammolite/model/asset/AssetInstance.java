@@ -9,7 +9,10 @@ import com.knits.ammolite.model.enums.AssetDepreciationType;
 import com.knits.ammolite.model.location.Location;
 import com.knits.ammolite.model.partner.Vendor;
 import com.knits.ammolite.model.procurement.Order;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,6 +23,9 @@ import java.util.Map;
 @Entity
 @Table
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AssetInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
