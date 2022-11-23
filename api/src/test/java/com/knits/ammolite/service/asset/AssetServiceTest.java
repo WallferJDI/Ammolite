@@ -33,7 +33,7 @@ class AssetServiceTest {
     @Mock
     private CategoryService categoryService;
     @Test
-    @DisplayName("Save not existing before Asset Success")
+    @DisplayName("Save not existing before Asset")
     void save() {
         AssetDto inputAssetDto = AssetDtoMock.getAllFieldAssetDtoMock(1l);
         when(repository.save(Mockito.any(Asset.class))).thenAnswer(element ->   element.getArguments()[0]);

@@ -19,6 +19,7 @@ public class AssetPart extends Asset{
     private Asset parentAsset;
 
     public void setParentAsset(Asset parentAsset) {
+        System.out.println(parentAsset);
         this.parentAsset = parentAsset;
         super.setManufacturer(parentAsset.getManufacturer());
         super.setDescription(parentAsset.getDescription());

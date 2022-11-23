@@ -9,16 +9,16 @@ public class AssetDtoMock {
 
 
     public static AssetDto getAllFieldAssetDtoMock(Long id){
-        return AssetDto.builder()
-                .id(id)
-                .manufacturer("Manf")
-                .description("description")
-                .name("Asset name")
-                .code("777-88-11")
-                .category(CategoryDtoMock.getAllFieldsCategoryDtoMock(id))
-                .productUrl("https://google.com/")
-                .photoUrl("https://google.com/")
-                .technicalSpecifications(new HashMap<>())
-                .build();
+        AssetDto assetDto = new AssetDto();
+        assetDto.setId(id);
+        assetDto.setManufacturer("Manf");
+        assetDto.setDescription("description");
+        assetDto.setName("Asset name");
+        assetDto.setCode("777-88-11");
+        assetDto.setCategory(CategoryDtoMock.getAllFieldsCategoryDtoMock(id));
+        assetDto.setProductUrl("https://google.com/");
+        assetDto.setPhotoUrl("https://google.com/");
+        assetDto.setTechnicalSpecifications(new HashMap<>());
+        return assetDto;
     }
 }
