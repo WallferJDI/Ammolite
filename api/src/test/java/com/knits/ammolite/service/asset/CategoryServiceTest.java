@@ -54,6 +54,16 @@ class CategoryServiceTest {
     }
 
     @Test
+    @DisplayName("Save existing category")
+    void saveExistingCategory() {
+        CategoryDto inputCategoryDto = CategoryDtoMock.getSubcategoryDtoMock(1l);
+        Category category = mapper.toEntity(inputCategoryDto);
+        when(repository.findByName(Mockito.any(String.class))).thenAnswer(e -> Optional.of(category));
+        CategoryDto savedEntity = categoryService.save(inputCategoryDto);
+        assertThat(inputCategoryDto).isEqualTo(savedEntity);
+    }
+
+    @Test
     @DisplayName("Create subcategory")
     void createSubcategory() {
         CategoryDto inputSubcategoryDto = CategoryDtoMock.getSubcategoryDtoMock(1l);
