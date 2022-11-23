@@ -40,7 +40,6 @@ class AssetPartServiceTest {
     @DisplayName("Save Asset Part")
     void save() {
         AssetPartDto inputAssetPartDto = AssetPartDtoMock.getAllFieldsDtoMock(1l);
-        System.out.println("INPUT "+ inputAssetPartDto);
         when(repository.save(Mockito.any(AssetPart.class))).thenAnswer(element ->   element.getArguments()[0]);
         when(assetService.save(Mockito.any(AssetDto.class))).thenAnswer(e -> e.getArguments()[0]);
         AssetPartDto savedAssetDto = assetPartService.save(inputAssetPartDto);
