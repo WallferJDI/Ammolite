@@ -37,7 +37,7 @@ public class Asset  implements Serializable {
     @Column(nullable = false)
     private String code;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
     @Column
