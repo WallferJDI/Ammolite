@@ -10,12 +10,13 @@ import java.util.Map;
 
 
 @Entity
-@Table(name = "asset")
 @Data
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "asset")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Asset  implements Serializable {
 
     private static final long serialVersionUID = 1L;
