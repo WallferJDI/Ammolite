@@ -17,8 +17,8 @@ import javax.transaction.Transactional;
 public class AssetTemplateService {
 
     private final AssetTemplateMapper mapper;
-
     private final AssetTemplateRepository repository;
+
     private final CategoryService categoryService;
 
     public AssetTemplateDto createAssetTemplate(AssetTemplateDto assetTemplateDto){
