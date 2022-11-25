@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WarrantyController {
     private final WarrantyTemplateService service;
 
-    @PostMapping(value = "/asset-parts",produces = {"application/json"}, consumes = { "application/json"})
+    @PostMapping(value = "/template",produces = {"application/json"}, consumes = { "application/json"})
     public ResponseEntity<WarrantyTemplateDto> createWarrantyTemplate(@RequestBody WarrantyTemplateDto template){
         log.debug("REST request to create Warranty Template", template);
         return ResponseEntity.ok()
