@@ -2,6 +2,7 @@ package com.knits.ammolite.model.asset;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.knits.ammolite.config.Constants;
+import com.knits.ammolite.model.template.WarrantyTemplate;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -33,7 +34,7 @@ public class Warranty {
     @Column
     private Byte[] file;
     @ManyToOne(fetch = FetchType.LAZY)
-    private Warranty template;
+    private WarrantyTemplate template;
     @Column
     private Boolean fullCoverage = true;
     @Column
@@ -45,7 +46,7 @@ public class Warranty {
         this.fullCoverage = fullCoverage==null?true:fullCoverage;
     }
 
-    public void setTemplate(Warranty template) {
+    public void setTemplate(WarrantyTemplate template) {
         this.template = template;
         setFullCoverage(template.getFullCoverage());
         setMaxCoverage(template.getMaxCoverage());
