@@ -1,17 +1,15 @@
 package com.knits.ammolite.service.asset;
 
 
+import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.asset.Asset;
-import com.knits.ammolite.model.template.AssetTemplate;
 import com.knits.ammolite.repository.assets.AssetRepository;
 import com.knits.ammolite.dto.asset.AssetDto;
 import com.knits.ammolite.mapper.asset.AssetMapper;
-import com.knits.ammolite.repository.template.AssetTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -23,9 +21,6 @@ public class AssetService {
 
     private final AssetRepository assetRepository;
     private final AssetMapper assetMapper;
-
-    private final AssetTemplateMapper mapper;
-    private final AssetTemplateRepository repository;
 
     private final CategoryService categoryService;
 

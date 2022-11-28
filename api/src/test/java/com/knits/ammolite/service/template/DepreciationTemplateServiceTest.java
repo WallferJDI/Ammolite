@@ -1,12 +1,10 @@
 package com.knits.ammolite.service.template;
 
 import com.knits.ammolite.dto.template.DepreciationTemplateDto;
-import com.knits.ammolite.dto.template.WarrantyTemplateDto;
 import com.knits.ammolite.mapper.template.DepreciationTemplateMapper;
 import com.knits.ammolite.mapper.template.DepreciationTemplateMapperImpl;
 import com.knits.ammolite.mocks.dto.template.DepreciationTemplateDtoMock;
 import com.knits.ammolite.model.template.DepreciationTemplate;
-import com.knits.ammolite.model.template.WarrantyTemplate;
 import com.knits.ammolite.repository.template.DepreciationTemplateRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
