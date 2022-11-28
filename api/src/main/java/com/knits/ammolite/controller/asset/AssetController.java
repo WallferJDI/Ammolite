@@ -44,4 +44,11 @@ public class AssetController {
         return ResponseEntity.ok()
                 .body(assetService.getAllAssets());
     }
+    @JsonView(Views.Public.class)
+    @PutMapping(produces = {"application/json"}, consumes = { "application/json"})
+    public ResponseEntity<AssetDto> partialUpdate(AssetDto assetDto){
+        log.debug("Request to add photo to Asset");
+        return ResponseEntity.ok()
+                .body(assetService.partialUpdate(assetDto));
+    }
 }
