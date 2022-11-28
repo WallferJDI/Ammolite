@@ -15,5 +15,14 @@ public class CategoryDtoMock {
                 .build();
     }
 
+    public static CategoryDto getSubcategoryDtoMock(Long id){
+        return CategoryDto.builder()
+                .id(id)
+                .name("Sub")
+                .parentCategory(getAllFieldsCategoryDtoMock(id+1))
+                .subcategory(new HashSet<>())
+                .build();
+    }
+
 
 }

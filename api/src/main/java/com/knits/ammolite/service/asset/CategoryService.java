@@ -1,6 +1,7 @@
 package com.knits.ammolite.service.asset;
 
 
+import com.knits.ammolite.exceptions.UserException;
 import com.knits.ammolite.model.asset.Category;
 import com.knits.ammolite.repository.assets.CategoryRepository;
 import com.knits.ammolite.dto.asset.CategoryDto;
@@ -25,5 +26,16 @@ public class CategoryService {
             category = repository.findByName(categoryDto.getName()).get();
         }
         return mapper.toDto(category);
+    }
+
+    public CategoryDto createSubcategory(CategoryDto subcategory){
+        Category parentCategory = mapper.toEntity(subcategory.getParentCategory());
+        if(!repository.existsByName(parentCategory.getName()))
+            throw new UserException("Parent Category with this name not exist");
+
+        CategoryDto savedSubcategory = save(subcategory);
+        parentCategory.getSubcategory().add(mapper.toEntity(savedSubcategory));
+        repository.save(parentCategory);
+        return savedSubcategory;
     }
 }
