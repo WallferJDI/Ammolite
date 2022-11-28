@@ -3,7 +3,10 @@ package com.knits.ammolite.model.asset;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.knits.ammolite.config.Constants;
 import com.knits.ammolite.model.enums.DepreciationMethodType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,6 +16,11 @@ import java.time.Month;
 
 @Entity
 @Data
+@Table
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Depreciation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
